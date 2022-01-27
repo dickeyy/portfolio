@@ -449,6 +449,10 @@
   margin: 32px auto 0;
 }
 
+.u-section-2 .u-accordion-item-12 {
+  margin-bottom: 0;
+}
+
 .u-section-2 .u-accordion-link-12 {
   background-image: none;
   font-size: 1.5rem;
@@ -475,6 +479,37 @@
 }
 
 .u-section-2 .u-btn-12 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: 32px auto 0;
+}
+
+.u-section-2 .u-accordion-link-13 {
+  background-image: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 10px 20px;
+}
+
+.u-section-2 .u-icon-13 {
+  height: 20px;
+  width: 20px;
+}
+
+.u-section-2 .u-accordion-pane-13 {
+  min-height: 206px;
+  margin-bottom: 0;
+}
+
+.u-section-2 .u-container-layout-13 {
+  padding: 20px;
+}
+
+.u-section-2 .u-text-27 {
+  margin: 5px auto 0;
+}
+
+.u-section-2 .u-btn-13 {
   font-weight: 700;
   font-size: 1.25rem;
   margin: 32px auto 0;
@@ -598,6 +633,11 @@
   }
 
   .u-section-2 .u-container-layout-12 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-2 .u-container-layout-13 {
     padding-left: 10px;
     padding-right: 10px;
   }
