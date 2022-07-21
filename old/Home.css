@@ -8,6 +8,7 @@
 
 .u-section-1 .u-custom-html-1 {
   min-height: 65px;
+  text-align: center;
   margin: 221px 190px 0 226px;
 }
 
@@ -652,6 +653,7 @@
     width: 340px;
   }
 }.cool-text {
+  text-align: center;
   margin: auto;
   font-size: 7em;
   font-family: Arial, Helvetica, sans-serif;
@@ -671,3 +673,6 @@
 body {
   background-color: black;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,900i');
+
