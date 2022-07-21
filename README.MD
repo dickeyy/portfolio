@@ -1,1 +1,1 @@
-## (Click Here)[https://dickey.gg]
+## [Click Here](https://dickey.gg)
