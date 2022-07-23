@@ -51,7 +51,9 @@ main {
   transition: all 0.5s;
   -webkit-text-stroke: 4px #d6f4f4;
   font-variation-settings: "wght" 900, "ital" 1;
-  font-size: 9rem;
+  font-size: 5em;
+  margin-left: 5vw;
+  margin-right: 5vw;
   text-align: center;
   color: transparent;
   font-family: "Meta", sans-serif;
@@ -71,6 +73,7 @@ main:hover {
 
 .socialIcon {
   margin-right: 2rem;
+  margin-bottom: 2rem;
   margin-left: 2rem;
   text-decoration: none;
   color: white;
@@ -88,6 +91,7 @@ main:hover {
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 85vw;
+  max-width: 85vw;
   border-radius: 13px;
   background-color: rgba(114, 114, 114, 0.2);
   backdrop-filter: blur(5px);
@@ -158,14 +162,16 @@ main:hover {
 }
 
 .footer {
-  flex-direction: row;
-  width: 90vw;
+  font-size: 1rem;
+  padding-top: 0.1rem;
+  color:rgb(174, 173, 173);
+  padding-bottom: 0.1rem;
+  width: 85vw;
+  max-width: 85vw;
+  border-radius: 13px;
   background-color: rgba(114, 114, 114, 0.2);
   backdrop-filter: blur(5px);
   box-shadow: rgba(28, 28, 28, 0.2) 0px 0px 10px;
-  border-radius: 13px;
-  color: black;
-  font-size: 20px;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
