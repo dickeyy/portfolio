@@ -203,7 +203,7 @@ function HomePage() {
             </a>
 
             {/* Github Link */}
-            <a href={'https://gitghub.com/dickeyy'} rel="noreferrer"  target={'_blank'}>
+            <a href={'https://github.com/dickeyy'} rel="noreferrer"  target={'_blank'}>
               <Icon as={FaGithub} w={['2.5rem','4.5rem']} h={['2.5rem','4.5rem']} cursor={'pointer'} ml={[2,5]} mr={[2,5]} _hover={{ dropShadow:'0px 0px 50px #ff03f2', color:'#7d7d7d' }} transition={'all 0.5s'} />
             </a>
 
