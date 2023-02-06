@@ -139,6 +139,13 @@ function HomePage() {
         "desc": "A simple way to keep track of all the places you've traveled",
         "btnText": "Learn More",
         "btnLink": "https://travel.dickey.gg"
+      },
+
+      {
+        "title": "Kyle + Renee",
+        "desc": "A website I made for my girlfriend and I",
+        "btnText": "View Now",
+        "btnLink": "https://kyleandrenee.com"
       }
     ]
 
@@ -152,6 +159,7 @@ function HomePage() {
         alignItems={'center'}
         p={5}
         bgImage={Background}
+        xOverflow={'hidden'}
       >
         <Box 
           h="100vh" 
