@@ -82,7 +82,7 @@ export default function Hero(props) {
                 >
 
                     <Heading as={'h1'} fontSize={['5xl','7xl','7xl','7xl']} pr={['5','5','5','0']} pl={['5','5','5','0']} >
-                        Freelance 
+                        Freelance  
                         <Heading as={'span'} fontSize={['5xl','7xl','7xl','7xl']} color={'brand.pink.300'}  fontFamily={'Gochi Hand'} > developer </Heading> 
                         +
                         <Heading as={'span'} fontSize={['5xl','7xl','7xl','7xl']} > college student </Heading>
