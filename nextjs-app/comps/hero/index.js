@@ -6,6 +6,7 @@ import "@fontsource/source-code-pro"
 import theme from '../../styles/theme.js'
 
 import React from 'react'
+import { SiLeetcode } from 'react-icons/si';
 import { FaDiscord, FaEnvelope, FaGithub, FaInstagram, FaLinkedin, FaTiktok, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 export default function Hero(props) {
@@ -114,6 +115,12 @@ export default function Hero(props) {
                             </GridItem>
 
                             <GridItem>
+                                <a href='https://leetcode.com/dickey' target={'_blank'}>
+                                    <IconButton icon={<SiLeetcode />} colorScheme={'brand.gray'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                </a>
+                            </GridItem>
+
+                            <GridItem>
                                 <a href='https://instagram.com/kyle.dickeyy' target={'_blank'}>
                                     <IconButton icon={<FaInstagram />} colorScheme={'brand.gray'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
@@ -128,12 +135,6 @@ export default function Hero(props) {
                             <GridItem>
                                 <a href='https://twitch.tv/imdickey' target={'_blank'}>
                                     <IconButton icon={<FaTwitch />} colorScheme={'brand.gray'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
-                                </a>
-                            </GridItem>
-
-                            <GridItem>
-                                <a href='mailto:kyle@dickey.gg' target={'_blank'}>
-                                    <IconButton icon={<FaEnvelope />} colorScheme={'brand.gray'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
                         </Grid>

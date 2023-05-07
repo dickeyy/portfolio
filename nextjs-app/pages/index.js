@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <ChakraProvider theme={theme}>
 		<Head>
-			<title>dickey</title>
+			<title>Kyle Dickey</title>
 			<meta name="description" content="Kyle Dickey - Freelance Developer / College Student" />
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<link rel="icon" href="https://dickey.gg/logo.png" />
