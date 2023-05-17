@@ -6,7 +6,7 @@ export default function Footer() {
         <div className='
             flex
             mb-5
-            absolute
+            static
             bottom-[1px]
             z-[99]
             rounded-[8px]
