@@ -39,7 +39,7 @@ export default function HeroHome() {
 				bg-opacity-10
 				bg-black
 				bg-fixed
-				z-99
+				z-50
 				absolute
 				w-screen
 				h-screen

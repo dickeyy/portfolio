@@ -14,9 +14,9 @@ export default function SocialButton(props : any) {
                     bg-zinc-500/20
                     backdrop-blur-[10px]
                     drop-shadow-zinc-500/20
-                    hover:bg-zinc-700/30
+                    hover:bg-zinc-800/70
                     transition
-                    duration-200
+                    duration-300
                     ease-in-out
                 ">
                     {props.icon}
