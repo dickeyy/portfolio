@@ -10,6 +10,7 @@ export default function Home() {
 	return (
 		<main className='
 			flex 
+			dark
 			h-screen 
 			w-screen 
 			justify-center 
