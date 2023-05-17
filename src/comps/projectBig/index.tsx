@@ -90,7 +90,7 @@ export default function ProjectBig(
                         }} />}
                     />
                 </div>
-                <a href={'/projects/' + id} className='
+                {/* <a href={'/projects/' + id} className='
                     mt-2
                     text-lg
                     text-zinc-300
@@ -102,7 +102,7 @@ export default function ProjectBig(
                     ease-in-out
                 '>
                     Read More
-                </a>
+                </a> */}
             </div>
         </div>
     )

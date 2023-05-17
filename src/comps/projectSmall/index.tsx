@@ -81,7 +81,7 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                     />
                 </div>
 
-                <a href={'/projects/' + id} className='
+                {/* <a href={'/projects/' + id} className='
                     mt-2
                     text-lg
                     text-zinc-300
@@ -93,7 +93,7 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                     ease-in-out
                 '>
                     Read More
-                </a>
+                </a> */}
             </div>
                                 
         </div>
