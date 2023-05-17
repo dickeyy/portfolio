@@ -31,7 +31,7 @@ export default function AboutMe() {
                     justify-center
                     items-center
                 '>
-                    <img src='/images/me.jpg' className="
+                    <img src='https://media.licdn.com/dms/image/C4E03AQGlkLlOK5Y6ng/profile-displayphoto-shrink_200_200/0/1655788500792?e=1689811200&v=beta&t=NpD_68AInoNuo3eIBZshKxwVdUFXOM362RDeRRHdHJk' className="
                         w-[200px]
                         h-[200px]
                         aspect-auto
@@ -63,7 +63,7 @@ export default function AboutMe() {
                     '>LasTag</a>, a Linktree clone but for gamers.
                 </p>
                 <br></br>
-                <ButtonOutline text="General Resume" link="/resume.pdf" color={'fuchsia'} 
+                <ButtonOutline text="General Resume" link="/resume.pdf"
                     leftIcon={<FaFilePdf style={{
                         height: '1.5rem',
                         width: '1.5rem',

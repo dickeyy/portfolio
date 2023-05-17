@@ -63,7 +63,7 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                     items-center
                     flex-wrap
                 '>
-                    <ButtonSolid text={linkLabel} link={link} color={'fuchsia'} 
+                    <ButtonSolid text={linkLabel} link={link} 
                         leftIcon={<BiLinkExternal style={{
                             height: '1.5rem',
                             width: '1.5rem',
@@ -71,7 +71,7 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                             marginRight: '0.5rem',
                         }} />}
                     />
-                    <ButtonOutline text={'GitHub'} link={github} color={'fuchsia'}
+                    <ButtonOutline text={'GitHub'} link={github}
                         leftIcon={<FaGithub style={{
                             height: '1.5rem',
                             width: '1.5rem',
