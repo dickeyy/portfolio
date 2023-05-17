@@ -58,7 +58,7 @@ export default function Home() {
 					text-center sm:text-left
 				'>
 					<p className='text-fuchsia-300 font-code text-xl mb-2'>Hello, my name is</p>
-					<h1 className='text-9xl italic font-bold'>Kyle Dickey</h1>
+					<h1 className='text-7xl sm:text-9xl italic font-bold'>Kyle Dickey</h1>
 				</div>
 
 			</div>
