@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <div className='
             flex
-            p-5
+            mb-5
             fixed
             bottom-[-0px]
             z-99999
@@ -19,8 +19,11 @@ export default function Footer() {
                 flex-row
                 justify-center
                 items-center
-                w-screen
-                h-[5rem]
+                p-1
+                rounded-[8px]
+                bg-zinc-500/20
+                backdrop-blur-md
+                drop-shadow-zinc-500/20
             '>
                 <SocialButton link={'https://github.com/dickeyy'} icon={<FaGithub style={{ 
                     height: '2rem',
@@ -49,3 +52,12 @@ export default function Footer() {
         </div>
     )
 }
+
+/*
+    backgroundColor={'rgba(180, 180, 180, 0.2)'}
+    backdropFilter={'blur(10px)'}
+    boxShadow={'rgba(28, 28, 28, 0.2) 0px 0px 10px'}
+    borderRadius={'8px'}
+    margin={'1rem auto'}
+    zIndex={'100'}
+*/

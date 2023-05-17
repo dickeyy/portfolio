@@ -91,7 +91,9 @@ export default function HeroHome() {
                         text-zinc-300
                         pl-5
                         pr-5
-                        w-[30rem]
+                        w-[20rem]
+                        sm:w-[40rem]
+                        mt-5
                     "
                 >
                     <p className="text-zinc-300">{"{"}</p>
