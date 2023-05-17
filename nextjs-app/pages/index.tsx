@@ -56,6 +56,8 @@ export default function Home() {
 					rounded-full
 					z-10
 					text-center sm:text-left
+					pl-5
+					pr-5
 				'>
 					<p className='text-fuchsia-300 font-code text-xl mb-2'>Hello, my name is</p>
 					<h1 className='text-7xl sm:text-9xl italic font-bold'>Kyle Dickey</h1>
