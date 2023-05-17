@@ -49,19 +49,3 @@ export default function Footer() {
         </div>
     )
 }
-
-/*
-    display={'flex'}
-    w={'90vw'}
-    p={'0.7rem'}
-    position={'fixed'}
-    top={'0'}
-    left={'5vw'}
-    height={'fit-content'}
-    backgroundColor={'rgba(180, 180, 180, 0.2)'}
-    backdropFilter={'blur(10px)'}
-    boxShadow={'rgba(28, 28, 28, 0.2) 0px 0px 10px'}
-    borderRadius={'8px'}
-    margin={'1rem auto'}
-    zIndex={'100'}
-*/
