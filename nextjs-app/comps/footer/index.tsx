@@ -6,8 +6,8 @@ export default function Footer() {
         <div className='
             flex
             mb-5
-            static
-            bottom-[1px]
+            fixed
+            bottom-[10px]
             z-[99]
             rounded-[8px]
             bg-zinc-500/20
