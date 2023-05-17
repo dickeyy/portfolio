@@ -29,3 +29,20 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+ 
+/* hide the overflow-x */
+body {
+  overflow-x: hidden;
+}
+
+/* configure scroll bar */
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+/* Change the color of the scroll thumb */
+::-webkit-scrollbar-thumb {
+  background: #1a0015;
+  border-radius: 0.5rem;
+}
