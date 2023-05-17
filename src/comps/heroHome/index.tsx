@@ -15,7 +15,7 @@ export default function HeroHome() {
             // convert the difference to years
             const years = difference / (1000 * 60 * 60 * 24 * 365.25)
             // round the years to 7 decimal places
-            const roundedYears = Math.round(years * 10000000) / 10000000
+            const roundedYears = Math.round(years * 100000000) / 100000000
             // set the age
             setAge(roundedYears)
         }, 10)
