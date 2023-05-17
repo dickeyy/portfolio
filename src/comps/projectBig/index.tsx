@@ -73,7 +73,7 @@ export default function ProjectBig(
                     items-center
                     flex-wrap
                 '>
-                    <ButtonSolid text={linkLabel} link={link} 
+                    <ButtonSolid text={linkLabel} link={link} color={'fuchsia'}
                         leftIcon={<BiLinkExternal style={{
                             height: '1.5rem',
                             width: '1.5rem',
@@ -81,7 +81,7 @@ export default function ProjectBig(
                             marginRight: '0.5rem',
                         }} />}
                     />
-                    <ButtonOutline text={'GitHub'} link={github}
+                    <ButtonOutline text={'GitHub'} link={github} color={'fuchsia'}
                         leftIcon={<FaGithub style={{
                             height: '1.5rem',
                             width: '1.5rem',

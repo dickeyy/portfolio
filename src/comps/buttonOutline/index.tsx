@@ -1,9 +1,9 @@
-export default function ButtonOutline({ text, link, leftIcon }: { text: string, link: string, leftIcon?: any }) {
+export default function ButtonOutline({ text, link, leftIcon, color }: { text: string, link: string, leftIcon?: any, color: string }) {
 
     return (
         <div>
             <a href={link} target="_blank">
-                <button className='
+                <button className={`
                     flex
                     flex-row
                     justify-center
@@ -14,16 +14,16 @@ export default function ButtonOutline({ text, link, leftIcon }: { text: string, 
                     pl-5
                     m-1
                     bg-transparent
-                    text-fuchsia-300
+                    text-${color}-300
                     border-2
-                    border-fuchsia-300
+                    border-${color}-300
                     text-lg
                     font-bold
-                    hover:bg-fuchsia-400/10
+                    hover:bg-${color}-400/10
                     transition-all
                     duration-500
                     ease-in-out
-                '>
+                `}>
                     {leftIcon}
                     <p>{text}</p>
                 </button>
