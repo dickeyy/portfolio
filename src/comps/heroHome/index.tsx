@@ -7,7 +7,7 @@ export default function HeroHome() {
         // make an interval to update the age every 100ms
         const interval = setInterval(() => {
             // get the birthdate
-            const birthdate = new Date(2004, 2, 5)
+            const birthdate = new Date('2004-05-02')
             // get the current date
             const currentDate = new Date()
             // get the difference between the two dates
