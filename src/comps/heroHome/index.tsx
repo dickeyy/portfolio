@@ -105,7 +105,7 @@ export default function HeroHome() {
                     ">
                         <p>"age": {age},</p>
                         <p>"occupation": "Freelance dev / college student",</p>
-                        <p>"location": "Denver, Colorado",</p>
+                        <p>"location": "Denver, Colorado"</p>
                     </div>
                     <p className="text-zinc-300">{"}"}</p>
                 </div>
