@@ -1,4 +1,4 @@
-import { FaFilePdf } from "react-icons/fa"
+import { FaEnvelope, FaFilePdf } from "react-icons/fa"
 import ButtonOutline from "../buttonOutline"
 import Skills from "../skills"
 
@@ -47,10 +47,10 @@ export default function AboutMe() {
                         sm:text-left
                         mb-5
                     '>
-                    Born and raised near Denver, Colorado. I am a second year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building Legos, playing video games, music, SCUBA diving, and playing chess (don't ask my elo it's bad). I am a fullstack dev, however I have a special place in my heart for backend work. Currently looking for an internship!
+                    Born and raised near Denver, Colorado. I am a second year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building Legos, music, SCUBA diving, and playing chess (don't ask my elo it's bad). I am a fullstack dev, however I have a special place in my heart for backend work. Currently looking for an internship in Fort Collins CO or remote!
                     </p>
                 </div>
-                <p className='
+                {/* <p className='
                     text-lg
                     leading-6
                     font-code
@@ -61,14 +61,14 @@ export default function AboutMe() {
                         transition-all
                         duration-500
                         ease-in-out
-                    '>LasTag</a>, a Linktree clone but for gamers.
-                </p>
+                    '>LasTag</a>, a Linktree clone but for gamers. */}
+                {/* </p> */}
                 
                 <h1 className='
                     text-4xl
                     font-bold
                     mb-2
-                    mt-10
+                    mt-5
                 '>
                     Skills
                 </h1>
@@ -78,13 +78,29 @@ export default function AboutMe() {
                     otherSkills={['Google Cloud', 'AWS', 'Vercel', 'Git', 'Docker', 'Linux', 'Windows', 'MacOS', 'Nginx', 'Jest', 'CI/CD','Figma', 'Photoshop', 'Illustrator']}
                 />
                 <br /> <br />
-                <ButtonOutline text="General Resume" link="/Kyle-Dickey-Resume.pdf"
-                    leftIcon={<FaFilePdf style={{
-                        height: '1.5rem',
-                        width: '1.5rem',
-                        color: '#f0abfc',
-                        marginRight: '0.5rem',
-                }} />}/>
+
+                <div className='
+                    flex
+                    flex-row
+                    justify-center
+                    items-center
+                '>
+                    <ButtonOutline text="General Resume" link="/Kyle-Dickey-Resume.pdf"
+                        leftIcon={<FaFilePdf style={{
+                            height: '1.5rem',
+                            width: '1.5rem',
+                            color: '#f0abfc',
+                            marginRight: '0.5rem',
+                    }} />}/>
+                    <div className='w-5'></div>
+                    <ButtonOutline text="Contact Me" link="mailto:kyle@dicey.gg"
+                        leftIcon={<FaEnvelope style={{
+                            height: '1.5rem',
+                            width: '1.5rem',
+                            color: '#f0abfc',
+                            marginRight: '0.5rem',
+                    }} />}/>
+                </div>
             </div>
         </div>
     )
