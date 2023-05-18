@@ -1,4 +1,4 @@
-# My porfolio :)
+# Portfolio v7 :)
 
 [Visit it here](https://dickey.gg)
 
