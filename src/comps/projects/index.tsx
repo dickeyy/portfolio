@@ -79,7 +79,7 @@ export default function Projects() {
 					md:grid-cols-3 
 					md:grid-rows-3
 					w-[95vw]
-           			md:w-[75vw]
+           			md:w-[85vw]
 				'>
 
 					<ProjectSmall 

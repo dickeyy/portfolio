@@ -18,7 +18,7 @@ export default function ProjectBig(
             bg-zinc-500/20
             p-5
             w-[95vw]
-            md:w-[65vw]
+            md:w-[85vw]
             text-left
             mb-[5rem]
         "> 
