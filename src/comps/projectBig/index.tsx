@@ -71,7 +71,6 @@ export default function ProjectBig(
                     flex-row
                     justify-center
                     items-center
-                    flex-wrap
                 '>
                     <ButtonSolid text={linkLabel} link={link}
                         leftIcon={<BiLinkExternal style={{
