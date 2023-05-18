@@ -1,5 +1,6 @@
 import { FaFilePdf } from "react-icons/fa"
 import ButtonOutline from "../buttonOutline"
+import Skills from "../skills"
 
 export default function AboutMe() {
     return (
@@ -15,7 +16,7 @@ export default function AboutMe() {
             <div className='
                 mb-20
                 w-[95vw]
-                sm:w-[65vw]
+                sm:w-[85vw]
                 rounded-[8px]
                 bg-zinc-500/20
                 justify-center
@@ -46,7 +47,7 @@ export default function AboutMe() {
                         sm:text-left
                         mb-5
                     '>
-                    Born and raised near Denver, Colorado. I am a second year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building Legos, playing video games, music, SCUBA diving, and playing chess (don't ask my elo it's bad). I specialize in backend work, however I am also talented in frontend design. Currently looking for an internship!
+                    Born and raised near Denver, Colorado. I am a second year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building Legos, playing video games, music, SCUBA diving, and playing chess (don't ask my elo it's bad). I am a fullstack dev, however I have a special place in my heart for backend work. Currently looking for an internship!
                     </p>
                 </div>
                 <p className='
@@ -62,15 +63,28 @@ export default function AboutMe() {
                         ease-in-out
                     '>LasTag</a>, a Linktree clone but for gamers.
                 </p>
-                <br></br>
-                <ButtonOutline text="General Resume" link="/resume.pdf"
+                
+                <h1 className='
+                    text-4xl
+                    font-bold
+                    mb-2
+                    mt-10
+                '>
+                    Skills
+                </h1>
+                <Skills 
+                    backendSkills={['Node.JS', 'Express', 'MongoDB', 'MySQL', 'Python', 'GoLang', 'Redis', 'GraphQL', 'REST', 'JWT', 'HTTP', 'DNS', 'SMTP', 'PostgreSQL', 'S3', 'EC2', 'Rust']}
+                    frontendSkills={['React.JS', 'Next.JS', 'TS', 'TailwindCSS', 'ChakraUI', 'HTML', 'CSS', 'SVG', 'Electron', 'React Native', 'Swift']}
+                    otherSkills={['Google Cloud', 'AWS', 'Vercel', 'Git', 'Docker', 'Linux', 'Windows', 'MacOS', 'Nginx', 'Jest', 'CI/CD','Figma', 'Photoshop', 'Illustrator']}
+                />
+                <br /> <br />
+                <ButtonOutline text="General Resume" link="/Kyle-Dickey-Resume.pdf"
                     leftIcon={<FaFilePdf style={{
                         height: '1.5rem',
                         width: '1.5rem',
                         color: '#f0abfc',
                         marginRight: '0.5rem',
                 }} />}/>
-                
             </div>
         </div>
     )

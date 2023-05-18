@@ -1,7 +1,7 @@
 import React from "react"
 
 export default function HeroHome() {
-    const [age, setAge] = React.useState(0)
+    const [age, setAge] = React.useState('0')
 
     React.useEffect(() => {
         // make an interval to update the age every 100ms
@@ -14,8 +14,8 @@ export default function HeroHome() {
             const difference = currentDate.getTime() - birthdate.getTime()
             // convert the difference to years
             const years = difference / (1000 * 60 * 60 * 24 * 365.25)
-            // round the years to 7 decimal places
-            const roundedYears = Math.round(years * 10000000) / 10000000
+            // round the years to 7 decimal places but keep it as a string
+            const roundedYears = years.toFixed(7)
             // set the age
             setAge(roundedYears)
         }, 10)
@@ -104,8 +104,8 @@ export default function HeroHome() {
                         text-left
                     ">
                         <p>"age": {age},</p>
-                        <p>"occupation": "Freelance dev / college student,"</p>
-                        <p>"hobbies": ["Legos", "Music", "SCUBA", "Chess"]</p>
+                        <p>"occupation": "Freelance dev / college student",</p>
+                        <p>"location": "Denver, Colorado",</p>
                     </div>
                     <p className="text-zinc-300">{"}"}</p>
                 </div>
