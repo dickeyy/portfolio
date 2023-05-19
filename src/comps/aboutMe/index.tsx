@@ -47,7 +47,7 @@ export default function AboutMe() {
                         sm:text-left
                         mb-5
                     '>
-                    Born and raised near Denver, Colorado. I am a second-year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building Legos, music, SCUBA diving, and playing chess (don't ask my Elo it's bad). I am a full stack dev, however, I have a special place in my heart for backend work. Currently looking for an internship in Fort Collins CO or remote!
+                        Born and raised near Denver, Colorado. I am a second-year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building Legos, music, SCUBA diving, and playing chess (don't ask my Elo it's bad). I am a full stack dev, however, I have a special place in my heart for backend work. Currently looking for an internship in Fort Collins CO or remote!
                     </p>
                 </div>
                 {/* <p className='

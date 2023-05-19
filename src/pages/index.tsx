@@ -5,8 +5,6 @@ import React from 'react'
 import SEOHead from '@/comps/seoHead'
 import HeroHome from '@/comps/heroHome'
 import Footer from '@/comps/footer'
-import ProjectBig from '@/comps/projectBig'
-import ProjectSmall from '@/comps/projectSmall'
 import Projects from '@/comps/projects'
 import AboutMe from '@/comps/aboutMe'
 
