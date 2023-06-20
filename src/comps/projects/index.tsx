@@ -173,7 +173,7 @@ export default function Projects() {
 							id={'lastag'}
 							description="A modern way to play a game my family and I made."
 							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/lastag'}
+							github={'https://github.com/dickeyy/alias'}
 							tools={['Firebase', 'React.JS']}
 						/>
 
