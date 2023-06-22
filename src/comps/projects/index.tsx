@@ -98,6 +98,26 @@ export default function Projects() {
 						/>
 
 						<ProjectSmall 
+							title={'Alias'}
+							link={'https://aliasgame.xyz'}
+							id={'lastag'}
+							description="A modern way to play a game my family and I made."
+							linkLabel={'Website'}
+							github={'https://github.com/dickeyy/alias'}
+							tools={['Next.JS', 'TailwindCSS', 'Firebase', 'Vercel']}
+						/>
+
+						<ProjectSmall 
+							title={'LasTag'}
+							link={'https://lastag.xyz'}
+							id={'lastag'}
+							description="The last gamer tag you'll ever need. Basically Linktree for gamers."
+							linkLabel={'Website'}
+							github={'https://github.com/dickeyy/lastag'}
+							tools={['Next.JS', 'ChakraUI', 'Vercel', 'MongoDB']}
+						/>
+
+						<ProjectSmall 
 							title={'Wordle Clone'}
 							link={'https://wordle.dickey.gg'}
 							id={'wordle'}
@@ -157,26 +177,6 @@ export default function Projects() {
 							tools={['Brain.JS', 'PyTorch', 'Discord API']}
 						/>
 
-						<ProjectSmall 
-							title={'LasTag'}
-							link={'https://lastag.xyz'}
-							id={'lastag'}
-							description="The last gamer tag you'll ever need. Basically Linktree for gamers."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/lastag'}
-							tools={['Next.JS', 'ChakraUI', 'Vercel', 'MongoDB']}
-						/>
-
-						<ProjectSmall 
-							title={'Alias'}
-							link={'https://aliasgame.xyz'}
-							id={'lastag'}
-							description="A modern way to play a game my family and I made."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/alias'}
-							tools={['Firebase', 'React.JS']}
-						/>
-
 					</div>
 				: 
 					<div className='
@@ -202,23 +202,23 @@ export default function Projects() {
 						/>
 
 						<ProjectSmall 
-							title={'Wordle Clone'}
-							link={'https://wordle.dickey.gg'}
-							id={'wordle'}
-							description="A realtime multiplayer clone of the popular game Wordle."
+							title={'Alias'}
+							link={'https://aliasgame.xyz'}
+							id={'lastag'}
+							description="A modern way to play a game my family and I made."
 							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/wordle-clone'}
-							tools={['HTML', 'CSS', 'Firebase']}
+							github={'https://github.com/dickeyy/alias'}
+							tools={['Next.JS', 'TailwindCSS', 'Firebase', 'Vercel']}
 						/>
 
 						<ProjectSmall 
-							title={'Kyle + Renee'}
-							link={'https://kyleandrenee.com'}
-							id={'kylerenee'}
-							description="A website I that made for my girlfriend and I."
+							title={'LasTag'}
+							link={'https://lastag.xyz'}
+							id={'lastag'}
+							description="The last gamer tag you'll ever need. Basically Linktree for gamers."
 							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/kyle-and-renee'}
-							tools={['React.JS', 'Spline 3D', 'ChakraUI', 'Vercel']}
+							github={'https://github.com/dickeyy/lastag'}
+							tools={['Next.JS', 'TailwindCSS', 'Vercel', 'MongoDB']}
 						/>
 					</div>
 
