@@ -50,19 +50,6 @@ export default function AboutMe() {
                         Born and raised near Denver, Colorado. I am a second-year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building Legos, music, SCUBA diving, and playing chess (don't ask my Elo it's bad). I am a full stack dev, however, I have a special place in my heart for backend work. Currently looking for an internship in Fort Collins CO or remote!
                     </p>
                 </div>
-                {/* <p className='
-                    text-lg
-                    leading-6
-                    font-code
-                '>
-                    I am currently remaking <a href="https://lastag.xyz" target="_blank" className='
-                        text-fuchsia-400
-                        hover:text-fuchsia-500
-                        transition-all
-                        duration-500
-                        ease-in-out
-                    '>LasTag</a>, a Linktree clone but for gamers. */}
-                {/* </p> */}
                 
                 <h1 className='
                     text-4xl
@@ -100,6 +87,36 @@ export default function AboutMe() {
                             color: '#f0abfc',
                             marginRight: '0.5rem',
                     }} />}/>
+                </div>
+
+                <br /> <br />
+                
+                <h1 className='
+                        text-2xl
+                        font-bold
+                        text-center
+                        mb-2
+                    '>
+                        Last seen working on
+                </h1>
+                <div className='
+                    flex
+                    flex-col
+                    justify-center
+                    items-center
+                    bg-zinc-500/20
+                    p-5
+                    mt-5
+                    rounded-[8px]
+                '>
+                    <p className='
+                        text-lg
+                        leading-6
+                        font-code
+                        text-center
+                    '>
+                        An app to connect with people who get you. Find your next friend group on <span className='font-bold text-fuchsia-500 hover:underline'><a href={"https://outgone.app"} target="_blank">Outgone</a></span>.
+                    </p>
                 </div>
             </div>
         </div>

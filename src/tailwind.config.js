@@ -2,9 +2,9 @@
 module.exports = {
   darkMode: 'class',
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './comps/**/*.{js,ts,jsx,tsx}',
-    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx,json}',
+    './comps/**/*.{js,ts,jsx,tsx,json}',
+    './app/**/*.{js,ts,jsx,tsx,json}',
   ],
   theme: {
     fontFamily: {
