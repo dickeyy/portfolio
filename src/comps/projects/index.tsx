@@ -100,7 +100,7 @@ export default function Projects() {
 						<ProjectSmall 
 							title={'Alias'}
 							link={'https://aliasgame.xyz'}
-							id={'lastag'}
+							id={'alias'}
 							description="A modern way to play a game my family and I made."
 							linkLabel={'Website'}
 							github={'https://github.com/dickeyy/alias'}
@@ -114,7 +114,7 @@ export default function Projects() {
 							description="The last gamer tag you'll ever need. Basically Linktree for gamers."
 							linkLabel={'Website'}
 							github={'https://github.com/dickeyy/lastag'}
-							tools={['Next.JS', 'ChakraUI', 'Vercel', 'MongoDB']}
+							tools={['Next.JS', 'TailwindCSS', 'Vercel', 'MongoDB']}
 						/>
 
 						<ProjectSmall 
