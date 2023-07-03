@@ -1,5 +1,6 @@
 import SocialButton from "../socialButton";
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { SiKofi } from 'react-icons/si';
 
 export default function Footer() {
     return (
@@ -48,6 +49,12 @@ export default function Footer() {
                     }} />} />
 
                     <SocialButton link={'https://instagram.com/kyle.dickeyy'} icon={<FaInstagram style={{ 
+                        height: '2rem',
+                        width: '2rem',
+                        color: '#d1d5db',
+                    }} />} />
+
+                    <SocialButton link={'https://ko-fi.com/dickey'} icon={<SiKofi style={{ 
                         height: '2rem',
                         width: '2rem',
                         color: '#d1d5db',
