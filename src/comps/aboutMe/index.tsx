@@ -117,6 +117,16 @@ export default function AboutMe() {
                     '>
                         An app to connect with people who get you. Find your next friend group on <span className='font-bold text-fuchsia-500 hover:underline'><a href={"https://outgone.app"} target="_blank">Outgone</a></span>.
                     </p>
+
+                    <p className='
+                        text-lg
+                        leading-6
+                        font-code
+                        text-center
+                        mt-2
+                    '>
+                        A way for developers to make money doing what they love, it's called <span className='font-bold text-fuchsia-500 hover:underline'><a href={"https://tip.dev"} target="_blank">tip.dev</a></span>.
+                    </p>
                 </div>
             </div>
         </div>
