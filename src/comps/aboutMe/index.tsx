@@ -32,7 +32,7 @@ export default function AboutMe() {
                     justify-center
                     items-center
                 '>
-                    <img src='https://media.licdn.com/dms/image/C4E03AQGlkLlOK5Y6ng/profile-displayphoto-shrink_200_200/0/1655788500792?e=1689811200&v=beta&t=NpD_68AInoNuo3eIBZshKxwVdUFXOM362RDeRRHdHJk' className="
+                    <img src='https://media.licdn.com/dms/image/C4E03AQGlkLlOK5Y6ng/profile-displayphoto-shrink_200_200/0/1655788500792?e=1696464000&v=beta&t=ub9oI_CCSaeOcmRygGUoBuCVksWz6iaO2e5kkqyzK6k' className="
                         w-[200px]
                         h-[200px]
                         aspect-auto
