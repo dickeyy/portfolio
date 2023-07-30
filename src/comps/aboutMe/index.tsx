@@ -125,7 +125,7 @@ export default function AboutMe() {
                         text-center
                         mt-2
                     '>
-                        A way for developers to make money doing what they love, it's called <span className='font-bold text-fuchsia-500 hover:underline'><a href={"https://tip.dev"} target="_blank">tip.dev</a></span>.
+                        A way for developers to make money from fans of their work, it's called <span className='font-bold text-fuchsia-500 hover:underline'><a href={"https://tip.dev"} target="_blank">tip.dev</a></span>.
                     </p>
                 </div>
             </div>
