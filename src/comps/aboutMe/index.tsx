@@ -60,8 +60,8 @@ export default function AboutMe() {
                     Skills
                 </h1>
                 <Skills 
-                    backendSkills={['Node.JS', 'Express', 'MongoDB', 'MySQL', 'Python', 'GoLang', 'Redis', 'GraphQL', 'REST', 'JWT', 'HTTP', 'DNS', 'SMTP', 'PostgreSQL', 'S3', 'EC2', 'Rust']}
-                    frontendSkills={['React.JS', 'Next.JS', 'TS', 'TailwindCSS', 'ChakraUI', 'HTML', 'CSS', 'SVG', 'Electron', 'React Native', 'Swift']}
+                    backendSkills={['Node.JS', 'Express', 'MongoDB', 'MySQL', 'Python', 'GoLang', 'Redis', 'GraphQL', 'REST', 'JWT', 'HTTP', 'DNS', 'SMTP', 'PostgreSQL', 'S3', 'R2', 'Java', 'GoLang']}
+                    frontendSkills={['React.JS', 'Next.JS', 'TS', 'TailwindCSS', 'ChakraUI', 'HTML', 'CSS', 'SVG', 'Electron', 'React Native', 'Swift', 'Expo']}
                     otherSkills={['Google Cloud', 'AWS', 'Vercel', 'Git', 'Docker', 'Linux', 'Windows', 'MacOS', 'Nginx', 'Jest', 'CI/CD','Figma', 'Photoshop', 'Illustrator']}
                 />
                 <br /> <br />
