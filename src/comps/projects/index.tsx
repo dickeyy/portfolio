@@ -6,6 +6,124 @@ export default function Projects() {
 
 	const [viewMore, setViewMore] = useState(false)
 
+	const [projects, setProjects] = useState({
+		big: [
+			{
+				title: "Hansumfella Website",
+				description: "A merch website for a Twitch streamer I like watching. I was commissioned to make the website by the streamer, it was a fun and very successful project.",
+				image: "/images/projects/hansumfella-project.png",
+				link: "https://hansumfella.com",
+				id: "hansumfella-merch",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/hansumfella-website",
+				tools: ["Next.JS", "ChakraUI", "Shopify API", "Twitch API", "GraphQL", "REST API", "Vercel"],
+			},
+			{
+				title: "Seeds",
+				description: "The easiest bot to use on Discord. Seeds is a multi-purpose bot with a focus on moderation and utility. Currently, it is in over 270 servers and has over 100,000 unique users.",
+				image: "/images/projects/seeds-project.png",
+				link: "https://seedsbot.xyz",
+				id: "seeds",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/seeds-bot",
+				tools: ["Node.JS", "Discord.JS", "MongoDB", "Redis", "Next.JS", "ChakraUI", "NextAuth", "Google Cloud", "Vercel"],
+			},
+			{
+				title: "Mirky Analytics",
+				description: "A developer-first analytics platform focused on safety and security. This app is more of a proof of concept, however, the main features work and I am proud of it.",
+				image: "/images/projects/mirky-project.png",
+				link: "https://mirky.app",
+				id: "mirky",
+				linkLabel: "Website",
+				github: "https://github.com/MirkyAnalytics",
+				tools: ["React.JS", "ChakraUI", "Websockets", "MongoDB", "AWS", "Node.JS", "REST API", "Node Package", "Vercel"],
+			}, 
+		],
+		small: [
+			{
+				title: "Travel Log",
+				link: "https://travel.dickey.gg",
+				id: "travel-log",
+				description: "A website to track all the places you've visited.",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/travel-log",
+				tools: ["React.JS", "ChakraUI", "MongoDB", "Google Maps"],
+			},
+			{
+				title: "Alias",
+				link: "https://alias.dickey.gg",
+				id: "alias",
+				description: "A modern way to play a game my family and I made.",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/alias",
+				tools: ["Next.JS", "TailwindCSS", "Firebase", "Vercel"],
+			},
+			{
+				title: "LasTag",
+				link: "https://lastag.xyz",
+				id: "lastag",
+				description: "The last gamer tag you'll ever need. Basically Linktree for gamers.",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/lastag",
+				tools: ["Next.JS", "TailwindCSS", "Vercel", "MongoDB"],
+			},
+			{
+				title: "Wordle Clone",
+				link: "https://wordle.dickey.gg",
+				id: "wordle",
+				description: "A realtime multiplayer clone of the popular game Wordle.",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/wordle-clone",
+				tools: ["HTML", "CSS", "Firebase"],
+			},
+			{
+				title: "Kyle + Renee",
+				link: "https://kyleandrenee.com",
+				id: "kylerenee",
+				description: "A website I that made for my girlfriend and I.",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/kyle-and-renee",
+				tools: ["Next.JS", "TailwindCSS", "Spline"],
+			},
+			{
+				title: "Spotinder",
+				link: "https://spotinder.dickey.gg",
+				id: "spotinder",
+				description: "A website to find new music for Spotify. Similar to Tinder, but for music.",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/spotinder",
+				tools: ["React.JS", "Spotify API", "MongoDB"],
+			},
+			{
+				title: "Spot Higher Lower",
+				link: "https://sphl.dickey.gg",
+				id: "sphl",
+				description: "A website to check your music knowledge, similar to the game Higher Lower.",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/spotify-higher-lower",
+				tools: ["React.JS", "Spotify API", "MongoDB"],
+			},
+			{
+				title: "Dismegle Chat Logs",
+				link: "https://dismegle.com",
+				id: "dismegle-logs",
+				description: "UI for historical chat logs from the popular Discord server Dismegle.",
+				linkLabel: "Website",
+				github: "https://github.com/dismegle/website",
+				tools: ["Next.JS", "Vercel", "Discord API"],
+			},
+			{
+				title: "Dismegle AI",
+				link: "https://dismegle.com",
+				id: "dismegle-ai",
+				description: "A series of AI models for moderation on Dismegle.",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/dismegle-ai",
+				tools: ["Brain.JS", "PyTorch", "Discord API"],
+			}
+		]
+	})
+
     return (
         <div className='
 				flex
@@ -39,38 +157,20 @@ export default function Projects() {
 					items-center
 					flex-wrap
 				'>
-					<ProjectBig 
-						title={'Hansumfella Website'}
-						description={'A merch website for a Twitch streamer I like watching. I was commissioned to make the website by the streamer, it was a fun and very successful project.'}
-						image={'/images/projects/hansumfella-project.png'}
-						link={'https://hansumfella.com'}
-						id={'hansumfella-merch'}
-						linkLabel={'Website'}
-						github={'https://github.com/dickeyy/hansumfella-website'}
-						tools={['Next.JS', 'ChakraUI', 'Shopify API', 'Twitch API', 'GraphQL', 'REST API', 'Vercel']}
-					/>
 					
-					<ProjectBig 
-						title={'Seeds'}
-						description={'The easiest bot to use on Discord. Seeds is a multi-purpose bot with a focus on moderation and utility. Currently, it is in over 270 servers and has over 100,000 unique users.'}
-						image={'/images/projects/seeds-project.png'}
-						link={'https://seedsbot.xyz'}
-						id={'seeds'}
-						linkLabel={'Website'}
-						github={'https://github.com/dickeyy/seeds-bot'}
-						tools={['Node.JS', 'Discord.JS', 'MongoDB', 'Redis', 'Next.JS', 'ChakraUI', 'NextAuth', 'Google Cloud', 'Vercel']}
-					/>
+					{projects.big.map((project, index) => (
+						<ProjectBig
+							title={project.title}
+							description={project.description}
+							image={project.image}
+							link={project.link}
+							id={project.id}
+							linkLabel={project.linkLabel}
+							github={project.github}
+							tools={project.tools}
+						/>
+					))}
 
-					<ProjectBig 
-						title={'Mirky Analytics'}
-						description={'A developer-first analytics platform focused on safety and security. This app is more of a proof of concept, however, the main features work and I am proud of it.'}
-						image={'/images/projects/mirky-project.png'}
-						link={'https://mirky.app'}
-						id={'mirky'}
-						linkLabel={'Website'}
-						github={'https://github.com/MirkyAnalytics'}
-						tools={['React.JS', 'ChakraUI', 'Websockets', 'MongoDB', 'AWS', 'Node.JS', 'REST API', 'Node Package', 'Vercel']}
-					/>
 				</div>
 				{/* Create a grid of small projects */}
 				{viewMore ?
@@ -87,95 +187,17 @@ export default function Projects() {
 						md:w-[85vw]
 					'>
 
-						<ProjectSmall 
-							title={'Travel Log'}
-							link={'https://travel.dickey.gg'}
-							id={'travel-log'}
-							description="A website to track all the places you've visited."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/travel-log'}
-							tools={['React.JS', 'ChakraUI', 'MongoDB', 'Google Maps']}
-						/>
-
-						<ProjectSmall 
-							title={'Alias'}
-							link={'https://aliasgame.xyz'}
-							id={'alias'}
-							description="A modern way to play a game my family and I made."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/alias'}
-							tools={['Next.JS', 'TailwindCSS', 'Firebase', 'Vercel']}
-						/>
-
-						<ProjectSmall 
-							title={'LasTag'}
-							link={'https://lastag.xyz'}
-							id={'lastag'}
-							description="The last gamer tag you'll ever need. Basically Linktree for gamers."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/lastag'}
-							tools={['Next.JS', 'TailwindCSS', 'Vercel', 'MongoDB']}
-						/>
-
-						<ProjectSmall 
-							title={'Wordle Clone'}
-							link={'https://wordle.dickey.gg'}
-							id={'wordle'}
-							description="A realtime multiplayer clone of the popular game Wordle."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/wordle-clone'}
-							tools={['HTML', 'CSS', 'Firebase']}
-						/>
-
-						<ProjectSmall 
-							title={'Kyle + Renee'}
-							link={'https://kyleandrenee.com'}
-							id={'kylerenee'}
-							description="A website I that made for my girlfriend and I."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/kyle-and-renee'}
-							tools={['React.JS', 'Spline 3D', 'ChakraUI', 'Vercel']}
-						/>
-
-						<ProjectSmall 
-							title={'Spotinder'}
-							link={'https://spotinder.dickey.gg'}
-							id={'spotinder'}
-							description="A website to find new music for Spotify. Similar to Tinder, but for music."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/spotinder'}
-							tools={['React.JS', 'Spotify API', 'MongoDB']}
-						/>
-
-						<ProjectSmall 
-							title={'Spot Higher Lower'}
-							link={'https://sphl.dickey.gg'}
-							id={'sphl'}
-							description="A website to check your music knowledge, similar to the game Higher Lower."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/spotify-higher-lower'}
-							tools={['React.JS', 'Spotify API', 'MongoDB']}
-						/>
-
-						<ProjectSmall 
-							title={'Dismegle Chat Logs'}
-							link={'https://dismegle.com'}
-							id={'dismegle-logs'}
-							description="UI for historical chat logs from the popular Discord server Dismegle."
-							linkLabel={'Website'}
-							github={'https://github.com/dismegle/website'}
-							tools={['Next.JS', 'Vercel', 'Discord API']}
-						/>
-
-						<ProjectSmall 
-							title={'Dismegle AI'}
-							link={'https://dismegle.com'}
-							id={'dismegle-ai'}
-							description="A series of AI models for moderation on Dismegle."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/dismegle-ai'}
-							tools={['Brain.JS', 'PyTorch', 'Discord API']}
-						/>
+						{projects.small.map((project, index) => (
+							<ProjectSmall
+								title={project.title}
+								link={project.link}
+								id={project.id}
+								description={project.description}
+								linkLabel={project.linkLabel}
+								github={project.github}
+								tools={project.tools}
+							/>
+						))}
 
 					</div>
 				: 
@@ -191,35 +213,19 @@ export default function Projects() {
 						w-[95vw]
 						md:w-[85vw]
 					'>
-						<ProjectSmall 
-							title={'Travel Log'}
-							link={'https://travel.dickey.gg'}
-							id={'travel-log'}
-							description="A website to track all the places you've visited."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/travel-log'}
-							tools={['React.JS', 'ChakraUI', 'MongoDB', 'Google Maps']}
-						/>
-
-						<ProjectSmall 
-							title={'Alias'}
-							link={'https://aliasgame.xyz'}
-							id={'lastag'}
-							description="A modern way to play a game my family and I made."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/alias'}
-							tools={['Next.JS', 'TailwindCSS', 'Firebase', 'Vercel']}
-						/>
-
-						<ProjectSmall 
-							title={'LasTag'}
-							link={'https://lastag.xyz'}
-							id={'lastag'}
-							description="The last gamer tag you'll ever need. Basically Linktree for gamers."
-							linkLabel={'Website'}
-							github={'https://github.com/dickeyy/lastag'}
-							tools={['Next.JS', 'TailwindCSS', 'Vercel', 'MongoDB']}
-						/>
+						
+						{projects.small.slice(0, 3).map((project, index) => (
+							<ProjectSmall
+								title={project.title}
+								link={project.link}
+								id={project.id}
+								description={project.description}
+								linkLabel={project.linkLabel}
+								github={project.github}
+								tools={project.tools}
+							/>
+						))}
+						
 					</div>
 
 				}

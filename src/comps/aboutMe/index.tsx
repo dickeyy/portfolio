@@ -32,7 +32,7 @@ export default function AboutMe() {
                     justify-center
                     items-center
                 '>
-                    <img src='https://media.licdn.com/dms/image/C4E03AQGlkLlOK5Y6ng/profile-displayphoto-shrink_200_200/0/1655788500792?e=1696464000&v=beta&t=ub9oI_CCSaeOcmRygGUoBuCVksWz6iaO2e5kkqyzK6k' className="
+                    <img src='/images/me.JPG' className="
                         w-[200px]
                         h-[200px]
                         aspect-auto
@@ -47,7 +47,7 @@ export default function AboutMe() {
                         sm:text-left
                         mb-5
                     '>
-                        Born and raised near Denver, Colorado. I am a second-year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building Legos, music, SCUBA diving, and playing chess (don't ask my Elo it's bad). I am a full stack dev, however, I have a special place in my heart for backend work. Currently looking for an internship in Fort Collins CO or remote!
+                        Born and raised near Denver, Colorado. I am a second-year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building movies, music, SCUBA diving, and playing chess (don't ask my Elo it's bad). I am a full stack dev, however, I have a special place in my heart for backend work. I am currently looking for a summer 2024 internship, so if you're hiring, please reach out!
                     </p>
                 </div>
                 

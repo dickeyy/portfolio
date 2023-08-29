@@ -4,7 +4,7 @@ import ButtonOutline from "../buttonOutline"
 import ToolTag from "../toolTag"
 import { FaGithub } from "react-icons/fa"
 
-export default function ProjectSmall({ title, description, link, linkLabel, github, id, tools }: { title: string, description: string, link: string, linkLabel: string, github: string, id: string, tools: string[] }) {
+export default function ProjectSmall({ title, description, link, linkLabel, github, id, tools }: { title: string, description: string, link: string, linkLabel: string, github: string, id: string, tools: any }) {
 
     return (
         <div className="
@@ -48,7 +48,7 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                     flex-wrap
                     mb-2
                 '>
-                    {tools.map((tool) => {
+                    {tools.map((tool:any) => {
                         return (
                             <ToolTag name={tool} color="fuchsia" />
                         )
