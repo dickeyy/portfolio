@@ -22,6 +22,7 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                 flex-col
                 pl-3
                 pr-3
+                justify-between
             ">
                 <h1 className='
                     text-4xl

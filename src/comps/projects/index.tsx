@@ -9,28 +9,30 @@ export default function Projects() {
 	const [projects, setProjects] = useState({
 		big: [
 			{
-				title: "Hansumfella Website",
+				title: "tip.dev",
+				description: "A platform for developers to get paid for their work. I am currently working on this project, and I am very excited about it. I plan to launch it by December 2023.",
+				image: "/images/projects/tipdev-project.png",
+				link: "https://tip.dev",
+				id: "tipdev",
+				linkLabel: "Website",
+				github: "https://github.com/tipdotdev",
+				tools: ["Next.JS", "TailwindCSS", "Stripe API", "MongoDB", "REST API", "Vercel", "Redis"],
+			},
+
+			{
+				title: "Hansumfella Merch",
 				description: "A merch website for a Twitch streamer I like watching. I was commissioned to make the website by the streamer, it was a fun and very successful project.",
 				image: "/images/projects/hansumfella-project.png",
 				link: "https://hansumfella.com",
 				id: "hansumfella-merch",
 				linkLabel: "Website",
 				github: "https://github.com/dickeyy/hansumfella-website",
-				tools: ["Next.JS", "ChakraUI", "Shopify API", "Twitch API", "GraphQL", "REST API", "Vercel"],
+				tools: ["Next.JS", "TailwindCSS", "Shopify API", "Twitch API", "GraphQL", "REST API", "Vercel"],
 			},
-			{
-				title: "Seeds",
-				description: "The easiest bot to use on Discord. Seeds is a multi-purpose bot with a focus on moderation and utility. Currently, it is in over 270 servers and has over 100,000 unique users.",
-				image: "/images/projects/seeds-project.png",
-				link: "https://seedsbot.xyz",
-				id: "seeds",
-				linkLabel: "Website",
-				github: "https://github.com/dickeyy/seeds-bot",
-				tools: ["Node.JS", "Discord.JS", "MongoDB", "Redis", "Next.JS", "ChakraUI", "NextAuth", "Google Cloud", "Vercel"],
-			},
+			
 			{
 				title: "Mirky Analytics",
-				description: "A developer-first analytics platform focused on safety and security. This app is more of a proof of concept, however, the main features work and I am proud of it.",
+				description: "A developer-first analytics platform focused on safety and security. This app is more of a proof of concept, however, the main features work and I am proud of it. Currently planning a rebuild of this site!",
 				image: "/images/projects/mirky-project.png",
 				link: "https://mirky.app",
 				id: "mirky",
@@ -40,6 +42,15 @@ export default function Projects() {
 			}, 
 		],
 		small: [
+			{
+				title: "Seeds",
+				link: "https://seedsbot.xyz",
+				id: "seeds",
+				description: "A very popular multi-purpose Discord bot.",
+				linkLabel: "Website",
+				github: "https://github.com/dickeyy/seeds-bot",
+				tools: ["Node.JS", "Discord API", "MongoDB", "Redis", "REST API"],
+			},
 			{
 				title: "Travel Log",
 				link: "https://travel.dickey.gg",

@@ -47,7 +47,7 @@ export default function AboutMe() {
                         sm:text-left
                         mb-5
                     '>
-                        Born and raised near Denver, Colorado. I am a second-year Computer Science student at Colorado State University (sko rams). Aside from coding, I also enjoy building movies, music, SCUBA diving, and playing chess (don't ask my Elo it's bad). I am a full stack dev, however, I have a special place in my heart for backend work. I am currently looking for a summer 2024 internship, so if you're hiring, please reach out!
+                        Born and raised near Denver, Colorado. I am a second-year Computer Science student at Colorado State University. Aside from coding, I also enjoy movies, music, SCUBA diving, and playing chess (don't ask my Elo it's bad). I am a full stack dev, however, I have a special place in my heart for backend work. I am currently looking for a summer 2024 internship, so if you're hiring, please reach out!
                     </p>
                 </div>
                 
