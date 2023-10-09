@@ -32,7 +32,7 @@ export default function Projects() {
 			
 			{
 				title: "LasTag",
-				description: "The last gamer tag you'll ever need. Basically Linktree for gamers. This was one of my first ever web apps, and I recently finished rebuilding the core functionality of it.",
+				description: "The last gamer tag you'll ever need. Basically Linktree for gamers. This was one of my first ever web apps, and I recently finished rebuilding the core functionality of it. Sign in with demo@dickey.gg and password: lastagdemo.",
 				image: "/images/projects/lastag-project.png",
 				link: "https://lastag.xyz",
 				id: "lastag",
@@ -55,7 +55,7 @@ export default function Projects() {
 				title: "Travel Log",
 				link: "https://travel.dickey.gg",
 				id: "travel-log",
-				description: "A website to track all the places you've visited.",
+				description: "A website to track all the places you've visited. Sign in with demo@dickey.gg and password: travellogdemo",
 				linkLabel: "Website",
 				github: "https://github.com/dickeyy/travel-log",
 				tools: ["React.JS", "ChakraUI", "MongoDB", "Google Maps"],
