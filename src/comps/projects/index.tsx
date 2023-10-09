@@ -16,7 +16,7 @@ export default function Projects() {
 				id: "tipdev",
 				linkLabel: "Website",
 				github: "https://github.com/tipdotdev",
-				tools: ["Next.JS", "TailwindCSS", "Stripe API", "MongoDB", "REST API", "Vercel", "Redis"],
+				tools: ["Next.JS", "TailwindCSS", "Stripe API", "MongoDB", "REST API", "Vercel", "Redis", "Railway"],
 			},
 
 			{
@@ -31,15 +31,15 @@ export default function Projects() {
 			},
 			
 			{
-				title: "Mirky Analytics",
-				description: "A developer-first analytics platform focused on safety and security. This app is more of a proof of concept, however, the main features work and I am proud of it. Currently planning a rebuild of this site!",
-				image: "/images/projects/mirky-project.png",
-				link: "https://mirky.app",
-				id: "mirky",
+				title: "LasTag",
+				description: "The last gamer tag you'll ever need. Basically Linktree for gamers.",
+				image: "/images/projects/lastag-project.png",
+				link: "https://lastag.xyz",
+				id: "lastag",
 				linkLabel: "Website",
-				github: "https://github.com/MirkyAnalytics",
-				tools: ["React.JS", "ChakraUI", "Websockets", "MongoDB", "AWS", "Node.JS", "REST API", "Node Package", "Vercel"],
-			}, 
+				github: "https://github.com/dickeyy/lastag",
+				tools: ["Next.JS", "TailwindCSS", "Vercel", "MongoDB", "REST API", "Clerk", "Stripe"],
+			}
 		],
 		small: [
 			{
@@ -70,13 +70,13 @@ export default function Projects() {
 				tools: ["Next.JS", "TailwindCSS", "Firebase", "Vercel"],
 			},
 			{
-				title: "LasTag",
-				link: "https://lastag.xyz",
-				id: "lastag",
-				description: "The last gamer tag you'll ever need. Basically Linktree for gamers.",
+				title: "Mirky",
+				link: "https://mirky.app",
+				id: "mirky",
+				description: "(Rebuilding right now) A developer-first analytics platform.",
 				linkLabel: "Website",
-				github: "https://github.com/dickeyy/lastag",
-				tools: ["Next.JS", "TailwindCSS", "Vercel", "MongoDB"],
+				github: "https://github.com/MirkyAnalytics",
+				tools: ["React", "ChakraUI", "Vercel", "MongoDB"],
 			},
 			{
 				title: "Wordle Clone",
