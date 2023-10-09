@@ -3,7 +3,6 @@ import ToolTag from "../toolTag"
 export default function Skills({ backendSkills, frontendSkills, otherSkills } : { backendSkills: string[], frontendSkills: string[], otherSkills: string[] }) {
     return(
         <div className='
-            mt-5
             grid 
             gap-4 
             grid-cols-1
@@ -33,8 +32,7 @@ export default function Skills({ backendSkills, frontendSkills, otherSkills } : 
                 <div className='
                     flex
                     flex-row
-                    justify-center
-                    items-center
+                    items-start
                     flex-wrap
                 '>
                     {backendSkills.map((skill) => {
@@ -64,8 +62,7 @@ export default function Skills({ backendSkills, frontendSkills, otherSkills } : 
                 <div className='
                     flex
                     flex-row
-                    justify-center
-                    items-center
+                    items-start
                     flex-wrap
                 '>
                     {frontendSkills.map((skill) => {
@@ -95,8 +92,7 @@ export default function Skills({ backendSkills, frontendSkills, otherSkills } : 
                 <div className='
                     flex
                     flex-row
-                    justify-center
-                    items-center
+                    items-start
                     flex-wrap
                 '>
                     {otherSkills.map((skill) => {

@@ -22,13 +22,12 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                 flex-col
                 pl-3
                 pr-3
-                justify-between
+                justify-evenly
             ">
                 <h1 className='
                     text-4xl
                     font-bold
                     mb-3
-                    text-center
                 '>
                     {title}
                 </h1>
@@ -36,7 +35,6 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                     text-lg
                     leading-6
                     font-code
-                    text-center
                     mb-2
                 '>
                     {description}
@@ -44,8 +42,7 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                 <div className='
                     flex
                     flex-row
-                    justify-center
-                    items-center
+                    items-start
                     flex-wrap
                     mb-2
                 '>
@@ -61,6 +58,7 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                     flex
                     flex-row
                     justify-center
+                    sm:justify-start
                     items-center
                     flex-wrap
                 '>

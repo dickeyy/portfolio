@@ -32,7 +32,7 @@ export default function Projects() {
 			
 			{
 				title: "LasTag",
-				description: "The last gamer tag you'll ever need. Basically Linktree for gamers.",
+				description: "The last gamer tag you'll ever need. Basically Linktree for gamers. This was one of my first ever web apps, and I recently finished rebuilding the core functionality of it.",
 				image: "/images/projects/lastag-project.png",
 				link: "https://lastag.xyz",
 				id: "lastag",
