@@ -16,7 +16,7 @@ export default function AboutMe() {
             <div className='
                 mb-20
                 w-[95vw]
-                sm:w-[85vw]
+                sm:w-[90vw]
                 rounded-[8px]
                 bg-zinc-500/20
                 justify-center

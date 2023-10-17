@@ -70,6 +70,14 @@ export default function Projects() {
 				tools: ["Next.JS", "TailwindCSS", "Firebase", "Vercel"],
 			},
 			{
+				title: "Tiktok Scraper",
+				id: "tiktok-scraper",
+				description: "A small project I made for HansumFella to scrape follower counts from a given list of users.",
+				linkLabel: "GitHub",
+				github: "https://github.com/dickeyy/tiktok-scraper",
+				tools: ["Node.JS", "Cheerio", "Redis"],
+			},
+			{
 				title: "Mirky",
 				link: "https://mirky.app",
 				id: "mirky",
@@ -125,7 +133,6 @@ export default function Projects() {
 			},
 			{
 				title: "Dismegle AI",
-				link: "https://dismegle.com",
 				id: "dismegle-ai",
 				description: "A series of AI models for moderation on Dismegle.",
 				linkLabel: "Website",
@@ -195,7 +202,7 @@ export default function Projects() {
 						md:grid-cols-3 
 						md:grid-rows-3
 						w-[95vw]
-						md:w-[85vw]
+						md:w-[90vw]
 					'>
 
 						{projects.small.map((project, index) => (
@@ -222,7 +229,7 @@ export default function Projects() {
 						md:grid-cols-3 
 						md:grid-rows-1
 						w-[95vw]
-						md:w-[85vw]
+						md:w-[90vw]
 					'>
 						
 						{projects.small.slice(0, 3).map((project, index) => (

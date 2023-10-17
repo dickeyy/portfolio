@@ -4,7 +4,7 @@ import ButtonOutline from "../buttonOutline"
 import ToolTag from "../toolTag"
 import { FaGithub } from "react-icons/fa"
 
-export default function ProjectSmall({ title, description, link, linkLabel, github, id, tools }: { title: string, description: string, link: string, linkLabel: string, github: string, id: string, tools: any }) {
+export default function ProjectSmall({ title, description, linkLabel, github, id, tools, link }: { title: string, description: string, linkLabel: string, github: string, id: string, tools: any, link?: string }) {
 
     return (
         <div className="
@@ -62,14 +62,16 @@ export default function ProjectSmall({ title, description, link, linkLabel, gith
                     items-center
                     flex-wrap
                 '>
-                    <ButtonSolid text={linkLabel} link={link} 
-                        leftIcon={<BiLinkExternal style={{
-                            height: '1.5rem',
-                            width: '1.5rem',
-                            color: '#0f172a',
-                            marginRight: '0.5rem',
-                        }} />}
-                    />
+                    {link &&
+                        <ButtonSolid text={linkLabel} link={link} 
+                            leftIcon={<BiLinkExternal style={{
+                                height: '1.5rem',
+                                width: '1.5rem',
+                                color: '#0f172a',
+                                marginRight: '0.5rem',
+                            }} />}
+                        />
+                    }
                     <ButtonOutline text={'GitHub'} link={github}
                         leftIcon={<FaGithub style={{
                             height: '1.5rem',
