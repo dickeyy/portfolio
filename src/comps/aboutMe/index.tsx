@@ -78,7 +78,7 @@ export default function AboutMe() {
                                 marginRight: '0.5rem',
                         }} />}/>
                         <div className='w-5'></div>
-                        <ButtonOutline text="Contact Me" link="mailto:kyle@dicey.gg"
+                        <ButtonOutline text="Contact Me" link="mailto:kyle@dickey.gg"
                             leftIcon={<FaEnvelope style={{
                                 height: '1.5rem',
                                 width: '1.5rem',
@@ -86,6 +86,13 @@ export default function AboutMe() {
                                 marginRight: '0.5rem',
                         }} />}/>
                     </div>
+                    {/* <ButtonOutline text="Meet With Me" link="mailto:kyle@dicey.gg"
+                        leftIcon={<FaEnvelope style={{
+                            height: '1.5rem',
+                            width: '1.5rem',
+                            color: '#f0abfc',
+                            marginRight: '0.5rem',
+                    }} />}/> */}
                 </div>
                 <div className="flex flex-col gap-4 mt-10 w-full">
                     <h1 className='
