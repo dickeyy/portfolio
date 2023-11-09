@@ -46,10 +46,10 @@ export default function Projects() {
 				title: "Seeds",
 				link: "https://seedsbot.xyz",
 				id: "seeds",
-				description: "A very popular multi-purpose Discord bot.",
+				description: "A Discord bot focused on making Discord safer one server at a time.",
 				linkLabel: "Website",
 				github: "https://github.com/dickeyy/seeds-bot",
-				tools: ["Node.JS", "Discord API", "MongoDB", "Redis", "REST API"],
+				tools: ["BunJS", "Discord API", "MySQL", "Redis", "Planetscale"],
 			},
 			{
 				title: "Travel Log",
