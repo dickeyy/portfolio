@@ -1,4 +1,4 @@
-import { FaEnvelope, FaFilePdf } from "react-icons/fa"
+import { FaEnvelope, FaFile, FaFilePdf } from "react-icons/fa"
 import ButtonOutline from "../buttonOutline"
 import Skills from "../skills"
 
@@ -70,8 +70,8 @@ export default function AboutMe() {
                         justify-center
                         items-center
                     '>
-                        <ButtonOutline text="General Resume" link="/Kyle-Dickey-Resume.pdf"
-                            leftIcon={<FaFilePdf style={{
+                        <ButtonOutline text="General Resume" link="/resume"
+                            leftIcon={<FaFile style={{
                                 height: '1.5rem',
                                 width: '1.5rem',
                                 color: '#f0abfc',
