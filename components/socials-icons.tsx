@@ -6,12 +6,12 @@ import { cn } from "@/lib/utils";
 
 export default function SocialsIcons({ className, size }: { className?: string; size: string }) {
     return (
-        <div className={cn(className, "flex gap-4 fill-foreground/50")}>
+        <div className={cn(className, "flex gap-4")}>
             <a href="https://github.com/dickeyy" target="_blank" rel="noopener noreferrer">
                 <GitHubIcon
                     className={cn(
                         size,
-                        "cursor-pointer transition-all duration-150 ease-in-out hover:fill-foreground"
+                        "cursor-pointer transition-all duration-200 ease-in-out hover:fill-foreground"
                     )}
                 />
             </a>
@@ -19,7 +19,7 @@ export default function SocialsIcons({ className, size }: { className?: string; 
                 <TwitterIcon
                     className={cn(
                         size,
-                        "cursor-pointer transition-all duration-150 ease-in-out hover:fill-foreground"
+                        "cursor-pointer transition-all duration-200 ease-in-out hover:fill-foreground"
                     )}
                 />
             </a>
@@ -31,7 +31,7 @@ export default function SocialsIcons({ className, size }: { className?: string; 
                 <LinkedInIcon
                     className={cn(
                         size,
-                        "cursor-pointer transition-all duration-150 ease-in-out hover:fill-foreground"
+                        "cursor-pointer transition-all duration-200 ease-in-out hover:fill-foreground"
                     )}
                 />
             </a>
@@ -43,7 +43,7 @@ export default function SocialsIcons({ className, size }: { className?: string; 
                 <InstagramIcon
                     className={cn(
                         size,
-                        "cursor-pointer transition-all duration-150 ease-in-out hover:fill-foreground"
+                        "cursor-pointer transition-all duration-200 ease-in-out hover:fill-foreground"
                     )}
                 />
             </a>

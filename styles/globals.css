@@ -32,7 +32,7 @@
         --input: 240 5.9% 90%;
         --ring: 240 10% 3.9%;
 
-        --radius: 0.5rem;
+        --radius: 0.75rem;
     }
 }
 
@@ -40,14 +40,20 @@
     * {
         @apply border-border;
     }
+
     body {
         @apply bg-background text-foreground;
+    }
+
+    ::selection {
+        @apply bg-primary;
+        @apply text-primary-foreground;
     }
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
 }
 
 /* Track */
@@ -57,7 +63,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0);
     border-radius: 0.5rem;
 }
 
