@@ -9,7 +9,7 @@ import { Badge } from "./ui/badge";
 
 export default function OtherProjectCard({ project }: { project: OtherProjectType }) {
     return (
-        <Card className="flex flex-col bg-secondary col-span-2 sm:col-span-1 justify-between">
+        <Card className="col-span-2 flex flex-col justify-between bg-secondary sm:col-span-1">
             <CardHeader>
                 <CardTitle>{project.name}</CardTitle>
                 <CardDescription>{project.description}</CardDescription>
@@ -20,7 +20,7 @@ export default function OtherProjectCard({ project }: { project: OtherProjectTyp
                         <Badge
                             variant={"outline"}
                             key={tool}
-                            className="text-[0.6rem] font-mono rounded border text-foreground border-foreground border-dashed"
+                            className="rounded border border-dashed border-foreground font-mono text-[0.6rem] font-light text-foreground"
                         >
                             {tool}
                         </Badge>
@@ -28,11 +28,11 @@ export default function OtherProjectCard({ project }: { project: OtherProjectTyp
                 </div>
             </CardContent>
             <CardFooter>
-                <div className="flex items-center gap-2 w-full">
+                <div className="flex w-full items-center gap-2">
                     {project.link && (
                         <Button asChild variant="outline" className="w-full gap-2">
                             <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                <ExternalLinkIcon className="w-4 h-4" />
+                                <ExternalLinkIcon className="h-4 w-4" />
                                 {project.buttonText}
                             </a>
                         </Button>
@@ -40,7 +40,7 @@ export default function OtherProjectCard({ project }: { project: OtherProjectTyp
                     {project.github && (
                         <Button asChild variant="outline" className="w-full gap-2">
                             <a href={project.github} target="_blank" rel="noopener noreferrer">
-                                <GitHubIcon className="w-4 h-4" />
+                                <GitHubIcon className="h-4 w-4" />
                                 GitHub
                             </a>
                         </Button>

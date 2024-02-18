@@ -21,7 +21,7 @@ export default function FeaturedProjectCard({ project }: { project: FeaturedProj
                             <Badge
                                 variant={"outline"}
                                 key={tool}
-                                className="text-[0.6rem] font-mono rounded border text-foreground border-foreground border-dashed"
+                                className="rounded border border-dashed border-foreground font-mono text-[0.6rem] font-light text-foreground"
                             >
                                 {tool}
                             </Badge>
@@ -32,22 +32,22 @@ export default function FeaturedProjectCard({ project }: { project: FeaturedProj
                         src={`/images/projects/${project.image}`}
                         width={900}
                         height={200}
-                        className="rounded-lg aspect-video"
+                        className="aspect-video rounded-lg"
                     />
                 </div>
             </CardContent>
             <CardFooter>
-                <div className="flex items-center gap-2 w-full">
+                <div className="flex w-full items-center gap-2">
                     <Button asChild variant="outline" className="w-full gap-2">
                         <a href={project.link} target="_blank" rel="noopener noreferrer">
-                            <ExternalLinkIcon className="w-4 h-4" />
+                            <ExternalLinkIcon className="h-4 w-4" />
                             {project.buttonText}
                         </a>
                     </Button>
                     {project.github && (
                         <Button asChild variant="outline" className="w-full gap-2">
                             <a href={project.github} target="_blank" rel="noopener noreferrer">
-                                <GitHubIcon className="w-4 h-4" />
+                                <GitHubIcon className="h-4 w-4" />
                                 GitHub
                             </a>
                         </Button>

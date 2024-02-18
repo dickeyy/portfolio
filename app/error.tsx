@@ -39,7 +39,7 @@ export default function Error({
                     </Button>
                 </CardContent>
                 <CardFooter>
-                    <p className="text-sm text-foreground/60 font-mono">Error Code: 500</p>
+                    <p className="font-mono text-sm text-foreground/60">Error Code: 500</p>
                 </CardFooter>
             </Card>
         </main>
