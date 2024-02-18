@@ -7,13 +7,13 @@ import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
     subsets: ["latin"],
     variable: "--font-sans",
     weight: "400"
 });
 
-export const fontMono = Mono({
+const fontMono = Mono({
     subsets: ["latin"],
     variable: "--font-mono",
     weight: "400"
