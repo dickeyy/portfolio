@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         type: "website",
         locale: "en_US",
         url: "https://dickey.gg",
-        images: "/me.png"
+        images: "/me-circle.png"
     },
     twitter: {
         site: "https://dickey.gg",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         creator: "@kyledickeyy",
         description: "Kyle Dickey, Junior Full-stack Developer",
         title: "Kyle Dickey",
-        images: "/me.png"
+        images: "/me-circle.png"
     },
     robots: "follow, index",
     keywords:
