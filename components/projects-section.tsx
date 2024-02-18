@@ -110,7 +110,7 @@ const projects: ProjectsType = {
             tools: ["HTML", "CSS", "Firebase", "Vercel"],
             link: "https://wordle.dickey.gg",
             buttonText: "Website",
-            github: "https://github.com/dickeyy/wordle"
+            github: "https://github.com/dickeyy/wordle-clone"
         },
         {
             name: "Spotinder",
