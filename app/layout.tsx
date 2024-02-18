@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/sonner";
 
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
+import { useEffect } from "react";
+import { PosthogProvider } from "@/components/posthog-provider";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -53,15 +55,17 @@ export default function RootLayout({ children }: any) {
                     fontMono.variable
                 )}
             >
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="light"
-                    enableSystem
-                    disableTransitionOnChange
-                >
-                    <Toaster richColors theme="light" />
-                    {children}
-                </ThemeProvider>
+                <PosthogProvider>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="light"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
+                        <Toaster richColors theme="light" />
+                        {children}
+                    </ThemeProvider>
+                </PosthogProvider>
             </body>
         </html>
     );
