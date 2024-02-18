@@ -3,9 +3,9 @@ import { Badge } from "./ui/badge";
 export default function SkillBadge({ skill }: { skill?: string }) {
     return (
         <Badge
-            variant={"secondary"}
+            variant={"outline"}
             key={skill}
-            className="text-xs rounded border border-foreground border-dashed"
+            className="text-xs font-mono rounded border text-foreground border-foreground border-dashed"
         >
             {skill}
         </Badge>
