@@ -11,7 +11,7 @@ export default function SocialsIcons({ className, size }: { className?: string; 
                 <GitHubIcon
                     className={cn(
                         size,
-                        "hover:fill-foreground transition-all duration-150 ease-in-out cursor-pointer"
+                        "cursor-pointer transition-all duration-150 ease-in-out hover:fill-foreground"
                     )}
                 />
             </a>
@@ -19,7 +19,7 @@ export default function SocialsIcons({ className, size }: { className?: string; 
                 <TwitterIcon
                     className={cn(
                         size,
-                        "hover:fill-foreground transition-all duration-150 ease-in-out cursor-pointer"
+                        "cursor-pointer transition-all duration-150 ease-in-out hover:fill-foreground"
                     )}
                 />
             </a>
@@ -31,7 +31,7 @@ export default function SocialsIcons({ className, size }: { className?: string; 
                 <LinkedInIcon
                     className={cn(
                         size,
-                        "hover:fill-foreground transition-all duration-150 ease-in-out cursor-pointer"
+                        "cursor-pointer transition-all duration-150 ease-in-out hover:fill-foreground"
                     )}
                 />
             </a>
@@ -43,7 +43,7 @@ export default function SocialsIcons({ className, size }: { className?: string; 
                 <InstagramIcon
                     className={cn(
                         size,
-                        "hover:fill-foreground transition-all duration-150 ease-in-out cursor-pointer"
+                        "cursor-pointer transition-all duration-150 ease-in-out hover:fill-foreground"
                     )}
                 />
             </a>

@@ -153,14 +153,14 @@ export default function ProjectsSection({ className }: { className?: string }) {
     }, [viewMore]);
 
     return (
-        <div className={cn(className, "flex flex-col items-start w-full")}>
+        <div className={cn(className, "flex w-full flex-col items-start")}>
             <h2 className="text-2xl font-bold">Projects</h2>
             <p className="text-md font-light text-foreground/60">In no particular order...</p>
-            <div className="flex flex-col gap-4 w-full mt-4">
+            <div className="mt-4 flex w-full flex-col gap-4">
                 {projects.featured.map((project, index) => (
                     <FeaturedProjectCard key={index} project={project} />
                 ))}
-                <div className="grid grid-cols-2 gap-4 w-full">
+                <div className="grid w-full grid-cols-2 gap-4">
                     {otherProjects.map((project, index) => (
                         <OtherProjectCard key={index} project={project} />
                     ))}
@@ -174,7 +174,7 @@ export default function ProjectsSection({ className }: { className?: string }) {
                 {viewMore ? "Show Fewer" : "Show More"}
             </Button>
 
-            <div className="flex flex-col mt-4">
+            <div className="mt-4 flex flex-col">
                 <h4 className="text-lg font-bold">And so many more...</h4>
                 <p className="text-md font-light text-foreground/60">
                     Checkout my{" "}

@@ -19,7 +19,7 @@ type Post = {
 
 export default function BlogPostPreview({ post }: { post: Post }) {
     return (
-        <Card className="bg-secondary w-full">
+        <Card className="w-full bg-secondary">
             <CardHeader>
                 <CardTitle>{post.title}</CardTitle>
                 <CardDescription>

@@ -106,7 +106,7 @@ export default function ContactDialog({ isOpen, setIsOpen }: { isOpen: boolean; 
                             control={form.control}
                             name="email"
                             render={({ field }) => (
-                                <FormItem className="space-y-1 mb-2">
+                                <FormItem className="mb-2 space-y-1">
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
                                         <Input placeholder="johndoe@example.com" {...field} />
@@ -120,7 +120,7 @@ export default function ContactDialog({ isOpen, setIsOpen }: { isOpen: boolean; 
                             control={form.control}
                             name="name"
                             render={({ field }) => (
-                                <FormItem className="space-y-1 mb-2">
+                                <FormItem className="mb-2 space-y-1">
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
                                         <Input placeholder="John Doe" {...field} />
@@ -139,7 +139,7 @@ export default function ContactDialog({ isOpen, setIsOpen }: { isOpen: boolean; 
                                     <FormControl>
                                         <Textarea
                                             placeholder="Your message here..."
-                                            className="resize-y min-h-[100px] max-h-[300px]"
+                                            className="max-h-[300px] min-h-[100px] resize-y"
                                             {...field}
                                         />
                                     </FormControl>
@@ -147,7 +147,7 @@ export default function ContactDialog({ isOpen, setIsOpen }: { isOpen: boolean; 
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className="w-full mt-4" disabled={isLoading}>
+                        <Button type="submit" className="mt-4 w-full" disabled={isLoading}>
                             Submit
                         </Button>
                     </form>

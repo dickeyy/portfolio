@@ -22,7 +22,7 @@ export default function Home() {
                     </Button>
                 </CardContent>
                 <CardFooter>
-                    <p className="text-sm text-foreground/60 font-mono">Error Code: 404</p>
+                    <p className="font-mono text-sm text-foreground/60">Error Code: 404</p>
                 </CardFooter>
             </Card>
         </main>

@@ -20,10 +20,10 @@ export default function AboutDescription({ className }: { className?: string }) 
                 my heart for frontend work. I am currently looking for a summer 2024 internship, so
                 if you&apos;re hiring, please reach out!
             </p>
-            <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 w-full">
+            <div className="mt-4 flex w-full flex-col items-start gap-4 sm:flex-row">
                 <Button asChild variant={"default"} size={"lg"} className="w-full">
                     <a href="/resume" target="_blank" className="w-full">
-                        <NewspaperIcon className="w-4 h-4 mr-2" />
+                        <NewspaperIcon className="mr-2 h-4 w-4" />
                         General Resume
                     </a>
                 </Button>
@@ -33,12 +33,12 @@ export default function AboutDescription({ className }: { className?: string }) 
                     className="w-full"
                     onClick={() => setContactDialogOpen(true)}
                 >
-                    <MailIcon className="w-4 h-4 mr-2" />
+                    <MailIcon className="mr-2 h-4 w-4" />
                     Contact Me
                 </Button>
                 <Button asChild variant={"default"} size={"lg"} className="w-full">
                     <Link href="/blog" className="w-full">
-                        <PencilLineIcon className="w-4 h-4 mr-2" />
+                        <PencilLineIcon className="mr-2 h-4 w-4" />
                         Blog
                     </Link>
                 </Button>
