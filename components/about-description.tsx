@@ -20,7 +20,7 @@ export default function AboutDescription({ className }: { className?: string }) 
                 my heart for frontend work. I am currently looking for a summer 2024 internship, so
                 if you&apos;re hiring, please reach out!
             </p>
-            <div className="mt-4 flex w-full flex-col items-start gap-4 sm:flex-row">
+            <div className="mt-4 flex w-full flex-col items-start gap-2 sm:flex-row">
                 <Button asChild variant={"default"} size={"lg"} className="w-full">
                     <a href="/resume" target="_blank" className="w-full">
                         <NewspaperIcon className="mr-2 h-4 w-4" />

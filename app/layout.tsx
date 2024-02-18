@@ -22,6 +22,7 @@ const fontMono = Mono({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://dickey.gg"),
     title: "Kyle Dickey",
     description: "Kyle Dickey, Junior Full-stack Developer",
     openGraph: {
