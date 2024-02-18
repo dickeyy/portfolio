@@ -18,7 +18,7 @@ const projects: ProjectsType = {
             tools: [
                 "Next.js",
                 "TypeScript",
-                "Tailwind CSS",
+                "Tailwind",
                 "PostgreSQL",
                 "Redis",
                 "Stripe",
@@ -34,7 +34,7 @@ const projects: ProjectsType = {
                 "A merch website for a Twitch streamer I like watching. I was commissioned to make the website by the streamer, it was a fun and very successful project.",
             image: "hansumfella-project.webp",
             link: "https://hansumfella.com",
-            tools: ["Next.js", "TypeScript", "Tailwind CSS", "GraphQL", "Shopify", "Vercel"],
+            tools: ["Next.js", "TypeScript", "Tailwind", "GraphQL", "Shopify", "Vercel"],
             buttonText: "Visit Website",
             github: "https://github.com/dickeyy/hansumfella-website"
         },
@@ -47,7 +47,7 @@ const projects: ProjectsType = {
             tools: [
                 "Next.js",
                 "TypeScript",
-                "Tailwind CSS",
+                "Tailwind",
                 "MongoDB",
                 "REST",
                 "Clerk",
@@ -63,14 +63,14 @@ const projects: ProjectsType = {
             name: "Quack",
             description: "A Discord bot focused on making Discord safer one server at a time.",
             link: "https://quackbot.xyz",
-            tools: ["TS", "MySQL", "Drizzle", "Redis", "Kafka", "Discord"],
+            tools: ["TypeScript", "MySQL", "Drizzle", "Redis", "Kafka", "Discord"],
             buttonText: "Website",
             github: "https://github.com/seedsdiscord"
         },
         {
             name: "Dismegle Website",
             description: "The website for Dismegle, a Discord server",
-            tools: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+            tools: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
             link: "https://dismegle.com",
             buttonText: "Website"
         },
@@ -79,7 +79,7 @@ const projects: ProjectsType = {
             description:
                 "Track all the places you've gone. Log in with demo@dickey.gg, password: travellogdemo",
             link: "https://travel.dickey.gg",
-            tools: ["React", "JavaScript", "ChakraUI", "MongoDB", "REST", "Vercel"],
+            tools: ["React", "NodeJS", "ChakraUI", "MongoDB", "REST", "Vercel"],
             buttonText: "Website",
             github: "https://github.com/dickeyy/travel-log"
         },
@@ -87,7 +87,7 @@ const projects: ProjectsType = {
             name: "Alias",
             description: "A modern way to play a game my family and I made.",
             link: "https://alias.dickey.gg",
-            tools: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"],
+            tools: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Vercel"],
             buttonText: "Website",
             github: "https://github.com/dickeyy/alias"
         },
@@ -101,7 +101,7 @@ const projects: ProjectsType = {
         {
             name: "Mirky",
             description: "A little app to help teens with their finances. (building right now)",
-            tools: ["Expo", "React Native", "TypeScript", "TailwindCSS", "PostgreSQL"],
+            tools: ["Expo", "React Native", "TypeScript", "Tailwind", "PostgreSQL"],
             github: "https://github.com/mirkyapp"
         },
         {
@@ -133,7 +133,7 @@ const projects: ProjectsType = {
         {
             name: "Dismegle AI",
             description: "A series of AI models for moderation on Dismegle.",
-            tools: ["Brain.JS", "PyTorch", "LLM"],
+            tools: ["Brain.js", "PyTorch", "LLM"],
             github: "https://github.com/dickeyy/dismegle-ai"
         }
     ]
