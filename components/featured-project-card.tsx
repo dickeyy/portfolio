@@ -19,9 +19,9 @@ export default function FeaturedProjectCard({ project }: { project: FeaturedProj
                     <div className="flex flex-wrap gap-2">
                         {project.tools.map((tool, index) => (
                             <Badge
-                                variant={"secondary"}
+                                variant={"outline"}
                                 key={tool}
-                                className="text-xs hover:bg-foreground/10 bg-foreground/[8%] rounded border border-foreground border-dashed"
+                                className="text-[0.6rem] font-mono rounded border text-foreground border-foreground border-dashed"
                             >
                                 {tool}
                             </Badge>
