@@ -1,5 +1,10 @@
-# Portfolio v7 :)
+# Portfolio v8 :)
 
-[Visit it here](https://dickey.gg)
+_and counting_
 
-Built with [Next.JS](https://nextjs.org/) & [TailwindCSS](https://tailwindcss.com/), using [React-Icons](https://react-icons.github.io/react-icons), Hosted on [Vercel](https://vercel.com)
+[Visit it here (dickey.gg)](https://dickey.gg)
+
+Built with [Next.JS](https://nextjs.org/) & [TailwindCSS](https://tailwindcss.com/), using
+[Shadcn/ui](https://ui.shadcn.com/), Hosted on [Vercel](https://vercel.com)
+
+_Other tools I used include FontAwesome, Google Fonts, Lucide Icons, and Resend._
