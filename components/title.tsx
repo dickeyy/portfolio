@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SocialsIcons from "./socials-icons";
+import Link from "next/link";
 
 export default function Title() {
     return (
@@ -17,7 +18,9 @@ export default function Title() {
                     className="rounded-full"
                 />
                 <div className="flex flex-col items-start gap-1">
-                    <h1 className="text-3xl sm:text-4xl font-bold">Kyle Dickey</h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold hover:underline">
+                        <Link href="/">Kyle Dickey</Link>
+                    </h1>
                     <p className="text-lg font-light text-foreground/60">
                         Junior Full-Stack Developer
                     </p>
