@@ -10,7 +10,7 @@ export default function Title() {
             </div>
             <div className="flex items-start gap-4 mt-4 sm:mt-2">
                 <Image
-                    src="/me.png"
+                    src="/me.webp"
                     alt="Kyle Dickey"
                     width={65}
                     height={65}
