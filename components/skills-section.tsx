@@ -5,21 +5,21 @@ import SkillBadge from "./skill-badge";
 
 const skills: SkillsType = {
     frontend: [
-        "React.JS",
-        "Next.JS",
-        "TS",
-        "TailwindCSS",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind",
         "ChakraUI",
         "HTML",
         "CSS",
         "SVG",
         "Electron",
         "React Native",
-        "Swift",
+        "SwiftUI",
         "Expo"
     ],
     backend: [
-        "Node.JS",
+        "NodeJS",
         "Express",
         "MongoDB",
         "MySQL",

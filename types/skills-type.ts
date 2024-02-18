@@ -1,7 +1,9 @@
+import { ToolType } from "./tool-type";
+
 type SkillsType = {
-    frontend: string[];
-    backend: string[];
-    other: string[];
+    frontend: ToolType[];
+    backend: ToolType[];
+    other: ToolType[];
 };
 
 export type { SkillsType };
