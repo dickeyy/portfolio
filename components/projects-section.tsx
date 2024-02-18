@@ -36,7 +36,7 @@ const projects: ProjectsType = {
             link: "https://hansumfella.com",
             tools: ["Next.js", "TypeScript", "Tailwind CSS", "GraphQL", "Shopify", "Vercel"],
             buttonText: "Visit Website",
-            github: "https://github.com/dickeyy/hansumfella-merch"
+            github: "https://github.com/dickeyy/hansumfella-website"
         },
         {
             name: "LasTag",
