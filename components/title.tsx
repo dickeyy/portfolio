@@ -7,7 +7,7 @@ export default function Title() {
         <div className="flex w-full flex-col items-start">
             <div className="flex w-full justify-between">
                 <p className="mb-2 text-lg font-light text-foreground/40">Hey, I&apos;m</p>
-                <SocialsIcons size="w-6 h-6" />
+                <SocialsIcons size="w-6 h-6 fill-foreground/30" />
             </div>
             <div className="mt-4 flex items-start gap-4 sm:mt-2">
                 <Image
