@@ -147,8 +147,13 @@ export default function ContactDialog({ isOpen, setIsOpen }: { isOpen: boolean; 
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className="mt-4 w-full" disabled={isLoading}>
-                            Submit
+                        <Button
+                            type="submit"
+                            className="mt-4 w-full"
+                            variant={"default"}
+                            disabled={isLoading}
+                        >
+                            Send
                         </Button>
                     </form>
                 </Form>
