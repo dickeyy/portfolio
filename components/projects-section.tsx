@@ -60,12 +60,12 @@ const projects: ProjectsType = {
     ],
     other: [
         {
-            name: "Quack",
-            description: "A Discord bot focused on making Discord safer one server at a time.",
-            link: "https://quackbot.xyz",
-            tools: ["TypeScript", "MySQL", "Drizzle", "Redis", "Kafka", "Discord"],
+            name: "Outgone",
+            description: "A new wave of social networking. Coming soon.",
+            link: "https://outgone.app",
+            tools: ["Expo", "Tailwind", "Next.js", "Redis", "MongoDB"],
             buttonText: "Website",
-            github: "https://github.com/seedsdiscord"
+            github: "https://github.com/outgone"
         },
         {
             name: "Dismegle Website",
@@ -73,6 +73,14 @@ const projects: ProjectsType = {
             tools: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
             link: "https://dismegle.com",
             buttonText: "Website"
+        },
+        {
+            name: "Quack",
+            description: "A Discord bot focused on making Discord safer one server at a time.",
+            link: "https://quackbot.xyz",
+            tools: ["TypeScript", "MySQL", "Drizzle", "Redis", "Kafka", "Discord"],
+            buttonText: "Website",
+            github: "https://github.com/seedsdiscord"
         },
         {
             name: "Travel Log",
