@@ -83,6 +83,12 @@ const projects: ProjectsType = {
             github: "https://github.com/seedsdiscord"
         },
         {
+            name: "LeetCode",
+            description: "A GitHub repo containing all of my LeetCode solutions.",
+            tools: ["TypeScript", "MySQL"],
+            github: "https://github.com/dickeyy/leetcode"
+        },
+        {
             name: "Travel Log",
             description:
                 "Track all the places you've gone. Log in with demo@dickey.gg, password: travellogdemo",
