@@ -155,7 +155,7 @@ export default function ProjectsSection({ className }: { className?: string }) {
     return (
         <div className={cn(className, "flex w-full flex-col items-start")}>
             <h2 className="text-2xl font-bold">Projects</h2>
-            <p className="text-md font-light text-foreground/60">In no particular order...</p>
+            <p className="text-md font text-foreground/60">In no particular order...</p>
             <div className="mt-4 flex w-full flex-col gap-4">
                 {projects.featured.map((project, index) => (
                     <FeaturedProjectCard key={index} project={project} />
@@ -176,7 +176,7 @@ export default function ProjectsSection({ className }: { className?: string }) {
 
             <div className="mt-4 flex flex-col">
                 <h4 className="text-lg font-bold">And so many more...</h4>
-                <p className="text-md font-light text-foreground/60">
+                <p className="text-md font text-foreground/60">
                     Checkout my{" "}
                     <a
                         href="https://github.com/dickeyy"

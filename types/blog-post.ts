@@ -4,4 +4,5 @@ export type BlogPost = {
     slug: string;
     published: boolean;
     tagline: string;
+    ogImage: string;
 };

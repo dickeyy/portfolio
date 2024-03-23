@@ -11,7 +11,7 @@ export default function OtherProjectCard({ project }: { project: OtherProjectTyp
     return (
         <Card className="col-span-2 flex flex-col justify-between bg-secondary sm:col-span-1">
             <CardHeader>
-                <CardTitle>{project.name}</CardTitle>
+                <CardTitle className="font-bold">{project.name}</CardTitle>
                 <CardDescription>{project.description}</CardDescription>
             </CardHeader>
             <CardContent>

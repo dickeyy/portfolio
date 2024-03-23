@@ -6,7 +6,7 @@ export default function Title() {
     return (
         <div className="flex w-full flex-col items-start">
             <div className="flex w-full justify-between">
-                <p className="mb-2 text-lg font-light text-foreground/40">Hey, I&apos;m</p>
+                <p className="mb-2 text-lg text-foreground/40">Hey, I&apos;m</p>
                 <SocialsIcons size="w-6 h-6 fill-foreground/30" />
             </div>
             <div className="mt-4 flex items-start gap-4 sm:mt-2">
@@ -18,12 +18,10 @@ export default function Title() {
                     className="rounded-full"
                 />
                 <div className="flex flex-col items-start gap-1">
-                    <h1 className="text-3xl font-bold hover:underline sm:text-4xl">
+                    <h1 className="text-3xl font-extrabold hover:underline sm:text-4xl">
                         <Link href="/">Kyle Dickey</Link>
                     </h1>
-                    <p className="text-lg font-light text-foreground/60">
-                        Junior Full-Stack Developer
-                    </p>
+                    <p className="text-lg text-foreground/60">Junior Full-Stack Developer</p>
                 </div>
             </div>
         </div>

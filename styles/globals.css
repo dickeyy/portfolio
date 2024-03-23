@@ -122,7 +122,7 @@
 }
 
 .blog-content > p > img {
-    @apply h-auto w-auto items-center justify-center rounded-lg shadow-sm;
+    @apply h-auto w-full items-center justify-center rounded-lg shadow-sm;
 }
 
 .blog-content > p > img + figcaption {
