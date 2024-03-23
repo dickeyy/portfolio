@@ -47,8 +47,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
         notFound();
     }
 
-    console.log(post);
-
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-4 sm:p-24 sm:pb-4">
             <div className="md:2/3 mt-8 flex w-full flex-col items-start justify-start gap-4 sm:mt-0 lg:w-1/2">
