@@ -167,7 +167,7 @@ export default function ProjectsSection({ className }: { className?: string }) {
     }, [viewMore]);
 
     return (
-        <div className={cn(className, "flex w-full flex-col items-start")}>
+        <div className={cn(className, "text-foreground flex flex-col items-start")}>
             <h2 className="text-2xl font-bold">Projects</h2>
             <p className="text-md font text-foreground/60">In no particular order...</p>
             <div className="mt-4 flex w-full flex-col gap-4">

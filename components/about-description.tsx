@@ -11,7 +11,7 @@ export default function AboutDescription({ className }: { className?: string }) 
     const [contactDialogOpen, setContactDialogOpen] = useState(false);
 
     return (
-        <div className={cn(className, "flex flex-col items-start text-foreground")}>
+        <div className={cn(className, "text-foreground flex flex-col items-start")}>
             <h2 className="text-2xl font-bold">About</h2>
             <p className="text-md font text-foreground/70">
                 Born and raised near Denver, Colorado. I am a second-year Computer Science major at
