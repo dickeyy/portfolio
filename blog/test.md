@@ -21,7 +21,7 @@ enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut
 console.log("Hello, World!");
 ```
 
-Some **bold** some _italic_ and some `code`.
+Some **bold** some _italic_ some `inline code` some ~~strikethrough~~ some <u>underline</u> some
 
 ## Subheading
 
@@ -41,6 +41,17 @@ enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut
 
 [Link to Google](https://www.google.com)
 
+```ts
+async function multiLineCode() {
+    const a = 1;
+    const b = 2;
+
+    return a + b;
+}
+
+multiLineCode().then(console.log);
+```
+
 ### Sub-subheading
 
 > Blockquote
@@ -52,5 +63,7 @@ cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non pro
 qui officia deserunt mollit anim id est laborum [Lorem](https://dickey.gg) ipsum dolor sit amet
 consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut
 enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut
+
+An image:
 
 ![Image](https://via.placeholder.com/1200x630)
