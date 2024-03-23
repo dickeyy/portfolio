@@ -71,3 +71,60 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.8);
 }
+
+/* Blog */
+.blog-content {
+    @apply flex flex-col gap-3;
+}
+
+.blog-content > h1 {
+    @apply text-4xl font-bold;
+}
+
+.blog-content > h2 {
+    @apply text-2xl font-bold;
+}
+
+.blog-content > h3 {
+    @apply text-xl font-bold;
+}
+
+.blog-content > ol {
+    @apply list-inside list-decimal;
+}
+
+.blog-content > ul {
+    @apply list-inside list-disc;
+}
+
+.blog-content > pre {
+    @apply rounded-lg border bg-secondary p-3 text-sm text-card-foreground shadow-sm;
+}
+
+.blog-content > pre > code {
+    @apply block;
+}
+
+.blog-content > p > code {
+    @apply rounded-[0.3rem] border bg-secondary px-1 text-card-foreground;
+}
+
+.blog-content > blockquote {
+    @apply border-l-2 border-primary/40 p-2;
+}
+
+.blog-content > blockquote > p {
+    @apply italic text-foreground/60;
+}
+
+.blog-content > p > a {
+    @apply text-primary/60 underline transition-all duration-150 ease-in-out hover:text-primary;
+}
+
+.blog-content > p > img {
+    @apply h-auto w-auto items-center justify-center rounded-lg shadow-sm;
+}
+
+.blog-content > p > img + figcaption {
+    @apply text-center text-sm text-muted/60;
+}

@@ -1,23 +1,8 @@
-import Image from "next/image";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
-import GitHubIcon from "../public/icons/github-icon.svg";
-import { ExternalLinkIcon } from "lucide-react";
-import { FeaturedProjectType } from "@/types/projects-type";
-import SkillBadge from "./skill-badge";
-import { Badge } from "./ui/badge";
+import { BlogPost } from "@/types/blog-post";
 
-type Post = {
-    _id: string;
-    title?: string;
-    tagline?: string;
-    slug?: {
-        current: string;
-    };
-    publishedAt: string;
-};
-
-export default function BlogPostPreview({ post }: { post: Post }) {
+export default function BlogPostPreview({ post }: { post: BlogPost }) {
     return (
         <Card className="w-full bg-secondary">
             <CardHeader>
@@ -28,7 +13,7 @@ export default function BlogPostPreview({ post }: { post: Post }) {
             </CardHeader>
             <CardFooter>
                 <Button asChild variant={"outline"} className="w-full">
-                    <a href={`/blog/${post.slug?.current}`}>Read More</a>
+                    <a href={`/blog/${post.slug}`}>Read More</a>
                 </Button>
             </CardFooter>
         </Card>
