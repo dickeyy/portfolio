@@ -98,7 +98,7 @@
 }
 
 .blog-content > pre {
-    @apply rounded-lg border bg-secondary p-3 text-sm text-card-foreground shadow-sm;
+    @apply bg-secondary text-card-foreground rounded-lg border p-3 text-sm shadow-sm;
 }
 
 .blog-content > pre > code {
@@ -106,19 +106,19 @@
 }
 
 .blog-content > p > code {
-    @apply rounded-[0.3rem] border bg-secondary px-1 text-card-foreground;
+    @apply bg-secondary text-card-foreground rounded-[0.3rem] border px-1 text-sm;
 }
 
 .blog-content > blockquote {
-    @apply border-l-2 border-primary/40 p-2;
+    @apply border-primary/40 border-l-2 p-2;
 }
 
 .blog-content > blockquote > p {
-    @apply italic text-foreground/60;
+    @apply text-foreground/60 italic;
 }
 
 .blog-content > p > a {
-    @apply text-primary/60 underline transition-all duration-150 ease-in-out hover:text-primary;
+    @apply text-primary/60 hover:text-primary underline transition-all duration-150 ease-in-out;
 }
 
 .blog-content > p > img {
@@ -126,5 +126,5 @@
 }
 
 .blog-content > p > img + figcaption {
-    @apply text-center text-sm text-muted/60;
+    @apply text-muted/60 text-center text-sm;
 }
