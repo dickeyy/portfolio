@@ -1,26 +1,24 @@
-import Image from "next/image";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import GitHubIcon from "../public/icons/github-icon.svg";
 import { ExternalLinkIcon } from "lucide-react";
-import { FeaturedProjectType, OtherProjectType } from "@/types/projects-type";
-import SkillBadge from "./skill-badge";
+import { OtherProjectType } from "@/types/projects-type";
 import { Badge } from "./ui/badge";
 
 export default function OtherProjectCard({ project }: { project: OtherProjectType }) {
     return (
-        <Card className="col-span-2 flex flex-col justify-between bg-secondary sm:col-span-1">
+        <Card className="bg-secondary col-span-2 flex flex-col justify-between sm:col-span-1">
             <CardHeader>
                 <CardTitle className="font-bold">{project.name}</CardTitle>
                 <CardDescription>{project.description}</CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="flex flex-wrap gap-2">
-                    {project.tools.map((tool, index) => (
+                    {project.tools.map((tool) => (
                         <Badge
                             variant={"outline"}
                             key={tool}
-                            className="rounded border border-dashed border-foreground font-mono text-[0.6rem] font-light text-foreground"
+                            className="border-foreground text-foreground rounded border border-dashed font-mono text-[0.6rem] font-light"
                         >
                             {tool}
                         </Badge>

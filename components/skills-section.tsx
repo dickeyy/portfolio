@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import { SkillsType } from "@/types/skills-type";
-import { Badge } from "./ui/badge";
 import SkillBadge from "./skill-badge";
 
 const skills: SkillsType = {
@@ -59,7 +58,7 @@ const skills: SkillsType = {
 
 export default function SkillsSection({ className }: { className?: string }) {
     return (
-        <div className={cn(className, "flex w-full flex-col items-start gap-2")}>
+        <div className={cn(className, "flex flex-col items-start gap-2")}>
             <h2 className="text-2xl font-bold">Skills</h2>
             <div className="flex w-full flex-col items-start justify-between gap-2 sm:flex-row">
                 <div className="flex flex-col gap-2">
