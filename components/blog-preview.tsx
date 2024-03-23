@@ -4,9 +4,9 @@ import { BlogPost } from "@/types/blog-post";
 
 export default function BlogPostPreview({ post }: { post: BlogPost }) {
     return (
-        <Card className="w-full bg-secondary">
+        <Card className="col-span-1 w-full bg-secondary">
             <CardHeader>
-                <CardTitle>{post.title}</CardTitle>
+                <CardTitle className="font-bold">{post.title}</CardTitle>
                 <CardDescription>
                     <p className="text-foreground/60">{post.tagline}</p>
                 </CardDescription>

@@ -13,7 +13,7 @@ export default function AboutDescription({ className }: { className?: string }) 
     return (
         <div className={cn(className, "flex flex-col items-start text-foreground")}>
             <h2 className="text-2xl font-bold">About</h2>
-            <p className="text-md font-light text-foreground/70">
+            <p className="text-md font text-foreground/70">
                 Born and raised near Denver, Colorado. I am a second-year Computer Science major at
                 Colorado State University. Aside from coding, I also enjoy movies, music, SCUBA
                 diving, and playing chess. I am a full-stack dev, however, I have a special place in

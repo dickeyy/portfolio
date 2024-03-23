@@ -1,18 +1,15 @@
 import "@/styles/globals.css";
-import { Varela_Round as FontSans } from "next/font/google";
+import { Nunito as FontSans } from "next/font/google";
 import { JetBrains_Mono as Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
-
 import { cn } from "@/lib/utils";
-import { Metadata } from "next";
-import { useEffect } from "react";
+import { Metadata, Viewport } from "next";
 import { PosthogProvider } from "@/components/posthog-provider";
 
 const fontSans = FontSans({
     subsets: ["latin"],
-    variable: "--font-sans",
-    weight: "400"
+    variable: "--font-sans"
 });
 
 const fontMono = Mono({
@@ -29,20 +26,27 @@ export const metadata: Metadata = {
         type: "website",
         locale: "en_US",
         url: "https://dickey.gg",
-        images: "/me-circle.png"
+        images: "/og-image.png"
     },
     twitter: {
         site: "https://dickey.gg",
-        card: "summary",
+        card: "summary_large_image",
         creator: "@kyledickeyy",
         description: "Kyle Dickey, Junior Full-stack Developer",
         title: "Kyle Dickey",
-        images: "/me-circle.png"
+        images: "/og-image.png"
     },
     robots: "follow, index",
     keywords:
         "Kyle Dickey, Full-stack Developer, Web Developer, Software Developer, colorado, colorado state, colorado state university, dickey, kyle",
     category: "Web Development"
+};
+
+export const viewport: Viewport = {
+    themeColor: [
+        { media: "(prefers-color-scheme: light)", color: "#fff" },
+        { media: "(prefers-color-scheme: dark)", color: "#fff" }
+    ]
 };
 
 export default function RootLayout({ children }: any) {

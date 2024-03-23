@@ -11,7 +11,7 @@ export default function FeaturedProjectCard({ project }: { project: FeaturedProj
     return (
         <Card className="bg-secondary">
             <CardHeader>
-                <CardTitle>{project.name}</CardTitle>
+                <CardTitle className="font-bold">{project.name}</CardTitle>
                 <CardDescription>{project.description}</CardDescription>
             </CardHeader>
             <CardContent>

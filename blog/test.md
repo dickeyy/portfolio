@@ -2,8 +2,11 @@
 slug: test
 title: Test Post
 date: 1711149331
-published: true
-tagline: This is a test post
+published: false
+tagline:
+    In this post, lorem ipsum dolor sit amet consectetur sdipiscing elit sed do eiusmod tempor
+    incidideunt
+ogImage: https://i.imgur.com/9JIFbH5.png
 ---
 
 Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et
@@ -50,4 +53,4 @@ qui officia deserunt mollit anim id est laborum [Lorem](https://dickey.gg) ipsum
 consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut
 enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut
 
-![Image](https://via.placeholder.com/650x150)
+![Image](https://via.placeholder.com/1200x630)
