@@ -11,9 +11,9 @@ import {
 export default function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-24">
-            <Card>
+            <Card className="bg-secondary">
                 <CardHeader>
-                    <CardTitle>Are you lost?</CardTitle>
+                    <CardTitle className="font-bold">Are you lost?</CardTitle>
                     <CardDescription>The page you are looking for does not exist.</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -22,7 +22,7 @@ export default function Home() {
                     </Button>
                 </CardContent>
                 <CardFooter>
-                    <p className="font-mono text-sm text-foreground/60">Error Code: 404</p>
+                    <p className="text-foreground/60 font-mono text-sm">Error Code: 404</p>
                 </CardFooter>
             </Card>
         </main>

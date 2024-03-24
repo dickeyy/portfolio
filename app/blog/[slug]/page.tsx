@@ -16,8 +16,11 @@ type Props = {
 export async function generateMetadata(
     { params, searchParams }: Props,
     parent: ResolvingMetadata
-): Promise<Metadata> {
+): Promise<Metadata | null> {
     const post = await getPostData(params.slug);
+    if (!post) {
+        notFound();
+    }
     return {
         title: post.title + " | Kyle Dickey",
         authors: [
