@@ -5,24 +5,27 @@ import { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 
 export default function JsonAbout({ className }: { className?: string }) {
-    const birthday = new Date("May 2, 2004");
     const [age, setAge] = useState("0");
     const [isBirthday, setIsBirthday] = useState(false);
 
     // calculate exact age
     useEffect(() => {
+        const birthday = new Date("May 2, 2004");
+
         const interval = setInterval(() => {
             const now = new Date();
+            const diff = now.getTime() - birthday.getTime();
+            const ageInYears = diff / (1000 * 60 * 60 * 24 * 365.25); // accounting for leap years
+            setAge(ageInYears.toFixed(7));
 
             if (now.getDate() === birthday.getDate() && now.getMonth() === birthday.getMonth()) {
                 setIsBirthday(true);
+            } else {
+                setIsBirthday(false);
             }
-
-            const diff = now.getTime() - birthday.getTime();
-            setAge((diff / 1000 / 60 / 60 / 24 / 365).toFixed(7));
         }, 10);
         return () => clearInterval(interval);
-    });
+    }, []);
 
     return (
         <>
