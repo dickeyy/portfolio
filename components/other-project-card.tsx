@@ -7,9 +7,27 @@ import { Badge } from "./ui/badge";
 
 export default function OtherProjectCard({ project }: { project: OtherProjectType }) {
     return (
-        <Card className="bg-secondary col-span-2 flex flex-col justify-between sm:col-span-1">
+        <Card className="col-span-2 flex flex-col justify-between bg-secondary sm:col-span-1">
             <CardHeader>
-                <CardTitle className="font-bold">{project.name}</CardTitle>
+                <div className="flex flex-row items-center justify-start gap-2">
+                    <CardTitle className="font-bold">{project.name}</CardTitle>
+                    {project.archived && (
+                        <Badge
+                            variant="outline"
+                            className="rounded border border-orange-500 bg-orange-100 font-mono text-[0.6rem] font-light text-orange-600"
+                        >
+                            Archived
+                        </Badge>
+                    )}
+                    {project.inProgress && (
+                        <Badge
+                            variant="outline"
+                            className="rounded border border-purple-500 bg-purple-100 font-mono text-[0.6rem] font-light text-purple-600"
+                        >
+                            In Progress
+                        </Badge>
+                    )}
+                </div>
                 <CardDescription>{project.description}</CardDescription>
             </CardHeader>
             <CardContent>
@@ -18,7 +36,7 @@ export default function OtherProjectCard({ project }: { project: OtherProjectTyp
                         <Badge
                             variant={"outline"}
                             key={tool}
-                            className="border-foreground text-foreground rounded border border-dashed font-mono text-[0.6rem] font-light"
+                            className="rounded border border-zinc-400 bg-zinc-500/20 font-mono text-[0.6rem] font-light text-foreground"
                         >
                             {tool}
                         </Badge>

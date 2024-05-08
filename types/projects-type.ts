@@ -13,6 +13,7 @@ type FeaturedProjectType = {
     link: string;
     buttonText: string;
     github?: string;
+    inProgress?: boolean;
 };
 
 type OtherProjectType = {
@@ -22,6 +23,8 @@ type OtherProjectType = {
     link?: string;
     buttonText?: string;
     github?: string;
+    archived?: boolean;
+    inProgress?: boolean;
 };
 
 export type { ProjectsType, FeaturedProjectType, OtherProjectType };

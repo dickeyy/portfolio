@@ -10,6 +10,16 @@ import { Button } from "./ui/button";
 const projects: ProjectsType = {
     featured: [
         {
+            name: "Hansumfella Merch",
+            description:
+                "A merch website for a Twitch streamer I like watching. I was commissioned to make the website by the streamer, it was a fun and very successful project.",
+            image: "hansumfella-project.webp",
+            link: "https://hansumfella.com",
+            tools: ["Next.js", "TypeScript", "Tailwind", "GraphQL", "Shopify", "Vercel"],
+            buttonText: "Visit Website",
+            github: "https://github.com/dickeyy/hansumfella-website"
+        },
+        {
             name: "tip.dev",
             description:
                 "A platform for developers to get paid for their work. I am currently working on this project, I am very excited about it. I plan to launch it in 2024.",
@@ -26,46 +36,55 @@ const projects: ProjectsType = {
                 "Vercel"
             ],
             buttonText: "Visit Website",
-            github: "https://github.com/tipdotdev"
+            github: "https://github.com/tipdotdev",
+            inProgress: true
         },
         {
-            name: "Hansumfella Merch",
+            name: "Outgone",
             description:
-                "A merch website for a Twitch streamer I like watching. I was commissioned to make the website by the streamer, it was a fun and very successful project.",
-            image: "hansumfella-project.webp",
-            link: "https://hansumfella.com",
-            tools: ["Next.js", "TypeScript", "Tailwind", "GraphQL", "Shopify", "Vercel"],
-            buttonText: "Visit Website",
-            github: "https://github.com/dickeyy/hansumfella-website"
-        },
-        {
-            name: "LasTag",
-            description:
-                "The last gamer tag you'll ever need. Basically Linktree for gamers. This was one of my first ever web apps, and I recently finished rebuilding the core functionality of it. Sign in with demo@dickey.gg and password: lastagdemo.",
-            image: "lastag-project.webp",
-            link: "https://lastag.xyz",
+                "A new wave of social networking. This is a social media platform for users to find groups of like-minded people. I am currently working on this project, I plan to launch it late 2024.",
+            image: "outgone-project.webp",
+            link: "https://outgone.app",
             tools: [
-                "Next.js",
-                "TypeScript",
+                "React Native",
                 "Tailwind",
-                "MongoDB",
-                "REST",
-                "Clerk",
-                "Stripe",
-                "Vercel"
+                "Next.js",
+                "Redis",
+                "PostgreSQL",
+                "Go",
+                "TypeScript"
             ],
             buttonText: "Visit Website",
-            github: "https://github.com/dickeyy/lastag"
+            github: "https://github.com/outgone",
+            inProgress: true
         }
     ],
     other: [
         {
-            name: "Outgone",
-            description: "A new wave of social networking. Coming soon.",
-            link: "https://outgone.app",
-            tools: ["Expo", "Tailwind", "Next.js", "Redis", "MongoDB"],
+            name: "Quack",
+            description: "A Discord bot focused on making Discord safer one server at a time.",
+            link: "https://quackbot.xyz",
+            tools: ["TypeScript", "MySQL", "Drizzle", "Redis", "Kafka", "Go"],
             buttonText: "Website",
-            github: "https://github.com/outgone"
+            github: "https://github.com/seedsdiscord"
+        },
+        {
+            name: "Wrink",
+            description:
+                "Get sh*t done. A new wave of project management. Made by the Outgone team.",
+            link: "https://wrink.app",
+            tools: ["Next.js", "TypeScript", "Tailwind", "Go", "Redis"],
+            buttonText: "Website",
+            github: "https://github.com/wrinkapp",
+            inProgress: true
+        },
+        {
+            name: "Alias",
+            description: "A modern way to play a game my family and I made.",
+            link: "https://alias.dickey.gg",
+            tools: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Vercel"],
+            buttonText: "Website",
+            github: "https://github.com/dickeyy/alias"
         },
         {
             name: "Dismegle Website",
@@ -73,14 +92,6 @@ const projects: ProjectsType = {
             tools: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
             link: "https://dismegle.com",
             buttonText: "Website"
-        },
-        {
-            name: "Quack",
-            description: "A Discord bot focused on making Discord safer one server at a time.",
-            link: "https://quackbot.xyz",
-            tools: ["TypeScript", "MySQL", "Drizzle", "Redis", "Kafka", "Discord"],
-            buttonText: "Website",
-            github: "https://github.com/seedsdiscord"
         },
         {
             name: "LeetCode",
@@ -98,25 +109,34 @@ const projects: ProjectsType = {
             github: "https://github.com/dickeyy/travel-log"
         },
         {
-            name: "Alias",
-            description: "A modern way to play a game my family and I made.",
-            link: "https://alias.dickey.gg",
-            tools: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Vercel"],
+            name: "LasTag",
+            description: "The last gamer tag you'll ever need. Basically Linktree for gamers.",
+            link: "https://lastag.xyz",
+            tools: ["Next.js", "Tailwind", "TypeScript", "Redis", "MongoDB", "Clerk"],
             buttonText: "Website",
-            github: "https://github.com/dickeyy/alias"
+            github: "https://github.com/dickeyy/lastag"
         },
         {
-            name: "Tiktok Scaper",
+            name: "TikTok Scaper",
             description:
                 "A small project I made for Hansumfella to get follower counts for a list of users.",
             tools: ["TypeScript", "Redis", "Cheerio"],
             github: "https://github.com/dickeyy/tiktok-scraper"
         },
         {
+            name: "Countdown",
+            description: "A simple event countdown website.",
+            tools: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
+            link: "https://countdown.dickey.gg",
+            buttonText: "Website",
+            github: "https://github.com/dickeyy/countdown"
+        },
+        {
             name: "Mirky",
-            description: "A little app to help teens with their finances. (building right now)",
+            description: "A little app to help teens with their finances.",
             tools: ["Expo", "React Native", "TypeScript", "Tailwind", "PostgreSQL"],
-            github: "https://github.com/mirkyapp"
+            github: "https://github.com/mirkyapp",
+            inProgress: true
         },
         {
             name: "Wordle Clone",
@@ -133,7 +153,8 @@ const projects: ProjectsType = {
             tools: ["React", "CSS", "Spotify API", "MongoDB"],
             link: "https://spotinder.dickey.gg",
             buttonText: "Website",
-            github: "https://github.com/dickeyy/spotinder"
+            github: "https://github.com/dickeyy/spotinder",
+            archived: true
         },
         {
             name: "SPHL",
@@ -142,13 +163,15 @@ const projects: ProjectsType = {
             tools: ["React", "CSS", "Spotify API", "Vercel"],
             link: "https://sphl.dickey.gg",
             buttonText: "Website",
-            github: "https://github.com/dickeyy/spotify-higher-lower"
+            github: "https://github.com/dickeyy/spotify-higher-lower",
+            archived: true
         },
         {
             name: "Dismegle AI",
             description: "A series of AI models for moderation on Dismegle.",
             tools: ["Brain.js", "PyTorch", "LLM"],
-            github: "https://github.com/dickeyy/dismegle-ai"
+            github: "https://github.com/dickeyy/dismegle-ai",
+            archived: true
         }
     ]
 };
@@ -167,7 +190,7 @@ export default function ProjectsSection({ className }: { className?: string }) {
     }, [viewMore]);
 
     return (
-        <div className={cn(className, "text-foreground flex flex-col items-start")}>
+        <div className={cn(className, "flex flex-col items-start text-foreground")}>
             <h2 className="text-2xl font-bold">Projects</h2>
             <p className="text-md font text-foreground/60">In no particular order...</p>
             <div className="mt-4 flex w-full flex-col gap-4">

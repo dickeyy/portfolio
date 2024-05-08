@@ -25,7 +25,7 @@ type ToolType =
     | "MySQL"
     | "Python"
     | "Supabase"
-    | "GoLang"
+    | "Go"
     | "JWT"
     | "HTTP"
     | "DNS"
