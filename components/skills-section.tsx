@@ -24,7 +24,7 @@ const skills: SkillsType = {
         "MySQL",
         "Python",
         "Supabase",
-        "GoLang",
+        "Go",
         "Redis",
         "GraphQL",
         "REST",
@@ -36,7 +36,7 @@ const skills: SkillsType = {
         "S3",
         "R2",
         "Java",
-        "GoLang"
+        "Go"
     ],
     other: [
         "Google Cloud",
