@@ -7,6 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";
 import BlogViewIncrement from "@/components/blog-view-increment";
+import NotionAd from "@/components/notion-ad";
 
 type Props = {
     params: { slug: string };
@@ -57,7 +58,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     <BlogViewIncrement id={params.slug} />
                     <Link
                         href="/blog"
-                        className="text-foreground flex flex-row items-center gap-2 transition-all duration-200 ease-in-out"
+                        className="flex flex-row items-center gap-2 text-foreground transition-all duration-200 ease-in-out"
                     >
                         <ArrowLeftIcon className="h-6 w-6" />
                     </Link>
@@ -65,20 +66,22 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 </div>
                 <article className="mb-8 w-full flex-1">
                     <h1 className="text-4xl font-extrabold">{post.title}</h1>
-                    <p className="text-foreground/60 mt-2 italic">
+                    <p className="mt-2 italic text-foreground/60">
                         <Link href="/" className="hover:underline">
                             Kyle Dickey
                         </Link>{" "}
                         · {new Date(post.date * 1000).toLocaleDateString()} · {post.views} view
                         {post.views > 1 && "s"}
                     </p>
-                    <p className="text-foreground/60 italic"></p>
+                    <p className="italic text-foreground/60"></p>
                     <Separator className="my-4" />
                     <div
                         className="blog-content"
                         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
                     />
                 </article>
+                <Separator className="mb-6" />
+                <NotionAd />
                 <Footer />
             </div>
         </main>

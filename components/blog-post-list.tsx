@@ -12,20 +12,18 @@ export default function BlogPostList({
     className?: string;
 }) {
     return (
-        <div className={cn(className, "text-foreground flex flex-col items-start")}>
+        <div className={cn(className, "flex flex-col items-start text-foreground")}>
             {posts.length > 0 ? (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {posts.map((post) => (
                         <BlogPostPreview key={post.slug} post={post} />
                     ))}
-                    <Card className="bg-secondary col-span-1 w-full">
+                    <Card className="col-span-1 w-full bg-secondary">
                         <CardHeader>
                             <CardTitle className="font-bold">Thats it...</CardTitle>
                             <CardDescription>
-                                <p className="text-foreground/60">
-                                    I&apos;m working on creating more posts for you to read, so
-                                    check back soon. Thank&apos;s for reading!
-                                </p>
+                                I&apos;m working on creating more posts for you to read, so check
+                                back soon. Thank&apos;s for reading!
                             </CardDescription>
                         </CardHeader>
                         <CardFooter>
