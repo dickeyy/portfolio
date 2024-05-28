@@ -25,18 +25,39 @@ export async function POST(request: Request, response: NextResponse) {
         return NextResponse.json({ message: "Invalid JSON" }, { status: 400 });
     }
     try {
+        // send email to me
         await resend.emails.send({
             from: "no-reply@dickey.gg",
-            to: "kyle@dickey.gg",
+            to: "hi@kyle.so",
             subject: `New Email from ${body.name} <${body.email}>`,
-            html: `<div><p>New message from portfolio</p><p>Name: <strong>${body.name}</strong></p><p>Email: ${body.email}</p><p>Message: ${body.message}</div>`,
+            html: `
+                <div>
+                    <p>New message from portfolio</p>
+                    <p>Name: <strong>${body.name}</strong></p>
+                    <p>Email: ${body.email}</p>
+                    <p>Message: ${body.message}</p>
+                </div>
+            `,
             reply_to: body.email
         });
+
+        // send a success email
+        await resend.emails.send({
+            from: "no-reply@dickey.gg",
+            to: body.email,
+            subject: "Thank you for reaching out!",
+            html: `
+                <div>
+                    <p><strong>Thank you for reaching out!</strong></p>
+                    <p>I will get back to you as soon as possible.</p>
+                    <p>- Kyle Dickey (<a href="https://kyle.so">kyle.so</a>)</p>
+                </div>
+            `
+        });
+
         return NextResponse.json({ message: "Email sent" }, { status: 200 });
     } catch (error) {
         console.error(error);
         return NextResponse.json({ message: "Error sending email" }, { status: 500 });
     }
 }
-
-// Same logic to add a `PATCH`, `DELETE`...

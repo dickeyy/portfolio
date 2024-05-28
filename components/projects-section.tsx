@@ -81,7 +81,7 @@ const projects: ProjectsType = {
         {
             name: "Alias",
             description: "A modern way to play a game my family and I made.",
-            link: "https://alias.dickey.gg",
+            link: "https://alias.kyle.so",
             tools: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Vercel"],
             buttonText: "Website",
             github: "https://github.com/dickeyy/alias"
@@ -103,7 +103,7 @@ const projects: ProjectsType = {
             name: "Travel Log",
             description:
                 "Track all the places you've gone. Log in with demo@dickey.gg, password: travellogdemo",
-            link: "https://travel.dickey.gg",
+            link: "https://travel.kyle.so",
             tools: ["React", "NodeJS", "ChakraUI", "MongoDB", "REST", "Vercel"],
             buttonText: "Website",
             github: "https://github.com/dickeyy/travel-log"
@@ -127,7 +127,7 @@ const projects: ProjectsType = {
             name: "Countdown",
             description: "A simple event countdown website.",
             tools: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
-            link: "https://countdown.dickey.gg",
+            link: "https://countdown.kyle.so",
             buttonText: "Website",
             github: "https://github.com/dickeyy/countdown"
         },
