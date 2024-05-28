@@ -2,7 +2,7 @@
 
 _and counting_
 
-[Visit it here (dickey.gg)](https://dickey.gg)
+[Visit it here (kyle.so)](https://kyle.so)
 
 Built with [Next.JS](https://nextjs.org/) & [TailwindCSS](https://tailwindcss.com/), using
 [Shadcn/ui](https://ui.shadcn.com/), Hosted on [Vercel](https://vercel.com)
