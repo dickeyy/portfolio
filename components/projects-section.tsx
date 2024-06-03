@@ -20,6 +20,27 @@ const projects: ProjectsType = {
             github: "https://github.com/dickeyy/hansumfella-website"
         },
         {
+            name: "Diary",
+            description:
+                "A private, secure, and open-source place to keep your thoughts, ideas, feelings, or whatever else you want. ",
+            image: "diary-project.webp",
+            link: "https://diary.kyle.so",
+            tools: [
+                "Next.js",
+                "TypeScript",
+                "Tailwind",
+                "PostgreSQL",
+                "WebSockets",
+                "Vercel",
+                "Stripe",
+                "Clerk",
+                "Drizzle"
+            ],
+            buttonText: "Visit Website",
+            github: "https://github.com/dickeyy/diary",
+            beta: true
+        },
+        {
             name: "tip.dev",
             description:
                 "A platform for developers to get paid for their work. I am currently working on this project, I am very excited about it. I plan to launch it in 2024.",
@@ -38,12 +59,21 @@ const projects: ProjectsType = {
             buttonText: "Visit Website",
             github: "https://github.com/tipdotdev",
             inProgress: true
+        }
+    ],
+    other: [
+        {
+            name: "Quack",
+            description: "A Discord bot focused on making Discord safer one server at a time.",
+            link: "https://quackbot.xyz",
+            tools: ["TypeScript", "MySQL", "Drizzle", "Redis", "Kafka", "Go"],
+            buttonText: "Website",
+            github: "https://github.com/seedsdiscord"
         },
         {
             name: "Outgone",
             description:
-                "A new wave of social networking. This is a social media platform for users to find groups of like-minded people. I am currently working on this project, I plan to launch it late 2024.",
-            image: "outgone-project.webp",
+                "A new wave of social networking. This is a social media platform for users to find groups of like-minded people.",
             link: "https://outgone.app",
             tools: [
                 "React Native",
@@ -57,16 +87,6 @@ const projects: ProjectsType = {
             buttonText: "Visit Website",
             github: "https://github.com/outgone",
             inProgress: true
-        }
-    ],
-    other: [
-        {
-            name: "Quack",
-            description: "A Discord bot focused on making Discord safer one server at a time.",
-            link: "https://quackbot.xyz",
-            tools: ["TypeScript", "MySQL", "Drizzle", "Redis", "Kafka", "Go"],
-            buttonText: "Website",
-            github: "https://github.com/seedsdiscord"
         },
         {
             name: "Wrink",
@@ -99,15 +119,7 @@ const projects: ProjectsType = {
             tools: ["TypeScript", "MySQL"],
             github: "https://github.com/dickeyy/leetcode"
         },
-        {
-            name: "Travel Log",
-            description:
-                "Track all the places you've gone. Log in with demo@dickey.gg, password: travellogdemo",
-            link: "https://travel.kyle.so",
-            tools: ["React", "NodeJS", "ChakraUI", "MongoDB", "REST", "Vercel"],
-            buttonText: "Website",
-            github: "https://github.com/dickeyy/travel-log"
-        },
+
         {
             name: "LasTag",
             description: "The last gamer tag you'll ever need. Basically Linktree for gamers.",
@@ -132,6 +144,21 @@ const projects: ProjectsType = {
             github: "https://github.com/dickeyy/countdown"
         },
         {
+            name: "Dickey API",
+            description: "A simple utility API for random things.",
+            tools: ["TypeScript", "REST"],
+            github: "https://github.com/dickeyy/dickey-api"
+        },
+        {
+            name: "Travel Log",
+            description:
+                "Track all the places you've gone. Log in with demo@dickey.gg, password: travellogdemo",
+            link: "https://travel.kyle.so",
+            tools: ["React", "NodeJS", "ChakraUI", "MongoDB", "REST", "Vercel"],
+            buttonText: "Website",
+            github: "https://github.com/dickeyy/travel-log"
+        },
+        {
             name: "Mirky",
             description: "A little app to help teens with their finances.",
             tools: ["Expo", "React Native", "TypeScript", "Tailwind", "PostgreSQL"],
@@ -144,7 +171,8 @@ const projects: ProjectsType = {
             tools: ["HTML", "CSS", "Firebase", "Vercel"],
             link: "https://wordle.dickey.gg",
             buttonText: "Website",
-            github: "https://github.com/dickeyy/wordle-clone"
+            github: "https://github.com/dickeyy/wordle-clone",
+            archived: true
         },
         {
             name: "Spotinder",
@@ -184,8 +212,8 @@ export default function ProjectsSection({ className }: { className?: string }) {
         if (viewMore) {
             setOtherProjects(projects.other);
         } else {
-            // Only show 2 other projects
-            setOtherProjects(projects.other.slice(0, 2));
+            // Only show 4 other projects
+            setOtherProjects(projects.other.slice(0, 4));
         }
     }, [viewMore]);
 

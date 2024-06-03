@@ -55,6 +55,7 @@ type ToolType =
     | "Spotify API"
     | "LLM"
     | "PyTorch"
-    | "Brain.js";
+    | "Brain.js"
+    | "WebSockets";
 
 export type { ToolType };

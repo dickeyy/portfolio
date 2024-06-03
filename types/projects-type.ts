@@ -14,6 +14,7 @@ type FeaturedProjectType = {
     buttonText: string;
     github?: string;
     inProgress?: boolean;
+    beta?: boolean;
 };
 
 type OtherProjectType = {

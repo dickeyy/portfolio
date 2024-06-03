@@ -21,6 +21,14 @@ export default function FeaturedProjectCard({ project }: { project: FeaturedProj
                             In Progress
                         </Badge>
                     )}
+                    {project.beta && (
+                        <Badge
+                            variant="outline"
+                            className="rounded border border-blue-500 bg-blue-100 font-mono text-[0.6rem] font-light text-blue-600"
+                        >
+                            Beta
+                        </Badge>
+                    )}
                 </div>
                 <CardDescription>{project.description}</CardDescription>
             </CardHeader>

@@ -28,6 +28,7 @@ const skills: SkillsType = {
         "Redis",
         "GraphQL",
         "REST",
+        "WebSockets",
         "JWT",
         "HTTP",
         "DNS",
