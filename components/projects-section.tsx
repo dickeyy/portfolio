@@ -17,7 +17,8 @@ const projects: ProjectsType = {
             link: "https://hansumfella.com",
             tools: ["Next.js", "TypeScript", "Tailwind", "GraphQL", "Shopify", "Vercel"],
             buttonText: "Visit Website",
-            github: "https://github.com/dickeyy/hansumfella-website"
+            github: "https://github.com/dickeyy/hansumfella-website",
+            star_key: "hansumfella-website"
         },
         {
             name: "Diary",
@@ -38,7 +39,8 @@ const projects: ProjectsType = {
             ],
             buttonText: "Visit Website",
             github: "https://github.com/dickeyy/diary",
-            beta: true
+            beta: true,
+            star_key: "diary"
         },
         {
             name: "tip.dev",
@@ -68,7 +70,8 @@ const projects: ProjectsType = {
             link: "https://quackbot.xyz",
             tools: ["TypeScript", "MySQL", "Drizzle", "Redis", "Kafka", "Go"],
             buttonText: "Website",
-            github: "https://github.com/seedsdiscord"
+            github: "https://github.com/seedsdiscord",
+            star_key: "quack"
         },
         {
             name: "Outgone",
@@ -84,7 +87,7 @@ const projects: ProjectsType = {
                 "Go",
                 "TypeScript"
             ],
-            buttonText: "Visit Website",
+            buttonText: "Website",
             github: "https://github.com/outgone",
             inProgress: true
         },
@@ -96,7 +99,8 @@ const projects: ProjectsType = {
             tools: ["Next.js", "TypeScript", "Tailwind", "Go", "Redis"],
             buttonText: "Website",
             github: "https://github.com/wrinkapp",
-            inProgress: true
+            inProgress: true,
+            star_key: "wrink"
         },
         {
             name: "Alias",
@@ -104,7 +108,8 @@ const projects: ProjectsType = {
             link: "https://alias.kyle.so",
             tools: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Vercel"],
             buttonText: "Website",
-            github: "https://github.com/dickeyy/alias"
+            github: "https://github.com/dickeyy/alias",
+            star_key: "alias"
         },
         {
             name: "Dismegle Website",
@@ -117,7 +122,8 @@ const projects: ProjectsType = {
             name: "LeetCode",
             description: "A GitHub repo containing all of my LeetCode solutions.",
             tools: ["TypeScript", "MySQL"],
-            github: "https://github.com/dickeyy/leetcode"
+            github: "https://github.com/dickeyy/leetcode",
+            star_key: "leetcode"
         },
 
         {
@@ -126,14 +132,16 @@ const projects: ProjectsType = {
             link: "https://lastag.xyz",
             tools: ["Next.js", "Tailwind", "TypeScript", "Redis", "MongoDB", "Clerk"],
             buttonText: "Website",
-            github: "https://github.com/dickeyy/lastag"
+            github: "https://github.com/dickeyy/lastag",
+            star_key: "lastag"
         },
         {
             name: "TikTok Scaper",
             description:
                 "A small project I made for Hansumfella to get follower counts for a list of users.",
             tools: ["TypeScript", "Redis", "Cheerio"],
-            github: "https://github.com/dickeyy/tiktok-scraper"
+            github: "https://github.com/dickeyy/tiktok-scraper",
+            star_key: "tiktok-scraper"
         },
         {
             name: "Countdown",
@@ -141,13 +149,15 @@ const projects: ProjectsType = {
             tools: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
             link: "https://countdown.kyle.so",
             buttonText: "Website",
-            github: "https://github.com/dickeyy/countdown"
+            github: "https://github.com/dickeyy/countdown",
+            star_key: "countdown"
         },
         {
             name: "Dickey API",
             description: "A simple utility API for random things.",
             tools: ["TypeScript", "REST"],
-            github: "https://github.com/dickeyy/dickey-api"
+            github: "https://github.com/dickeyy/dickey-api",
+            star_key: "dickey-api"
         },
         {
             name: "Travel Log",
@@ -156,7 +166,8 @@ const projects: ProjectsType = {
             link: "https://travel.kyle.so",
             tools: ["React", "NodeJS", "ChakraUI", "MongoDB", "REST", "Vercel"],
             buttonText: "Website",
-            github: "https://github.com/dickeyy/travel-log"
+            github: "https://github.com/dickeyy/travel-log",
+            star_key: "travel-log"
         },
         {
             name: "Mirky",

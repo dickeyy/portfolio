@@ -15,6 +15,7 @@ type FeaturedProjectType = {
     github?: string;
     inProgress?: boolean;
     beta?: boolean;
+    star_key?: string;
 };
 
 type OtherProjectType = {
@@ -26,6 +27,7 @@ type OtherProjectType = {
     github?: string;
     archived?: boolean;
     inProgress?: boolean;
+    star_key?: string;
 };
 
 export type { ProjectsType, FeaturedProjectType, OtherProjectType };
