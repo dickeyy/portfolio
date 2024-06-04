@@ -10,6 +10,7 @@ import { Badge } from "./ui/badge";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getStars } from "@/lib/utils";
+import { BetaFlag, InProgressFlag } from "./project-flags";
 
 export default function FeaturedProjectCard({ project }: { project: FeaturedProjectType }) {
     const [stars, setStars] = useState(0);
@@ -24,22 +25,8 @@ export default function FeaturedProjectCard({ project }: { project: FeaturedProj
             <CardHeader>
                 <div className="flex flex-row items-center justify-start gap-2">
                     <CardTitle className="font-bold">{project.name}</CardTitle>
-                    {project.inProgress && (
-                        <Badge
-                            variant="outline"
-                            className="rounded border border-purple-500 bg-purple-100 font-mono text-[0.6rem] font-light text-purple-600"
-                        >
-                            In Progress
-                        </Badge>
-                    )}
-                    {project.beta && (
-                        <Badge
-                            variant="outline"
-                            className="rounded border border-blue-500 bg-blue-100 font-mono text-[0.6rem] font-light text-blue-600"
-                        >
-                            Beta
-                        </Badge>
-                    )}
+                    {project.inProgress && <InProgressFlag />}
+                    {project.beta && <BetaFlag />}
                 </div>
                 <CardDescription>{project.description}</CardDescription>
             </CardHeader>
@@ -68,14 +55,14 @@ export default function FeaturedProjectCard({ project }: { project: FeaturedProj
             </CardContent>
             <CardFooter>
                 <div className="flex w-full items-center gap-2">
-                    <Button asChild variant="outline" className="w-full gap-2">
+                    <Button asChild variant="outline" className="w-full gap-2 border-zinc-300">
                         <Link href={project.link} target="_blank" rel="noopener noreferrer">
                             <ExternalLinkIcon className="h-4 w-4" />
                             {project.buttonText}
                         </Link>
                     </Button>
                     {project.github && (
-                        <Button asChild variant="outline" className="w-full gap-2">
+                        <Button asChild variant="outline" className="w-full gap-2 border-zinc-300">
                             <Link href={project.github} target="_blank" rel="noopener noreferrer">
                                 <GitHubIcon className="h-4 w-4" />
                                 GitHub

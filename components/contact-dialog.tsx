@@ -109,7 +109,11 @@ export default function ContactDialog({ isOpen, setIsOpen }: { isOpen: boolean; 
                                 <FormItem className="mb-2 space-y-1">
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="johndoe@example.com" {...field} />
+                                        <Input
+                                            placeholder="johndoe@example.com"
+                                            className="border-zinc-400"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -123,7 +127,11 @@ export default function ContactDialog({ isOpen, setIsOpen }: { isOpen: boolean; 
                                 <FormItem className="mb-2 space-y-1">
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="John Doe" {...field} />
+                                        <Input
+                                            placeholder="John Doe"
+                                            className="border-zinc-400"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -139,7 +147,7 @@ export default function ContactDialog({ isOpen, setIsOpen }: { isOpen: boolean; 
                                     <FormControl>
                                         <Textarea
                                             placeholder="Your message here..."
-                                            className="max-h-[300px] min-h-[100px] resize-y"
+                                            className="max-h-[300px] min-h-[100px] resize-y border-zinc-400"
                                             {...field}
                                         />
                                     </FormControl>

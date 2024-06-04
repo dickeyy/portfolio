@@ -1,15 +1,22 @@
 import "@/styles/globals.css";
-import { Nunito as FontSans } from "next/font/google";
+import { Nunito as Sans } from "next/font/google";
 import { JetBrains_Mono as Mono } from "next/font/google";
+import { Oooh_Baby as Serif } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { Metadata, Viewport } from "next";
 import { PosthogProvider } from "@/components/posthog-provider";
 
-const fontSans = FontSans({
+const fontSans = Sans({
     subsets: ["latin"],
     variable: "--font-sans"
+});
+
+const fontSerif = Serif({
+    subsets: ["latin"],
+    variable: "--font-serif",
+    weight: "400"
 });
 
 const fontMono = Mono({
@@ -57,13 +64,15 @@ export default function RootLayout({ children }: any) {
                 className={cn(
                     "min-h-screen bg-background font-sans antialiased",
                     fontSans.variable,
-                    fontMono.variable
+                    fontMono.variable,
+                    fontSerif.variable
                 )}
             >
                 <PosthogProvider>
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="light"
+                        themes={["light"]}
                         enableSystem
                         disableTransitionOnChange
                     >

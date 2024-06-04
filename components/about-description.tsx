@@ -6,13 +6,15 @@ import { Button } from "./ui/button";
 import { MailIcon, NewspaperIcon, PencilLineIcon } from "lucide-react";
 import Link from "next/link";
 import ContactDialog from "./contact-dialog";
+import { useTheme } from "next-themes";
 
 export default function AboutDescription({ className }: { className?: string }) {
     const [contactDialogOpen, setContactDialogOpen] = useState(false);
+    const { theme } = useTheme();
 
     return (
         <div className={cn(className, "flex flex-col items-start text-foreground")}>
-            <h2 className="text-2xl font-bold">About</h2>
+            <h2 className="font-serif text-2xl font-bold sm:text-3xl">About</h2>
             <p className="text-md font text-foreground/70">
                 Born and raised near Denver, Colorado. I am a second-year computer science with a
                 focus in software engineering student at Colorado State University. I have a strong
@@ -23,7 +25,7 @@ export default function AboutDescription({ className }: { className?: string }) 
                 chess. If you would like to know more, or contact me, click the buttons below!
             </p>
             <div className="mt-4 flex w-full flex-col items-start gap-2 sm:flex-row">
-                <Button asChild variant={"default"} size={"lg"} className="w-full">
+                <Button asChild variant={"default"} className="w-full" size={"lg"}>
                     <a href="/resume" target="_blank" className="w-full">
                         <NewspaperIcon className="mr-2 h-4 w-4" />
                         General Resume

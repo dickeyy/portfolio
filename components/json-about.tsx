@@ -40,7 +40,7 @@ export default function JsonAbout({ className }: { className?: string }) {
             )}
             <div className={cn(className, "flex flex-col items-start text-foreground")}>
                 <p className="text-md font-mono font-light sm:text-lg">
-                    <span className="text-foreground/60">const me =</span> {"{"}
+                    <span className="text-foreground/60">const me: Human =</span> {"{"}
                 </p>
                 <div className="text-md sm:text-l flex flex-col items-start pl-6">
                     <p className="font-mono font-light">
@@ -50,7 +50,7 @@ export default function JsonAbout({ className }: { className?: string }) {
                         )}
                     </p>
                     <p className="font-mono font-light">
-                        {'occupation: ["Freelance dev", "College student"],'}
+                        {'occupation: ["College student", "Freelance dev"],'}
                     </p>
                     <p className="font-mono font-light">{'location: "Fort Collins, Colorado"'}</p>
                 </div>
