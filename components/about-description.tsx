@@ -14,7 +14,7 @@ export default function AboutDescription({ className }: { className?: string }) 
 
     return (
         <div className={cn(className, "flex flex-col items-start text-foreground")}>
-            <h2 className="text-2xl font-bold sm:text-3xl">About</h2>
+            <h2 className="font-serif text-2xl font-semibold italic sm:text-3xl">About</h2>
             <p className="text-md font text-foreground/70">
                 Born and raised near Denver, Colorado. I am a second-year computer science with a
                 focus in software engineering student at Colorado State University. I have a strong

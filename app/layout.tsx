@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Nunito as Sans } from "next/font/google";
 import { JetBrains_Mono as Mono } from "next/font/google";
-import { Oooh_Baby as Serif } from "next/font/google";
+import { Newsreader as Serif } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
@@ -10,14 +10,14 @@ import { PosthogProvider } from "@/components/posthog-provider";
 
 const fontSans = Sans({
     subsets: ["latin"],
-    variable: "--font-sans",
-    weight: ["300", "400", "700"]
+    variable: "--font-sans"
 });
 
 const fontSerif = Serif({
     subsets: ["latin"],
     variable: "--font-serif",
-    weight: "400"
+    weight: ["200", "300", "400", "500", "600", "700", "800"],
+    style: ["normal", "italic"]
 });
 
 const fontMono = Mono({
