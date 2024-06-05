@@ -230,7 +230,7 @@ export default function ProjectsSection({ className }: { className?: string }) {
 
     return (
         <div className={cn(className, "flex flex-col items-start text-foreground")}>
-            <h2 className="font-serif text-2xl font-bold sm:text-3xl">Projects</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">Projects</h2>
             <p className="text-md font text-foreground/60">In no particular order...</p>
             <div className="mt-4 flex w-full flex-col gap-4">
                 {projects.featured.map((project, index) => (

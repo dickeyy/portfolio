@@ -10,7 +10,8 @@ import { PosthogProvider } from "@/components/posthog-provider";
 
 const fontSans = Sans({
     subsets: ["latin"],
-    variable: "--font-sans"
+    variable: "--font-sans",
+    weight: ["300", "400", "700"]
 });
 
 const fontSerif = Serif({

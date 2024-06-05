@@ -5,7 +5,7 @@ export default function SkillBadge({ skill }: { skill?: string }) {
         <Badge
             variant={"outline"}
             key={skill}
-            className="rounded border bg-secondary font-mono text-xs font-light text-foreground"
+            className="rounded border border-black/20 bg-zinc-700/20 font-mono text-xs font-light text-foreground"
         >
             {skill}
         </Badge>
