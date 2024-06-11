@@ -23,7 +23,9 @@ export default function OtherProjectCard({ project }: { project: OtherProjectTyp
         <Card className="col-span-2 flex flex-col justify-between bg-secondary sm:col-span-1">
             <CardHeader>
                 <div className="flex flex-row items-center justify-start gap-2">
-                    <CardTitle className="font-bold">{project.name}</CardTitle>
+                    <CardTitle className="font-serif font-semibold italic">
+                        {project.name}
+                    </CardTitle>
                     {project.archived && <ArchivedFlag />}
                     {project.inProgress && <InProgressFlag />}
                 </div>

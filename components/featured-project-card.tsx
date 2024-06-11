@@ -24,7 +24,9 @@ export default function FeaturedProjectCard({ project }: { project: FeaturedProj
         <Card className="bg-secondary">
             <CardHeader>
                 <div className="flex flex-row items-center justify-start gap-2">
-                    <CardTitle className="font-bold">{project.name}</CardTitle>
+                    <CardTitle className="font-serif text-2xl font-semibold italic">
+                        {project.name}
+                    </CardTitle>
                     {project.inProgress && <InProgressFlag />}
                     {project.beta && <BetaFlag />}
                 </div>
