@@ -1,8 +1,0 @@
-{
-    "crons": [
-        {
-            "path": "/api/analytics/star-count/update",
-            "schedule": "0 0 * * *"
-        }
-    ]
-}
