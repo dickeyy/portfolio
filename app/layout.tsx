@@ -65,7 +65,7 @@ export default function RootLayout({ children }: any) {
                 <script
                     defer
                     data-domain="kyle.so"
-                    src="https://plausible.c.kyle.so/js/script.js"
+                    src="https://analytics.kyle.so/js/script.js"
                 ></script>
             </head>
             <body
