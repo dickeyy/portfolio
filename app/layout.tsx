@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { Metadata, Viewport } from "next";
 import { PosthogProvider } from "@/components/posthog-provider";
+import PlausibleProvider from "next-plausible";
 
 const fontSans = Sans({
     subsets: ["latin"],
@@ -60,7 +61,13 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: any) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <head />
+            <head>
+                <script
+                    defer
+                    data-domain="kyle.so"
+                    src="https://plausible.c.kyle.so/js/script.js"
+                ></script>
+            </head>
             <body
                 className={cn(
                     "min-h-screen bg-background font-sans antialiased",
@@ -69,18 +76,25 @@ export default function RootLayout({ children }: any) {
                     fontSerif.variable
                 )}
             >
-                <PosthogProvider>
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="light"
-                        themes={["light"]}
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <Toaster richColors theme="light" />
-                        {children}
-                    </ThemeProvider>
-                </PosthogProvider>
+                {/* <PosthogProvider> */}
+                {/* <PlausibleProvider
+                    domain="kyle.so"
+                    customDomain="https://plausible.c.kyle.so"
+                    selfHosted={true}
+                    manualPageviews={false}
+                > */}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="light"
+                    themes={["light"]}
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <Toaster richColors theme="light" />
+                    {children}
+                </ThemeProvider>
+                {/* </PlausibleProvider> */}
+                {/* </PosthogProvider> */}
             </body>
         </html>
     );
