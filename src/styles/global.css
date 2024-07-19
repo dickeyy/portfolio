@@ -4,22 +4,36 @@
 
 @font-face {
     font-family: "Newsreader";
-    src: url("/fonts/Newsreader-Variable.ttf") format("truetype");
+    src: url("/fonts/newsreader-variable.ttf") format("truetype");
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
     font-family: "Newsreader";
-    src: url("/fonts/Newsreader-Variable-Italic.ttf") format("truetype");
+    src: url("/fonts/newsreader-italic-variable.ttf") format("truetype");
     font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Geist";
+    src: url("/fonts/geist-variable.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Geist Mono";
+    src: url("/fonts/geist-mono-variable.ttf") format("truetype");
+    font-style: normal;
     font-display: swap;
 }
 
 
 @layer base {
     :root {
-        --background: 240 10% 3.9%;
+        --background: 0 0% 7%;
         --foreground: 0 0% 98%;
         --card: 240 10% 3.9%;
         --card-foreground: 0 0% 98%;
@@ -84,6 +98,11 @@
     .glass-blur {
         backdrop-filter: blur(8px) contrast(100%);
         -webkit-backdrop-filter: blur(8px) contrast(100%);
+    }
+
+    ::selection {
+        @apply bg-card-foreground/20;
+        @apply text-foreground/40;
     }
 }
 

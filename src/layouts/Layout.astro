@@ -22,7 +22,7 @@ const { title, description, ogImage, showFooter = true, showNavbar = true } = As
     </head>
     <body class="m-0 flex min-h-screen flex-col p-0 font-sans">
         {showNavbar && <Navbar />}
-        <main class="flex-grow">
+        <main class="flex-gro items-center justify-center flex">
             <slot />
         </main>
         {showFooter && <Footer />}

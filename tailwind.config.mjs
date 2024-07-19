@@ -16,6 +16,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 serif: ["Newsreader", ...defaultTheme.fontFamily.serif],
+                sans: ["Geist", ...defaultTheme.fontFamily.sans],
+                mono: ["Geist Mono", ...defaultTheme.fontFamily.mono]
             },
             colors: {
                 border: "hsl(var(--border))",
