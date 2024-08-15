@@ -1,0 +1,56 @@
+---
+import type { FeaturedProjectType } from "../types/projects";
+import FeaturedProject from "./FeaturedProject.astro";
+import ArrowRight from "../icons/ArrowRight";
+
+const featuredProjects: FeaturedProjectType[] = [
+    {
+        name: "Diary",
+        description:
+            "A private, secure, and open-source place to keep your thoughts, ideas, feelings, or whatever else you want.",
+        link: "https://diary.kyle.so",
+        github: "https://github.com/dickeyy/diary"
+    },
+    {
+        name: "tip.dev",
+        description:
+            "A platform for developers to get paid for their work. This project is currently under development.",
+        link: "https://tip.dev",
+        github: "https://github.com/tipdotdev"
+    },
+    {
+        name: "Quack",
+        description:
+            "A Discord bot aimed at making servers of all sizes safer for everyone, with the best moderation tools.",
+        link: "https://quackbot.xyz",
+        github: "https://github.com/quackdiscord"
+    },
+    {
+        name: "Alias",
+        description: "A digitized version of a game played by my family on holidays.",
+        link: "https://alias.kyle.so",
+        github: "https://github.com/dickeyy/alias"
+    }
+];
+---
+
+<div class="flex flex-col w-full mt-16 text-foreground/80 font-light text-md">
+    <p class="leading-7 font-serif italic text-xl text-foreground">Projects</p>
+    <hr class="border-foreground/20 w-full border-1/2 border-dashed mb-2" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 items-start justify-center w-full mt-4 gap-8">
+        {featuredProjects.map((project) => <FeaturedProject project={project} />)}
+    </div>
+
+    <div class="inline-flex items-center group mt-6">
+        <a
+            class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+            href="/projects"
+        >
+            View all projects
+        </a>
+        <ArrowRight
+            className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+        />
+    </div>
+</div>

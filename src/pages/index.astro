@@ -1,42 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import TwitterIcon from "../icons/TwitterIcon";
-import GitHubIcon from "../icons/GitHubIcon";
-import InstagramIcon from "../icons/InstagramIcon";
-import LinkedInIcon from "../icons/LinkedInIcon";
+import SocialIcons from "../components/SocialIcons.astro";
+import Tools from "../components/Tools.astro";
+import Work from "../components/Work.astro";
+import Projects from "../components/Projects.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Writing from "../components/Writing.astro";
+import Contact from "../components/Contact.astro";
 ---
 
-<Layout title="Kyle Dickey">
+<Layout title="Kyle Dickey" showFooter>
     <div
-        class="flex flex-col items-center justify-start min-h-screen px-4 sm:px-8 w-full sm:w-[100%] md:w-[75%] lg:w-[55%] py-8"
+        class="flex flex-col items-center justify-start min-h-screen px-4 sm:px-8 pb-12 w-full sm:w-[100%] md:w-[75%] lg:w-[55%] py-8"
     >
         <div class="flex items-start justify-between w-full mt-8">
             <div class="flex flex-col item-start justify-center">
-                <h1 class="font-serif italic text-xl">Kyle Dickey</h1>
-                <p class="text-foreground/60">Juior software engineer</p>
+                <h1 class="font-serif italic text-2xl">Kyle Dickey</h1>
+                <p class="text-foreground/60 font-light">Junior software engineer</p>
             </div>
-            <div class="flex items-center justify-center gap-4">
-                <a href="https://github.com/dickeyy" target="_blank">
-                    <GitHubIcon
-                        className="size-4 fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out"
-                    />
-                </a>
-                <a href="https://twitter.com/kyledickeyy" target="_blank">
-                    <TwitterIcon
-                        className="size-4 fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out"
-                    />
-                </a>
-                <a href="https://linkedin.com/in/kyletdickey" target="_blank">
-                    <LinkedInIcon
-                        className="size-4 fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out"
-                    />
-                </a>
-                <a href="https://instagram.com/kyle.dickeyy" target="_blank">
-                    <InstagramIcon
-                        className="size-4 fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out"
-                    />
-                </a>
-            </div>
+            <SocialIcons />
         </div>
+
+        <AboutMe />
+        <Tools />
+        <Work />
+        <Projects />
+        <Writing />
+        <Contact />
+
+        <div class="h-24"></div>
     </div>
 </Layout>

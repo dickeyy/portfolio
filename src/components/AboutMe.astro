@@ -1,0 +1,51 @@
+---
+function numberToWords(num: number) {
+    const ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    const tens = [
+        "",
+        "",
+        "twenty",
+        "thirty",
+        "forty",
+        "fifty",
+        "sixty",
+        "seventy",
+        "eighty",
+        "ninety"
+    ];
+    const teens = [
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen"
+    ];
+
+    if (num < 10) return ones[num];
+    if (num < 20) return teens[num - 10];
+
+    const ten = Math.floor(num / 10);
+    const one = num % 10;
+    return tens[ten] + (one !== 0 ? " " + ones[one] : "");
+}
+
+let age = 0;
+const bday = new Date(2004, 5, 2);
+age = new Date().getFullYear() - bday.getFullYear();
+let ageInWords = numberToWords(age);
+---
+
+<div class="flex flex-col w-full mt-12 text-foreground/80 font-light text-md">
+    <p class="leading-7">
+        A
+        <span class="font-serif italic font-normal text-[18px]">{ageInWords}</span>
+        year-old, third-year college student studying computer science at
+        <span class="font-serif italic font-normal text-[18px]">Colorado State University</span>.
+        Building elegant software for a variety of applications.
+    </p>
+</div>

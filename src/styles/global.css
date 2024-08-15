@@ -30,7 +30,6 @@
     font-display: swap;
 }
 
-
 @layer base {
     :root {
         --background: 0 0% 7%;
@@ -59,7 +58,6 @@
         --chart-5: 340 75% 55%;
     }
 }
-
 
 @layer base {
     * {
@@ -106,4 +104,5 @@
     }
 }
 
-@layer base {}
+@layer base {
+}
