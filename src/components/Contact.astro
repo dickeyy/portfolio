@@ -1,0 +1,49 @@
+---
+import type { FeaturedProjectType } from "../types/projects";
+import FeaturedProject from "./FeaturedProject.astro";
+import ArrowRight from "../icons/ArrowRight";
+---
+
+<div class="flex flex-col w-full mt-16 text-foreground/80 font-light text-md">
+    <p class="leading-7 font-serif italic text-xl text-foreground">Contact</p>
+    <hr class="border-foreground/20 w-full border-1/2 border-dashed mb-2" />
+
+    <div class="flex flex-row items-center justify-between w-full mt-4 gap-8 flex-wrap">
+        <div class="inline-flex items-center group">
+            <a
+                class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+                href="mailto:k@kyle.so"
+                target="_blank"
+            >
+                Email (k@kyle.so)
+            </a>
+            <ArrowRight
+                className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+            />
+        </div>
+        <div class="inline-flex items-center group">
+            <a
+                class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+                href="https://twitter.com/kyledickeyy"
+                target="_blank"
+            >
+                Twitter (@kyledickeyy)
+            </a>
+            <ArrowRight
+                className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+            />
+        </div>
+        <div class="inline-flex items-center group">
+            <a
+                class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+                href="https://www.linkedin.com/in/kyletdickey/"
+                target="_blank"
+            >
+                LinkedIn (@kyletdickey)
+            </a>
+            <ArrowRight
+                className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+            />
+        </div>
+    </div>
+</div>

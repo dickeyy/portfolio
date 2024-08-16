@@ -1,0 +1,147 @@
+---
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+    frontmatter: any;
+}
+
+const { frontmatter } = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- start analytics -->
+        <script
+            defer
+            data-domain="kyle.so"
+            src="https://analytics.kyle.so/js/script.outbound-links.js"></script>
+        <!-- end analytics -->
+
+        <!-- start meta -->
+        <meta charset="UTF-8" />
+        <meta name="description" content={frontmatter.description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/x-icon" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="robots" content="index, follow" />
+        <meta
+            name="keywords"
+            content="
+            kyle dickey,
+            kyle,
+            dickey,
+            dickeyy,
+            imdickey,
+            software engineer,
+            junior software engineer,
+            engineer, 
+            freelancer,
+            developer,
+            colorado,
+            colorado state university,
+            college, 
+            diary, 
+            tip.dev,
+            quack, 
+            quack discord bot, 
+            alias, 
+            wordle, 
+            wordle clone,
+            computer science,
+            computer science major,
+            cs major,
+            cs,
+            web development,
+            web dev,
+            web,
+            front end,
+            front-end,
+            back end,
+            back-end,
+            programming,
+            programming language,
+            programming languages,
+            javascript,
+            typescript,
+            react,
+            reactjs,
+            node,
+            node.js,
+            nodejs,
+            npm,
+            package manager,
+            package managers,
+            git,
+            github,
+            github actions,
+            github actions ci,
+            github actions cd,
+            github actions workflow,
+            github actions workflows,
+            github actions runner,
+            github actions runners,
+            github actions runners,
+
+            discord,
+            discord bot,
+            discord bots,
+            discord bot creator,
+            discord bot creators,
+            discord bots,
+            discord bot developer,
+            discord bot developers,
+            discord bot creator,
+            discord bot creators,
+            discord bots,
+            discord bot developer,"
+        />
+        <!-- end meta -->
+
+        <!-- start open graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={frontmatter.title} />
+        <meta property="og:description" content={frontmatter.description} />
+        <meta property="og:image" content={frontmatter.ogImage || "/og-image.png"} />
+        <meta property="og:url" content={Astro.url} />
+        <!-- end open graph -->
+
+        <!-- start twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@kyledickeyy" />
+        <meta name="twitter:creator" content="@kyledickeyy" />
+        <meta name="twitter:title" content={frontmatter.title} />
+        <meta name="twitter:description" content={frontmatter.description} />
+        <meta name="twitter:image" content={frontmatter.ogImage || "/og-image.png"} />
+        <!-- end twitter -->
+
+        <title>{frontmatter.title}</title>
+    </head>
+    <body
+        class="m-0
+            flex
+            min-h-screen
+            flex-col
+            p-0
+            w-full
+            items-center
+            justify-center"
+    >
+        <ViewTransitions />
+    </body>
+    <main
+        class="mt-16 flex w-full flex-grow flex-col items-center justify-start px-4 py-4 sm:mt-20 sm:px-8"
+    >
+        <div class="flex w-full max-w-3xl flex-1 flex-col">
+            <h1 class="mb-6 text-3xl font-bold sm:text-4xl">{frontmatter.title}</h1>
+            <div
+                class="prose prose-sm sm:prose lg:prose-lg xl:prose-lg prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base prose-h5:text-sm prose-h6:text-sm prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal prose-li:text-gray-700 max-w-none"
+            >
+                <slot />
+            </div>
+        </div>
+    </main>
+    <Footer />
+</html>

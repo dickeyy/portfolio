@@ -1,0 +1,157 @@
+---
+import ArrowRight from "../icons/ArrowRight";
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import type { FeaturedProjectType } from "../types/projects";
+import FeaturedProject from "../components/FeaturedProject.astro";
+
+const featuredProjects: FeaturedProjectType[] = [
+    {
+        name: "Diary",
+        description:
+            "A private, secure, and open-source place to keep your thoughts, ideas, feelings, or whatever else you want.",
+        link: "https://diary.kyle.so",
+        github: "https://github.com/dickeyy/diary"
+    },
+    {
+        name: "tip.dev",
+        description:
+            "A platform for developers to get paid for their work. This project is currently under development.",
+        link: "https://tip.dev",
+        github: "https://github.com/tipdotdev"
+    },
+    {
+        name: "Quack",
+        description:
+            "A Discord bot aimed at making servers of all sizes safer for everyone, with the best moderation tools.",
+        link: "https://quackbot.xyz",
+        github: "https://github.com/quackdiscord"
+    },
+    {
+        name: "Alias",
+        description: "A digitized version of a game played by my family on holidays.",
+        link: "https://alias.kyle.so",
+        github: "https://github.com/dickeyy/alias"
+    },
+    {
+        name: "Outgone",
+        description:
+            "A new wave of social networking. This is a social media platform for users to find groups of like-minded people.",
+        link: "https://outgone.app",
+        github: "https://github.com/outgone"
+    },
+    {
+        name: "Wrink",
+        description: "Get sh*t done. A new wave of project management. Made by the Outgone team.",
+        link: "https://wrink.app",
+        github: "https://github.com/wrinkapp"
+    },
+    {
+        name: "Dismegle Website",
+        description:
+            "The website for Dismegle, a Discord server which pairs people into random chats.",
+        link: "https://dismegle.com"
+    },
+    {
+        name: "LeetCode",
+        description: "A GitHub repository for all of my LeetCode solutions.",
+        link: "https://github.com/dickeyy/leetcode"
+    },
+    {
+        name: "LasTag",
+        description: "The last gamer tag you'll ever need. Basically a LinkTree for gamers.",
+        link: "https://lastag.xyz",
+        github: "https://github.com/dickeyy/lastag"
+    },
+    {
+        name: "TikTok Scraper",
+        description:
+            "A small project I made for Hansumfella to get follower counts for a list of users.",
+        link: "https://github.com/dickeyy/tiktok-scraper"
+    },
+    {
+        name: "Countdown",
+        description: "A simple event countdown website.",
+        link: "https://countdown.kyle.so",
+        github: "https://github.com/dickeyy/countdown"
+    },
+    {
+        name: "Dickey API",
+        description: "A simple utility API for random things.",
+        link: "https://docs.kyle.so/dickey-api",
+        github: "https://github.com/dickeyy/dickey-api"
+    },
+    {
+        name: "Travel Log",
+        description:
+            "Track all the places you've gone. Log in with demo@dickey.gg, password: travellogdemo",
+        link: "https://travel.kyle.so",
+        github: "https://github.com/dickeyy/travel-log"
+    },
+    {
+        name: "Mirky",
+        description: "A little app to help young adults with their finances. Currently rebuilding.",
+        link: "https://mirky.app",
+        github: "https://github.com/mirkyapp"
+    },
+    {
+        name: "Dismegle AI",
+        description:
+            "A series of AI models designed to automate moderation on the Discord server Dismegle.",
+        link: "https://github.com/dickeyy/dismegle-ai"
+    },
+    {
+        name: "Wordle Clone",
+        description: "A realtime multiplayer clone of the popular game Wordle.",
+        link: "https://wordle.kyle.so",
+        github: "https://github.com/dickeyy/wordle-clone"
+    },
+    {
+        name: "Spotinder",
+        description: "A website to find new music for Spotify. Similar to Tinder, but for music.",
+        link: "https://spotinder.dickey.gg/",
+        github: "https://github.com/dickeyy/spotinder"
+    },
+    {
+        name: "SPHL",
+        description: "A website to check you music knowledge, similar to the game Higher Lower.",
+        link: "https://sphl.dickey.gg",
+        github: "https://github.com/dickeyy/spotify-higher-lower"
+    }
+];
+---
+
+<Layout title="Kyle's Projects">
+    <Nav label="Index" path="/" />
+    <div class="flex-1 flex justify-center min-h-screen">
+        <div class="w-full sm:w-[100%] md:w-[75%] lg:w-[55%] px-4 sm:px-8 py-8">
+            <div class="flex items-start justify-between w-full mt-8">
+                <div class="flex flex-col item-start justify-center">
+                    <h1 class="font-serif italic text-2xl">Projects</h1>
+                    <p class="text-foreground/60 font-light">
+                        A generally unordered collection of my projects
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mt-16 text-foreground/80 font-light text-md"
+            >
+                {featuredProjects.map((project) => <FeaturedProject project={project} />)}
+            </div>
+
+            <p class="text-foreground/60 font-light mt-16">
+                Visit my
+                <a
+                    class="underline underline-offset-4 hover:decoration-foreground transition-all ease-in-out hover:text-foreground"
+                    href="https://github.com/dickeyy"
+                    target="_blank"
+                >
+                    GitHub
+                </a>
+                for everything else.
+            </p>
+            <div class="h-24"></div>
+        </div>
+    </div>
+</Layout>

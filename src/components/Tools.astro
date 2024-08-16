@@ -1,0 +1,41 @@
+---
+import Tool from "./Tool.astro";
+
+const tools = [
+    "JS/TS",
+    "React",
+    "Next.js",
+    "Astro",
+    "Go",
+    "Python",
+    "Java",
+    "Tailwind",
+    "HTML",
+    "CSS",
+    "Electron",
+    "React Native",
+    "Swift",
+    "Express",
+    "MongoDB",
+    "MySQL",
+    "PostgreSQL",
+    "Redis",
+    "GraphQL",
+    "REST",
+    "GCP",
+    "AWS",
+    "Vercel",
+    "Git",
+    "Docker",
+    "Linux",
+    "CI/CD",
+    "Figma",
+    "Photoshop"
+];
+---
+
+<div class="flex flex-col items-center justify-start w-full mt-6">
+    <div class="flex flex-row flex-wrap items-center justify-start w-full mt-4 gap-2">
+        {tools.map((tool) => <Tool label={tool} />)}
+    </div>
+</div>

@@ -1,0 +1,45 @@
+---
+import type { FeaturedProjectType } from "../types/projects";
+import ArrowRight from "../icons/ArrowRight";
+
+interface Props {
+    project: FeaturedProjectType;
+}
+
+const { project } = Astro.props as Props;
+---
+
+<div class="flex flex-col w-full">
+    <div class="flex flex-row gap-4 w-full justify-between pr-4">
+        <div class="inline-flex items-center group">
+            <a
+                class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+                href={project.link}
+                target="_blank"
+            >
+                {project.name}
+            </a>
+            <ArrowRight
+                className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+            />
+        </div>
+
+        {
+            project.github && (
+                <div class="inline-flex items-center group">
+                    <a
+                        class="text-foreground/40 text-xs hover:text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+                        href={project.github}
+                        target="_blank"
+                    >
+                        GitHub
+                    </a>
+                    <ArrowRight className="size-3 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
+                </div>
+            )
+        }
+    </div>
+    <p class="text-sm text-foreground/60 mt-1">
+        {project.description}
+    </p>
+</div>
