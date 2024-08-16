@@ -4,27 +4,33 @@ import TwitterIcon from "../icons/TwitterIcon";
 import GitHubIcon from "../icons/GitHubIcon";
 import InstagramIcon from "../icons/InstagramIcon";
 import LinkedInIcon from "../icons/LinkedInIcon";
+
+interface Props {
+    size?: string;
+}
+
+const { size = "4" } = Astro.props;
 ---
 
 <div class="flex items-center justify-center gap-4">
     <a href="https://github.com/dickeyy" target="_blank">
         <GitHubIcon
-            className="size-4 fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out"
+            className={`size-${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
     <a href="https://twitter.com/kyledickeyy" target="_blank">
         <TwitterIcon
-            className="size-4 fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out"
+            className={`size-${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
     <a href="https://linkedin.com/in/kyletdickey" target="_blank">
         <LinkedInIcon
-            className="size-4 fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out"
+            className={`size-${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
     <a href="https://instagram.com/kyle.dickeyy" target="_blank">
         <InstagramIcon
-            className="size-4 fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out"
+            className={`size-${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
 </div>

@@ -1,6 +1,46 @@
+---
+import ArrowRight from "../icons/ArrowRight";
+
+let allPosts = await Astro.glob("../content/blog/*.md").catch(() => []);
+let posts: any[] = [];
+if (allPosts.length > 0) {
+    allPosts = allPosts.sort(
+        (a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()
+    );
+    // remove posts with published: false
+    allPosts = allPosts.filter((post) => post.frontmatter.published !== false);
+    posts = allPosts.slice(0, 3);
+}
+---
+
 <div class="flex flex-col w-full mt-16 text-foreground/80 font-light text-md">
     <p class="leading-7 font-serif italic text-xl text-foreground">Writing</p>
     <hr class="border-foreground/20 w-full border-1/2 border-dashed mb-2" />
 
-    <p class="text-sm text-foreground/60 mt-4">Nothing here yet...</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 items-start justify-center w-full mt-4 gap-8">
+        {
+            posts.length > 0 ? (
+                <>
+                    {posts.map((post) => (
+                        <div class="flex flex-col w-full">
+                            <div class="inline-flex items-center group">
+                                <a
+                                    class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+                                    href={`/blog/${post.frontmatter.slug}`}
+                                >
+                                    {post.frontmatter.title}
+                                </a>
+                                <ArrowRight className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
+                            </div>
+                            <p class="text-sm text-foreground/60 mt-1">
+                                {post.frontmatter.description}
+                            </p>
+                        </div>
+                    ))}
+                </>
+            ) : (
+                <p class="text-sm text-foreground/60">Nothing here yet.</p>
+            )
+        }
+    </div>
 </div>

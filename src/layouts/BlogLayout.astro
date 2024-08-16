@@ -4,14 +4,10 @@ import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
-    title: string;
-    description?: string;
-    ogImage?: string;
-    showFooter?: boolean;
-    showNavbar?: boolean;
+    frontmatter: any;
 }
 
-const { title, description, ogImage, showFooter = true } = Astro.props as Props;
+const { frontmatter } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -26,10 +22,7 @@ const { title, description, ogImage, showFooter = true } = Astro.props as Props;
 
         <!-- start meta -->
         <meta charset="UTF-8" />
-        <meta
-            name="description"
-            content={description ? description : "Kyle Dickey, Junior Software Engineer"}
-        />
+        <meta name="description" content={frontmatter.description} />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/x-icon" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
@@ -109,12 +102,9 @@ const { title, description, ogImage, showFooter = true } = Astro.props as Props;
 
         <!-- start open graph -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta
-            property="og:description"
-            content={description || "Kyle Dickey, Junior Software Engineer"}
-        />
-        <meta property="og:image" content={ogImage || "/og-image.png"} />
+        <meta property="og:title" content={frontmatter.title} />
+        <meta property="og:description" content={frontmatter.description} />
+        <meta property="og:image" content={frontmatter.ogImage || "/og-image.png"} />
         <meta property="og:url" content={Astro.url} />
         <!-- end open graph -->
 
@@ -122,15 +112,12 @@ const { title, description, ogImage, showFooter = true } = Astro.props as Props;
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@kyledickeyy" />
         <meta name="twitter:creator" content="@kyledickeyy" />
-        <meta name="twitter:title" content={title} />
-        <meta
-            name="twitter:description"
-            content={description || "Kyle Dickey, Junior Software Engineer"}
-        />
-        <meta name="twitter:image" content={ogImage || "/og-image.png"} />
+        <meta name="twitter:title" content={frontmatter.title} />
+        <meta name="twitter:description" content={frontmatter.description} />
+        <meta name="twitter:image" content={frontmatter.ogImage || "/og-image.png"} />
         <!-- end twitter -->
 
-        <title>{title}</title>
+        <title>{frontmatter.title}</title>
     </head>
     <body
         class="m-0
@@ -144,8 +131,17 @@ const { title, description, ogImage, showFooter = true } = Astro.props as Props;
     >
         <ViewTransitions />
     </body>
-    <main class="flex flex-grow items-center justify-center w-full">
-        <slot />
+    <main
+        class="mt-16 flex w-full flex-grow flex-col items-center justify-start px-4 py-4 sm:mt-20 sm:px-8"
+    >
+        <div class="flex w-full max-w-3xl flex-1 flex-col">
+            <h1 class="mb-6 text-3xl font-bold sm:text-4xl">{frontmatter.title}</h1>
+            <div
+                class="prose prose-sm sm:prose lg:prose-lg xl:prose-lg prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base prose-h5:text-sm prose-h6:text-sm prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal prose-li:text-gray-700 max-w-none"
+            >
+                <slot />
+            </div>
+        </div>
     </main>
-    {showFooter && <Footer />}
+    <Footer />
 </html>
