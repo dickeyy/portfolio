@@ -25,6 +25,18 @@ import config from "../../config";
         <div class="inline-flex items-center group">
             <a
                 class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+                href={config.socials.linkedin.url}
+                target="_blank"
+            >
+                LinkedIn (@{config.socials.linkedin.handle})
+            </a>
+            <ArrowRight
+                className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+            />
+        </div>
+        <div class="inline-flex items-center group">
+            <a
+                class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
                 href={config.socials.twitter.url}
                 target="_blank"
             >
@@ -41,18 +53,6 @@ import config from "../../config";
                 target="_blank"
             >
                 Bluesky (@{config.socials.bsky.handle})
-            </a>
-            <ArrowRight
-                className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
-            />
-        </div>
-        <div class="inline-flex items-center group">
-            <a
-                class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
-                href={config.socials.linkedin.url}
-                target="_blank"
-            >
-                LinkedIn (@{config.socials.linkedin.handle})
             </a>
             <ArrowRight
                 className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
