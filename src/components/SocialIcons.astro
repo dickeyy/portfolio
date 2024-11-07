@@ -4,6 +4,7 @@ import TwitterIcon from "../icons/TwitterIcon";
 import GitHubIcon from "../icons/GitHubIcon";
 import InstagramIcon from "../icons/InstagramIcon";
 import LinkedInIcon from "../icons/LinkedInIcon";
+import BlueskyIcon from "../icons/BlueskyIcon";
 
 interface Props {
     size?: string;
@@ -15,6 +16,11 @@ const { size = "size-4" } = Astro.props;
 <div class="flex items-center justify-center gap-4">
     <a href="https://github.com/dickeyy" target="_blank">
         <GitHubIcon
+            className={`${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
+        />
+    </a>
+    <a href="https://bsky.app/profile/kyle.so" target="_blank">
+        <BlueskyIcon
             className={`${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
