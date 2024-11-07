@@ -2,6 +2,7 @@
 import type { FeaturedProjectType } from "../types/projects";
 import FeaturedProject from "./FeaturedProject.astro";
 import ArrowRight from "../icons/ArrowRight";
+import Separator from "./Separator.astro";
 
 const featuredProjects: FeaturedProjectType[] = [
     {
@@ -36,7 +37,7 @@ const featuredProjects: FeaturedProjectType[] = [
 
 <div class="flex flex-col w-full mt-16 text-foreground/80 font-light text-md">
     <p class="leading-7 font-serif italic text-xl text-foreground">Projects</p>
-    <hr class="border-foreground/20 w-full border-1/2 border-dashed mb-2" />
+    <Separator />
 
     <div class="grid grid-cols-1 md:grid-cols-2 items-start justify-center w-full mt-4 gap-8">
         {featuredProjects.map((project) => <FeaturedProject project={project} />)}
