@@ -2,6 +2,7 @@
 import type { FeaturedProjectType } from "../types/projects";
 import FeaturedProject from "./FeaturedProject.astro";
 import ArrowRight from "../icons/ArrowRight";
+import config from "../../config";
 ---
 
 <div class="flex flex-col w-full mt-16 text-foreground/80 font-light text-md">
@@ -12,10 +13,10 @@ import ArrowRight from "../icons/ArrowRight";
         <div class="inline-flex items-center group">
             <a
                 class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
-                href="mailto:k@kyle.so"
+                href=`mailto:${config.contact.email}`
                 target="_blank"
             >
-                Email (k@kyle.so)
+                Email ({config.contact.email})
             </a>
             <ArrowRight
                 className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
@@ -24,10 +25,10 @@ import ArrowRight from "../icons/ArrowRight";
         <div class="inline-flex items-center group">
             <a
                 class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
-                href="https://twitter.com/kyledickeyy"
+                href={config.socials.twitter.url}
                 target="_blank"
             >
-                Twitter (@kyledickeyy)
+                Twitter (@{config.socials.twitter.handle})
             </a>
             <ArrowRight
                 className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
@@ -36,10 +37,22 @@ import ArrowRight from "../icons/ArrowRight";
         <div class="inline-flex items-center group">
             <a
                 class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
-                href="https://www.linkedin.com/in/kyletdickey/"
+                href={config.socials.bsky.url}
                 target="_blank"
             >
-                LinkedIn (@kyletdickey)
+                Bluesky (@{config.socials.bsky.handle})
+            </a>
+            <ArrowRight
+                className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+            />
+        </div>
+        <div class="inline-flex items-center group">
+            <a
+                class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+                href={config.socials.linkedin.url}
+                target="_blank"
+            >
+                LinkedIn (@{config.socials.linkedin.handle})
             </a>
             <ArrowRight
                 className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"

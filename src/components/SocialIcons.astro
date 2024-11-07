@@ -5,6 +5,7 @@ import GitHubIcon from "../icons/GitHubIcon";
 import InstagramIcon from "../icons/InstagramIcon";
 import LinkedInIcon from "../icons/LinkedInIcon";
 import BlueskyIcon from "../icons/BlueskyIcon";
+import config from "../../config";
 
 interface Props {
     size?: string;
@@ -14,27 +15,27 @@ const { size = "size-4" } = Astro.props;
 ---
 
 <div class="flex items-center justify-center gap-4">
-    <a href="https://github.com/dickeyy" target="_blank">
+    <a href={config.socials.github.url} target="_blank">
         <GitHubIcon
             className={`${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
-    <a href="https://bsky.app/profile/kyle.so" target="_blank">
+    <a href={config.socials.bsky.url} target="_blank">
         <BlueskyIcon
             className={`${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
-    <a href="https://twitter.com/kyledickeyy" target="_blank">
+    <a href={config.socials.twitter.url} target="_blank">
         <TwitterIcon
             className={`${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
-    <a href="https://linkedin.com/in/kyletdickey" target="_blank">
+    <a href={config.socials.linkedin.url} target="_blank">
         <LinkedInIcon
             className={`${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
-    <a href="https://instagram.com/kyle.dickeyy" target="_blank">
+    <a href={config.socials.instagram.url} target="_blank">
         <InstagramIcon
             className={`${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
