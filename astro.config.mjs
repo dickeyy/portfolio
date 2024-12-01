@@ -1,6 +1,8 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 import react from "@astrojs/react";
 
@@ -13,5 +15,12 @@ export default defineConfig({
             applyBaseStyles: true
         }),
         react()
-    ]
+    ],
+    markdown: {
+        shikiConfig: {
+            theme: "min-dark"
+        },
+        rehypePlugins: [[rehypeKatex, { strict: false, inline: true }]],
+        remarkPlugins: [remarkMath]
+    }
 });

@@ -1,17 +1,21 @@
 ---
 import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
-    frontmatter: any;
+    title: string;
+    description?: string;
+    date?: any;
+    ogImage?: string;
 }
 
-const { frontmatter } = Astro.props as Props;
+const { title, description, ogImage, date } = Astro.props as Props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
     <head>
         <!-- start analytics -->
         <script
@@ -20,9 +24,27 @@ const { frontmatter } = Astro.props as Props;
             src="https://analytics.kyle.so/js/script.outbound-links.js"></script>
         <!-- end analytics -->
 
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+            integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+            crossorigin="anonymous"
+        />
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+            integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+            crossorigin="anonymous"></script>
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+            integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+            crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+
         <!-- start meta -->
         <meta charset="UTF-8" />
-        <meta name="description" content={frontmatter.description} />
+        <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/x-icon" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
@@ -102,9 +124,9 @@ const { frontmatter } = Astro.props as Props;
 
         <!-- start open graph -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={frontmatter.title} />
-        <meta property="og:description" content={frontmatter.description} />
-        <meta property="og:image" content={frontmatter.ogImage || "/og-image.png"} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage || "/og-image.png"} />
         <meta property="og:url" content={Astro.url} />
         <!-- end open graph -->
 
@@ -112,12 +134,12 @@ const { frontmatter } = Astro.props as Props;
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@kyledickeyy" />
         <meta name="twitter:creator" content="@kyledickeyy" />
-        <meta name="twitter:title" content={frontmatter.title} />
-        <meta name="twitter:description" content={frontmatter.description} />
-        <meta name="twitter:image" content={frontmatter.ogImage || "/og-image.png"} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage || "/og-image.png"} />
         <!-- end twitter -->
 
-        <title>{frontmatter.title}</title>
+        <title>{title}</title>
     </head>
     <body
         class="m-0
@@ -131,15 +153,35 @@ const { frontmatter } = Astro.props as Props;
     >
         <ViewTransitions />
     </body>
-    <main
-        class="mt-16 flex w-full flex-grow flex-col items-center justify-start px-4 py-4 sm:mt-20 sm:px-8"
-    >
-        <div class="flex w-full max-w-3xl flex-1 flex-col">
-            <h1 class="mb-6 text-3xl font-bold sm:text-4xl">{frontmatter.title}</h1>
-            <div
-                class="prose prose-sm sm:prose lg:prose-lg xl:prose-lg prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base prose-h5:text-sm prose-h6:text-sm prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal prose-li:text-gray-700 max-w-none"
-            >
-                <slot />
+
+    <main class="flex flex-grow items-center justify-center w-full">
+        <Nav label="Blog" path="/blog" />
+
+        <div class="flex-1 flex justify-center min-h-screen">
+            <div class="w-full sm:w-[100%] md:w-[75%] lg:w-[55%] px-4 sm:px-8 py-8">
+                <div class="flex items-start justify-between w-full mt-8">
+                    <div class="flex flex-col item-start justify-center">
+                        <h1 class="font-serif italic text-2xl">{title}</h1>
+                        <p class="text-foreground/60 font-light">
+                            {description}
+                        </p>
+                        <p class="text-foreground/60 font-light text-sm italic font-serif mt-4">
+                            <date>
+                                {
+                                    date.toLocaleDateString("en-US", {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric"
+                                    })
+                                }
+                            </date> by <author>Kyle Dickey</author>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="prose-blog mt-12">
+                    <slot />
+                </div>
             </div>
         </div>
     </main>

@@ -124,3 +124,42 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.8);
 }
+
+.prose-blog {
+    @apply prose;
+
+    /* heading styles */
+    @apply prose-h1:text-2xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-lg prose-h6:text-sm;
+    @apply prose-headings:text-foreground prose-headings:font-serif prose-headings:font-normal;
+
+    /* paragraph styles */
+    @apply prose-p:text-foreground/80 prose-p:font-normal;
+
+    /* list styles */
+    @apply prose-ol:list-decimal prose-ul:list-disc prose-li:text-foreground/80;
+
+    /* bold and italic styles */
+    @apply prose-strong:text-foreground prose-em:text-foreground/60 prose-em:font-serif prose-em:text-[18px];
+
+    /* link styles */
+    @apply hover:prose-a:text-foreground prose-a:text-foreground/80 prose-a:underline-offset-4;
+
+    /* quote styles */
+    @apply prose-blockquote:text-foreground/80 prose-blockquote:font-serif prose-blockquote:italic;
+    @apply prose-blockquote:border-l-2 prose-blockquote:border-foreground/20 prose-blockquote:pl-4;
+
+    /* image styles */
+    @apply prose-img:rounded prose-img:border prose-img:border-border;
+    @apply aspect-auto prose-img:max-w-full prose-img:max-h-full;
+
+    /* table styles */
+    @apply prose-table:text-foreground/80 prose-table:font-normal;
+    @apply prose-th:text-foreground prose-th:font-normal prose-th:text-lg;
+
+    /* hr styles */
+    @apply prose-hr:border-b prose-hr:border-foreground/20 prose-hr:my-8;
+}
+
+.prose-blog :not(pre) > code {
+    @apply rounded bg-muted text-muted-foreground px-1 py-0.5 font-mono;
+}
