@@ -99,3 +99,8 @@ on user feedback.
 -   _The Documentation System_ by Divio
 -   _Technical Writing Process_ by James Gill
 -   _Docs Like Code_ by Anne Gentle
+
+---
+
+You can find the source code for this article
+[here](https://github.com/dickeyy/portfolio/blob/main/src/content/blog/technical-writing-guide.md).

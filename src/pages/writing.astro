@@ -1,0 +1,46 @@
+---
+import BlogBlerb from "../components/BlogBlerb.astro";
+import Nav from "../components/Nav.astro";
+import ArrowRight from "../icons/ArrowRight";
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+
+const filteredPosts = posts
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+    .filter((post) => post.data.published === true);
+---
+
+<Layout title="Kyle Dickey">
+    <Nav label="Index" path="/" />
+    <div class="flex-1 flex justify-center min-h-screen">
+        <div class="w-full sm:w-[100%] md:w-[75%] lg:w-[55%] px-4 sm:px-8 py-8">
+            <div class="flex items-start justify-between w-full mt-8">
+                <div class="flex flex-col item-start justify-center">
+                    <h1 class="font-serif italic text-2xl">Writing</h1>
+                    <p class="text-foreground/60 font-light">
+                        An almagamation of my thoughts, notes, ideas, and anything else I feel like
+                        writing about.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mt-16 text-foreground/80 font-light text-md"
+            >
+                {
+                    filteredPosts.length > 0 ? (
+                        <>
+                            {filteredPosts.map((post) => (
+                                <BlogBlerb post={post} />
+                            ))}
+                        </>
+                    ) : (
+                        <p class="text-sm text-foreground/60">Nothing here yet.</p>
+                    )
+                }
+            </div>
+        </div>
+    </div></Layout
+>

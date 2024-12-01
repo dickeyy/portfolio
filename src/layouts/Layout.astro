@@ -131,6 +131,7 @@ const { title, description, ogImage, showFooter = true } = Astro.props as Props;
         <!-- end twitter -->
 
         <title>{title}</title>
+        <ViewTransitions />
     </head>
     <body
         class="m-0
@@ -142,9 +143,7 @@ const { title, description, ogImage, showFooter = true } = Astro.props as Props;
             items-center
             justify-center"
     >
-        <ViewTransitions />
-    </body>
-    <main class="flex flex-grow items-center justify-center w-full">
+    </body><main class="flex flex-grow items-center justify-center w-full">
         <slot />
     </main>
     {showFooter && <Footer />}

@@ -1,5 +1,6 @@
 ---
 import ArrowRight from "../icons/ArrowRight";
+import BlogBlerb from "./BlogBlerb.astro";
 import Separator from "./Separator.astro";
 import { getCollection } from "astro:content";
 
@@ -21,18 +22,7 @@ const filteredPosts = posts
             filteredPosts.length > 0 ? (
                 <>
                     {filteredPosts.map((post) => (
-                        <div class="flex flex-col w-full">
-                            <div class="inline-flex items-center group">
-                                <a
-                                    class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
-                                    href={`/blog/${post.slug}?prev=/`}
-                                >
-                                    {post.data.title}
-                                </a>
-                                <ArrowRight className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
-                            </div>
-                            <p class="text-sm text-foreground/60 mt-1">{post.data.description}</p>
-                        </div>
+                        <BlogBlerb post={post} />
                     ))}
                 </>
             ) : (
