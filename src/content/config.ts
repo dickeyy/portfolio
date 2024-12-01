@@ -8,7 +8,8 @@ const blogCollection = defineCollection({
         title: z.string(),
         description: z.string(),
         date: z.date(),
-        published: z.boolean()
+        published: z.boolean(),
+        ogImage: z.string().optional()
     })
 });
 

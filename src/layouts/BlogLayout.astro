@@ -11,7 +11,7 @@ interface Props {
     ogImage?: string;
 }
 
-const { title, description, ogImage, date } = Astro.props as Props;
+const { title, description, date, ogImage } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -19,6 +19,7 @@ const { title, description, ogImage, date } = Astro.props as Props;
     <head>
         <!-- start analytics -->
         <script
+            is:inline
             defer
             data-domain="kyle.so"
             src="https://analytics.kyle.so/js/script.outbound-links.js"></script>
@@ -31,11 +32,13 @@ const { title, description, ogImage, date } = Astro.props as Props;
             crossorigin="anonymous"
         />
         <script
+            is:inline
             defer
             src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
             integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
             crossorigin="anonymous"></script>
         <script
+            is:inline
             defer
             src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
             integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
@@ -124,7 +127,7 @@ const { title, description, ogImage, date } = Astro.props as Props;
 
         <!-- start open graph -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={title + " - Kyle Dickey"} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage || "/og-image.png"} />
         <meta property="og:url" content={Astro.url} />
@@ -134,7 +137,7 @@ const { title, description, ogImage, date } = Astro.props as Props;
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@kyledickeyy" />
         <meta name="twitter:creator" content="@kyledickeyy" />
-        <meta name="twitter:title" content={title} />
+        <meta name="twitter:title" content={title + " - Kyle Dickey"} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage || "/og-image.png"} />
         <!-- end twitter -->
