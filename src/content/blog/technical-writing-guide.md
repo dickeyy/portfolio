@@ -2,7 +2,7 @@
 title: The Art of Technical Writing
 description: A comprehensive guide to writing clear, engaging technical documentation
 date: 2023-03-23
-published: false
+published: true
 ---
 
 Technical writing doesn't have to be dry or boring. In this guide, we'll explore how to create

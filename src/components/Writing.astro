@@ -1,17 +1,15 @@
 ---
 import ArrowRight from "../icons/ArrowRight";
 import Separator from "./Separator.astro";
+import { getCollection } from "astro:content";
 
-let allPosts = await Astro.glob("../content/blog/*.md").catch(() => []);
-let posts: any[] = [];
-if (allPosts.length > 0) {
-    allPosts = allPosts.sort(
-        (a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()
-    );
-    // remove posts with published: false
-    allPosts = allPosts.filter((post) => post.frontmatter.published !== false);
-    posts = allPosts.slice(0, 3);
-}
+// query the blog collection
+const posts = await getCollection("blog");
+
+const filteredPosts = posts
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+    .filter((post) => post.data.published === true)
+    .slice(0, 4);
 ---
 
 <div class="flex flex-col w-full mt-16 text-foreground/80 font-light text-md">
@@ -20,22 +18,20 @@ if (allPosts.length > 0) {
 
     <div class="grid grid-cols-1 md:grid-cols-2 items-start justify-center w-full mt-4 gap-8">
         {
-            posts.length > 0 ? (
+            filteredPosts.length > 0 ? (
                 <>
-                    {posts.map((post) => (
+                    {filteredPosts.map((post) => (
                         <div class="flex flex-col w-full">
                             <div class="inline-flex items-center group">
                                 <a
                                     class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
-                                    href={`/blog/${post.frontmatter.slug}`}
+                                    href={`/blog/${post.slug}?prev=/`}
                                 >
-                                    {post.frontmatter.title}
+                                    {post.data.title}
                                 </a>
                                 <ArrowRight className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
                             </div>
-                            <p class="text-sm text-foreground/60 mt-1">
-                                {post.frontmatter.description}
-                            </p>
+                            <p class="text-sm text-foreground/60 mt-1">{post.data.description}</p>
                         </div>
                     ))}
                 </>
@@ -44,4 +40,18 @@ if (allPosts.length > 0) {
             )
         }
     </div>
+
+    {
+        posts.length > 4 && (
+            <div class="inline-flex items-center group mt-6">
+                <a
+                    class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
+                    href="/blog"
+                >
+                    View all writing
+                </a>
+                <ArrowRight className="w-4 h-4 ml-1 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
+            </div>
+        )
+    }
 </div>
