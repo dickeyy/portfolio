@@ -16,7 +16,12 @@ const { Content } = await entry.render();
 export const prerender = true;
 ---
 
-<BlogLayout title={entry.data.title} description={entry.data.description} date={entry.data.date}>
+<BlogLayout
+    title={entry.data.title}
+    description={entry.data.description}
+    date={entry.data.date}
+    ogImage={entry.data.ogImage}
+>
     <article class="prose-docs">
         <Content />
     </article>
