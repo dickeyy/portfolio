@@ -169,5 +169,5 @@
 }
 
 .prose-blog :not(pre) > code {
-    @apply rounded bg-muted text-muted-foreground px-1 py-0.5 font-mono;
+    @apply rounded bg-muted text-muted-foreground px-1 py-0.5 font-mono text-sm font-normal before:hidden after:hidden mx-1;
 }
