@@ -5,7 +5,16 @@ const { post } = Astro.props;
 ---
 
 <div class="flex flex-col w-full">
-    <div class="inline-flex items-center group">
+    <p class="text-foreground/40 font-serif italic font-normal text-xs">
+        {
+            post.data.date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            })
+        }
+    </p>
+    <div class="inline-flex items-center group mt-2">
         <a
             class="text-foreground/80 underline hover:decoration-foreground/80 transition-all ease-in-out decoration-foreground/20 underline-offset-4"
             href={`/writing/${post.slug}`}
