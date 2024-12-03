@@ -3,15 +3,17 @@ import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
+import config from "../../config";
 
 interface Props {
     title: string;
     description?: string;
     date?: any;
     ogImage?: string;
+    keywords?: string[];
 }
 
-const { title, description, date, ogImage } = Astro.props as Props;
+const { title, description, date, ogImage, keywords } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -54,74 +56,7 @@ const { title, description, date, ogImage } = Astro.props as Props;
         <meta name="robots" content="index, follow" />
         <meta
             name="keywords"
-            content="
-            kyle dickey,
-            kyle,
-            dickey,
-            dickeyy,
-            imdickey,
-            software engineer,
-            junior software engineer,
-            engineer, 
-            freelancer,
-            developer,
-            colorado,
-            colorado state university,
-            college, 
-            diary, 
-            tip.dev,
-            quack, 
-            quack discord bot, 
-            alias, 
-            wordle, 
-            wordle clone,
-            computer science,
-            computer science major,
-            cs major,
-            cs,
-            web development,
-            web dev,
-            web,
-            front end,
-            front-end,
-            back end,
-            back-end,
-            programming,
-            programming language,
-            programming languages,
-            javascript,
-            typescript,
-            react,
-            reactjs,
-            node,
-            node.js,
-            nodejs,
-            npm,
-            package manager,
-            package managers,
-            git,
-            github,
-            github actions,
-            github actions ci,
-            github actions cd,
-            github actions workflow,
-            github actions workflows,
-            github actions runner,
-            github actions runners,
-            github actions runners,
-
-            discord,
-            discord bot,
-            discord bots,
-            discord bot creator,
-            discord bot creators,
-            discord bots,
-            discord bot developer,
-            discord bot developers,
-            discord bot creator,
-            discord bot creators,
-            discord bots,
-            discord bot developer,"
+            content={config.meta.defaultKeywords.concat(keywords || []).join(", ")}
         />
         <!-- end meta -->
 
