@@ -34,11 +34,12 @@ Only the properly formatted `mul(x,y)` patterns count. My solution uses regex to
 patters:
 
 ```go
-func getMulNums(input string, conditional bool) [][]int {
- muls := make([][]int, 0)
- re := regexp.MustCompile(`mul\((\d+),(\d+)\)`)
- matches := re.FindAllStringSubmatchIndex(input, -1)
-    // ...
+func getMulNums(input string) [][]int {
+    muls := make([][]int, 0)
+    re := regexp.MustCompile(`mul\((\d+),(\d+)\)`)
+    matches := re.FindAllStringSubmatchIndex(input, -1)
+
+    // go on to process each match ...
 }
 ```
 
@@ -46,15 +47,57 @@ You then just need to sum up the products of each pair.
 
 Part 2 introduces conditional logic with `do()` and `don't()` instructions that enable or disable
 multiplication operations. I modified the regex pattern to capture these new instructions and added
-a boolean flag to track whether multiplications should be processed. The regex for this part is:
+a boolean flag to track whether multiplications should be processed.
 
-```txt
-(mul\((\d+),(\d+)\)|do\(\)|dont\(\))
+For this part, I just modified the regex pattern to capture these new instructions, added a
+conditional boolean to the `getMulNums` function, and then added an `allowMul` boolean which (if the
+conditional is true) would process the `do()` and `dont()` instructions.
+
+```go
+func getMulNums(input string, conditional bool) [][]int {
+    // ...
+    re := regexp.MustCompile(`mul\(\d+,\d+\)|do\(\)|don't\(\)`) // new regex
+    // ...
+
+    allowMul := true
+
+	for _, match := range matches {
+		op := input[match[0]:match[1]]
+
+        // this part only happens if we are doing part 2
+		if conditional {
+			if op == "do()" {
+				allowMul = true
+			} else if op == "don't()" {
+				allowMul = false
+			}
+		}
+
+        // slightly modified from before due to the new conditional
+		if allowMul && strings.HasPrefix(op, "mul") {
+			muls = append(muls, extractNumsFromMul(op))
+		}
+	}
+
+	return muls
+}
 ```
 
-The modified `getMulNums` is pretty long, so I'm not going to include it here. However, you can find
-it on my
-[GitHub](https://github.com/dickeyy/adventofcode/blob/769e9588a1b718979594567f159c673930de29c1/2024/day-3/main.go#L25).
+Aside from these updates, I also made a `extractNumsFromMul` function to make my code a bit easier
+to read:
+
+```go
+func extractNumsFromMul(op string) []int {
+	numRe := regexp.MustCompile(`(\d+)`)
+	nums := numRe.FindAllStringSubmatch(op, -1)
+	x, _ := strconv.Atoi(nums[0][1])
+	y, _ := strconv.Atoi(nums[1][1])
+	return []int{x, y}
+}
+```
+
+As always, the full solution is available on my
+[GitHub](https://github.com/dickeyy/adventofcode/blob/main/2024/day-3/main.go).
 
 ### Thoughts
 
