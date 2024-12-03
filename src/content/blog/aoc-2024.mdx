@@ -6,6 +6,15 @@ ogImage: /blog-og-images/aoc-2024.png
 published: true
 ---
 
+import Callout from "../../components/Callout.astro";
+
+<br />
+
+<Callout type="none">
+    All of my Advent of Code solutions are available on
+    [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
+</Callout>
+
 ## Day 3: Mull it Over
 
 Today's puzzle was about parsing corrupted computer memory and extracting valid multiplication
@@ -64,8 +73,8 @@ _See you tomorrow!_
 
 ## Day 2: Red-Nosed Reports
 
-Not too bad today to be honest. I got both parts done in <45 minutes after I started, which included
-an algorithm rewrite is not too bad for me.
+Not too bad today to be honest. I got both parts done in < 45 minutes after I started, which
+included an algorithm rewrite is not too bad for me.
 
 Today's problem was about processing a $\mathbb{R}^{m\times n}$ matrix of integers. Each row is a
 list of "levels". For each row, you need to verify it passes a few rules:
@@ -162,10 +171,10 @@ go.
 This algorithm would be much easier in Python using `zip` and even day 1 would be easier with this
 same function. I may write a `Zip2` function in Go as a util in the future since it's 2 days in a
 row that my life would be so much easier. That said, this algorithm works and is still pretty fast.
-Both parts ran in <600 µs on my server. The point of AoC (for me) is not to write the most efficient
-algorithm possible and not to get on the leaderboard, but to learn and improve. From doing AoC for
-the past few years, I've learned a lot about algorithms and data structures, and in my book, that's
-a win.
+Both parts ran in < 600 µs on my server. The point of AoC (for me) is not to write the most
+efficient algorithm possible and not to get on the leaderboard, but to learn and improve. From doing
+AoC for the past few years, I've learned a lot about algorithms and data structures, and in my book,
+that's a win.
 
 Overall, I'd give this a 3/10 difficulty, simply because it was a bit of work to find a
 semi-efficient solution for part 2.

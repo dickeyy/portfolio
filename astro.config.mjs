@@ -2,9 +2,9 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
-
 import react from "@astrojs/react";
 import node from "@astrojs/node";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +16,8 @@ export default defineConfig({
         tailwind({
             applyBaseStyles: true
         }),
-        react()
+        react(),
+        mdx()
     ],
     markdown: {
         shikiConfig: {

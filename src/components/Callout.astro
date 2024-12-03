@@ -1,0 +1,53 @@
+---
+// src/components/Callout.astro
+interface Props {
+    type?: "note" | "tip" | "warning" | "danger" | "none";
+    title?: string;
+}
+
+const { type = "note", title = "" } = Astro.props;
+
+const icons = {
+    note: "📝",
+    tip: "💡",
+    warning: "⚠️",
+    danger: "🚨",
+    none: ""
+};
+---
+
+<div
+    class:list={[
+        "my-4 p-3 rounded-[5px] border-l-4",
+        {
+            "border-blue-500 bg-blue-500/[8%]": type === "note",
+            "border-green-500 bg-green-400/5": type === "tip",
+            "border-yellow-500 bg-yellow-400/5": type === "warning",
+            "border-red-500 bg-red-400/5": type === "danger",
+            "border-white bg-[#1f1f1f]": type === "none"
+        }
+    ]}
+>
+    {
+        title && (
+            <div
+                class:list={[
+                    "flex items-center gap-2 font-semibold mb-2",
+                    {
+                        "text-blue-500": type === "note",
+                        "text-green-500": type === "tip",
+                        "text-yellow-500": type === "warning",
+                        "text-red-500": type === "danger",
+                        "text-foreground": type === "none"
+                    }
+                ]}
+            >
+                <span>{icons[type]}</span>
+                <span class="text-md">{title}</span>
+            </div>
+        )
+    }
+    <div class="prose dark:prose-invert max-w-none prose-p:text-foreground/80 prose-p:font-normal">
+        <slot />
+    </div>
+</div>
