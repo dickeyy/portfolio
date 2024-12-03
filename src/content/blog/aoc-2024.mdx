@@ -53,10 +53,10 @@ For part 1, you must find the number of valid `mul` instructions (where $x$ and 
 integers) and sum up their products. For example:
 
 ```
-xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))
+xmul(2,4)mul[3,7]a2mul(4,3)
 ```
 
-Would be `(2*4 + 5*5 + 11*8 + 8*5) = 161`.
+Would be `(2*4) + (4*3) = 20`.
 
 Only the properly formatted `mul(x,y)` patterns count. My solution uses regex to extract these
 patters:
