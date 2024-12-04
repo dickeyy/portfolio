@@ -13,6 +13,7 @@ keywords:
         "advent of code 2024 day 1 solution",
         "advent of code 2024 day 2 solution",
         "advent of code 2024 day 3 solution",
+        "advent of code 2024 day 4 solution",
         "aoc 2024 golang solutions",
         "advent of code golang",
         "advent of code 2024 explained",
@@ -27,6 +28,7 @@ keywords:
         "historian hysteria",
         "red-nosed reports",
         "mull it over",
+        "ceres search",
         "golang optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -42,6 +44,74 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 4: Ceres Search
+
+Today's puzzle was an interesting twist on the classic word search problem. Instead of searching for
+a single instance of "XMAS", we needed to find all possible occurrences in Part 1, and then pivot to
+finding X-shaped "MAS" patterns in Part 2.
+
+There's quite a bit of code for today, so I'm not going to include it all here. As always, the full
+solution is available on my
+[GitHub](https://github.com/dickeyy/adventofcode/blob/main/2024/day-4/main.go).
+
+For Part 1, I implemented a grid search that looks for "XMAS" in all eight possible directions
+(horizontal, vertical, and diagonal) from any starting position. The approach uses direction vectors
+to check each possible orientation:
+
+```go
+var dirs = []Direction{
+    {0, 1},   // right
+    {0, -1},  // left
+    {1, 0},   // down
+    {-1, 0},  // up
+    {1, 1},   // down-right
+    {1, -1},  // down-left
+    {-1, 1},  // up-right
+    {-1, -1}, // up-left
+}
+```
+
+Part 2 required a different approach since we needed to find X-shaped patterns where each diagonal
+spells either "MAS" or "SAM". I optimized this by only checking positions that contain 'A' (the
+center of the X) and then validating the diagonals:
+
+```go
+if grid[row][col] == 'A' {
+    if checkXMASCross(grid, row, col, rows, cols) {
+        count++
+    }
+}
+```
+
+### Thoughts
+
+Today's puzzle was quite the step up from the last one (in my opinion). While grid traversal and
+pattern matchiing might sound straightforward, implementing both parts correctly required careful
+thought and precise implementation.
+
+The part that really made thhis puzzle tricky was handling all the edge cases correcly. In part 1,
+ensuring the pattern checking worked in all eight directions while staying within bounds took some
+debugging to get right. The pattern validation logic needed to be both efficient and thorough since
+we were looking for all possible instances of "XMAS".
+
+Part 2's X-pattern search was even more devious - it fundamentally changed how we needed to think
+about the problem. The realization that we could optimize by starting from 'A' positions helped, but
+validating the diagonal patterns correctly and handling the fact that "MAS" could be reversed added
+extra complexity. Plus, the way the puzzle description led us to initially think about it in terms
+of overlapping "MAS" strings, when really it was about finding X-shaped patterns, was quite clever.
+
+Performance-wise, while both parts run quickly thanks to the optimized starting positions (X/A),
+getting there required several refactoring attempts to handle all cases correctly while maintaining
+efficiency.
+
+I'd rate this a 5/10 difficulty - definitely more challenging than the first three days and
+requiring some solid problem-solving skills to implement correctly. The misdirection in Part 2 and
+the need for precise pattern matching logic made this a satisfyingly complex puzzle.
+
+_See you tomorrow!_
+
+---
 
 ## Day 3: Mull it Over
 
