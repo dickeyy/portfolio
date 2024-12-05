@@ -1,7 +1,7 @@
 ---
 title: Advent of Code 2024
 description: A log of my experience with Advent of Code 2024, there are spoilers in here so beware.
-date: 2024-12-03
+date: 2024-12-04
 ogImage: /blog-og-images/aoc-2024.png
 published: true
 keywords:
@@ -14,22 +14,24 @@ keywords:
         "advent of code 2024 day 2 solution",
         "advent of code 2024 day 3 solution",
         "advent of code 2024 day 4 solution",
+        "advent of code 2024 day 5 solution",
         "aoc 2024 golang solutions",
-        "advent of code golang",
+        "advent of code go",
         "advent of code 2024 explained",
-        "advent of code 2024 golang",
+        "advent of code 2024 go",
         "advent of code 2024 walkthrough",
         "how to solve advent of code 2024",
         "programming puzzles",
         "coding challenges 2024",
-        "golang programming exercises",
+        "go programming exercises",
         "daily coding problems",
         "algorithmic puzzles",
         "historian hysteria",
         "red-nosed reports",
         "mull it over",
         "ceres search",
-        "golang optimization",
+        "print queue",
+        "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
         "aoc 2024 hints"
@@ -44,6 +46,93 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 5: Print Queue
+
+Today's puzzle involved managing a print queue for safety manual updates using topological sorting.
+The input consisted of rules about page ordering (in the form X|Y meaning page X must be printed
+before page Y) and sequences of pages that needed to be printed.
+
+Part 1 required checking if given sequences of pages satisfied all the applicable ordering rules.
+For example, if we had rules like `47|53` and `75|29`, we needed to verify that page 47 came before
+53 and page 75 came before 29 in each sequence. My solution uses a directed graph to represent these
+dependencies:
+
+```go
+func buildGraph(rules []Rule) Graph {
+    graph := make(Graph)
+    for _, rule := range rules {
+        graph[rule.before] = append(graph[rule.before], rule.after)
+    }
+    return graph
+}
+```
+
+Then for each squence, I check if it satisfies all applicable rules by tracking page positions and
+verifying dependencies:
+
+```go
+func isValidSequence(seq []int, graph Graph) bool {
+    positions := make(map[int]int)
+    for i, page := range seq {
+        positions[page] = i
+    }
+
+    for i := 0; i < len(seq); i++ {
+        page := seq[i]
+        if after, exists := graph[page]; exists {
+            for _, mustBeAfter := range after {
+                if pos, exists := positions[mustBeAfter]; exists {
+                    if pos <= i {
+                        return false
+                    }
+                }
+            }
+        }
+    }
+    return true
+}
+```
+
+Part 2 flipped the problem around - instead of just validating sequences, we needed to correctly
+order the invalid sequences using Kahn's topological sorting algorithm. This required tracking
+in-degrees for each node and carefully managing the order of processing to match the expected
+output:
+
+```go
+func topologicalSort(pages []int, fullGraph Graph) []int {
+    // Create subgraph with only relevant pages...
+    nodes := make(map[int]*Node)
+    // Build dependencies...
+    // Process queue in correct order...
+    // Return sorted sequence...
+}
+```
+
+Topological sort is a long algorithm in Go, so I didn't write it all here, but the full solution is
+available on my [GitHub](https://github.com/dickeyy/adventofcode/blob/main/2024/day-5/main.go).
+
+### Thoughts
+
+Today's puzzle was a nice application of graph theory and topological sorting. While the core
+concept wasn't too complex, getting all the edge cases right and ensuring the correct ordering in
+Part 2 required careful implementation.
+
+The trickiest part was handling Part 2's requirement to generate valid orderings. Making sure the
+topological sort produced the correct ordering when multiple valid orderings were possible took some
+debugging to get right. The key insight was realizing we needed to carefully manage the queue order
+to ensure deterministic output.
+
+The problem was also a good reminder of how important it is to properly model the problem space -
+representing the dependencies as a directed graph made both parts much more straightforward to
+solve.
+
+I'd rate this a 5/10 difficulty - not overly complex conceptually, but requiring solid understanding
+of graph algorithms and attention to detail in the implementation.
+
+_See you tomorrow!_
+
+---
 
 ## Day 4: Ceres Search
 
