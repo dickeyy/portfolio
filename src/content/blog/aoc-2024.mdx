@@ -15,6 +15,7 @@ keywords:
         "advent of code 2024 day 3 solution",
         "advent of code 2024 day 4 solution",
         "advent of code 2024 day 5 solution",
+        "advent of code 2024 day 6 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -31,6 +32,7 @@ keywords:
         "mull it over",
         "ceres search",
         "print queue",
+        "guard gallivant"
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -46,6 +48,146 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 6: Guard Gallivant
+
+Today's puzzle involved simulating a guard's patrol path in a grid-based map and predicting their
+movements. The input consists of a grid where `^` represents the guard's starting position (facing
+up) and `#` represents obstacles.
+
+For Part 1, we needed to calculate how many distinct positions the guard would visit before leaving
+the mapped area. The guard follows a simple protocol:
+
+-   If there's an obstacle in front, turn right 90 degrees
+-   Otherwise, move forward one step
+
+My solution uses a Point and Direction system to track the guard's movement through the grid:
+
+```go
+type Point struct {
+    x, y int
+}
+
+type Direction struct {
+    dx, dy int
+}
+
+type Guard struct {
+    pos Point
+    dir Direction
+}
+```
+
+Then we simulate the guard's movement using a map to track visited positions and implement the
+protocol:
+
+```go
+func simulateGuardPath(grid [][]byte, guard Guard, checkLoop bool) int {
+    visited := make(map[Point]bool)
+    visited[guard.pos] = true
+
+    for {
+        next := Point{
+            x: guard.pos.x + guard.dir.dx,
+            y: guard.pos.y + guard.dir.dy,
+        }
+
+        if !isInBounds(next, grid) {
+            break
+        }
+
+        if grid[next.y][next.x] == '#' {
+            guard.turnRight()
+            continue
+        }
+
+        guard.pos = next
+        visited[guard.pos] = true
+    }
+
+    return len(visited)
+}
+```
+
+Part 2 flipped the problem around - we needed to find positions where placing a new obstacle would
+cause the guard to get stuck in a loop. This required modifying our simulation to detect repeated
+states (position + direction combinations):
+
+```go
+type State struct {
+    pos Point
+    dir Direction
+}
+
+func simLoop(grid [][]byte, guard Guard) int {
+    start := guard.pos
+    count := 0
+
+    for y := range grid {
+        for x := range grid[y] {
+            if grid[y][x] != '.' || (Point{x, y} == start) {
+                continue
+            }
+
+            // create a copy of the grid with the new obstruction
+            newGrid := make([][]byte, len(grid))
+            for i := range grid {
+                newGrid[i] = make([]byte, len(grid[i]))
+                copy(newGrid[i], grid[i])
+            }
+            newGrid[y][x] = '#'
+
+            if simulateGuardPath(newGrid, guard, true) > 0 {
+                count++
+            }
+        }
+    }
+    return count
+}
+```
+
+### Thoughts
+
+Today's puzzle was a deceptively complex challenge in path simulation and state management. While
+the initial rules seemed straightforward, implementing them correctly and especially handling Part 2
+required significant problem-solving and careful debugging.
+
+The trickiest aspects included:
+
+1. Getting the turn mechanics exactly right - the subtle interplay between direction changes and
+   movement needed precise implementation
+2. Understanding that Part 2 wasn't just about finding places to put obstacles, but about finding
+   positions that would create perfect loops
+3. Realizing that detecting loops required tracking the complete state (position AND direction)
+   because the same position could be visited multiple times in different directions as part of a
+   valid patrol route
+4. Managing the complexity of copying grids and running simulations for every possible obstacle
+   position in Part 2 without missing edge cases
+
+A key insight that took some time to reach was that the loop detection needed to look at the full
+state of the guard - just tracking visited positions wasn't enough. This realization led to
+implementing the State struct to capture both position and direction:
+
+```go
+type State struct {
+    pos Point
+    dir Direction
+}
+```
+
+Performance-wise, Part 2 involves simulating the guard's path for every possible obstacle position,
+which means we're doing a lot of grid copying and path simulation. While there might be cleverer
+ways to optimize this by analyzing patterns in the guard's movement, sometimes the straightforward
+approach, even if computationally intensive, is the most reliable path to a solution.
+
+I'd rate this a 6/10 difficulty - while the core concepts aren't overly complex, getting all the
+pieces working together correctly required solid problem-solving skills and careful debugging. The
+leap from Part 1 to Part 2 was particularly challenging, requiring a fundamental shift in how we
+thought about the problem and tracked the guard's state
+
+_See you tomorrow!_
+
+---
 
 ## Day 5: Print Queue
 
