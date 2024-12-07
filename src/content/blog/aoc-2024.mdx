@@ -16,6 +16,7 @@ keywords:
         "advent of code 2024 day 4 solution",
         "advent of code 2024 day 5 solution",
         "advent of code 2024 day 6 solution",
+        "advent of code 2024 day 7 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -33,6 +34,7 @@ keywords:
         "ceres search",
         "print queue",
         "guard gallivant",
+        "bridge repair",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -48,6 +50,114 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 7: Bridge Repair
+
+Today's puzzle was about evaluating arithmetic expressions with a twist. We needed to determine if
+sequences of numbers could be combined using operators to produce specific target values. The catch?
+Operators are evaluated strictly left-to-right (no precedence rules), and the numbers must be used
+in their given order.
+
+For Part 1, we had to work with addition (+) and multiplication (\*) operators. Each line in the
+input contained a target value followed by a sequence of numbers. For example:
+
+```
+190: 10 19
+3267: 81 40 27
+292: 11 6 16 20
+```
+
+I approached this using backtracking to try all possible operator combinations. First, I created a
+map to store the parsed input:
+
+```go
+func parseInput(input string) map[int][]int {
+    calibrations := make(map[int][]int)
+    for _, line := range strings.Split(input, "\n") {
+        parts := strings.Split(line, ": ")
+        key, _ := strconv.Atoi(parts[0])
+
+        for _, val := range strings.Split(parts[1], " ") {
+            val, _ := strconv.Atoi(val)
+            calibrations[key] = append(calibrations[key], val)
+        }
+    }
+
+    return calibrations
+}
+```
+
+The core validation logic uses backtracking to try each possible operator at each position:
+
+```go
+var backtrack func(pos, curr int) bool
+backtrack = func(pos, curr int) bool {
+    // if we've used all the numbers, check if we hit the target
+    if pos == len(vals) {
+        return curr == target
+    }
+
+    // try addition
+    if backtrack(pos+1, curr+vals[pos]) {
+        return true
+    }
+
+    // try multiplication
+    if backtrack(pos+1, curr*vals[pos]) {
+        return true
+    }
+
+    return false
+}
+```
+
+Part 2 introduced a new operator: concatenation (||). This operator joins the digits of two numbers
+together (e.g., 12 || 345 = 12345). This required adding string manipulation to our solution:
+
+```go
+if tryConcat {
+    // convert the current to a string, concat the next, convert back
+    currStr := strconv.Itoa(curr)
+    nextStr := strconv.Itoa(vals[pos])
+    concatNum, _ := strconv.Atoi(currStr + nextStr)
+    if backtrack(pos+1, concatNum) {
+        return true
+    }
+}
+```
+
+The main function just calls the `parseInput` function then loops over each calibration and calls
+`backtrack` with the target value:
+
+```go
+calibrations := parseInput(input)
+validKeys := make([]int, 0)
+
+for key, vals := range calibrations {
+    if isCalibrationValid(key, vals, part == 2) {
+        validKeys = append(validKeys, key)
+    }
+}
+
+return utils.Sum(validKeys)
+```
+
+### Thoughts
+
+Today's puzzle was a nice mix of arithmetic and string manipulation. The main challenge was handling
+the left-to-right evaluation requirement and implementing the backtracking solution efficiently. The
+addition of the concatenation operator in Part 2 added an interesting twist, requiring careful
+string manipulation and handling of larger numbers.
+
+The key insight was recognizing this as a backtracking problem where we try different operators at
+each position. While we could potentially optimize further with caching or pruning, the current
+solution provides a good balance between clarity and performance.
+
+I'd rate this a 2/10 difficulty - not overly complex, but requires some careful implementation. I
+saw some other people were having issues with their sum being higher than what a 32-bit integer can
+hold, luckily I didn't have that issue, idk why lol.
+
+_See you tomorrow!_
 
 ## Day 6: Guard Gallivant
 
