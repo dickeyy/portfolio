@@ -17,6 +17,7 @@ keywords:
         "advent of code 2024 day 5 solution",
         "advent of code 2024 day 6 solution",
         "advent of code 2024 day 7 solution",
+        "advent of code 2024 day 8 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -35,6 +36,7 @@ keywords:
         "print queue",
         "guard gallivant",
         "bridge repair",
+        "resonant collinearity",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -51,6 +53,112 @@ import Callout from "../../components/Callout.astro";
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
 
+## Day 8: Resonant Collinearity
+
+Today's puzzle was about antenna signals and finding special points called antinodes in a 2D grid.
+Each antenna has a specific frequency (represented by a letter or digit), and antinodes form when
+specific geometric conditions are met between antennas of the same frequency.
+
+For Part 1, antinodes occur at any point that's collinear (in a straight line) with two antennas of
+the same frequency, but only when that point is twice as far from one antenna as it is from the
+other. I approached this by first parsing the grid and grouping antennas by frequency:
+
+```go
+type Grid [][]rune
+type Position struct {
+    x, y int
+}
+
+func getFrequencies(grid Grid) map[rune][]Position {
+    frequencies := make(map[rune][]Position)
+    for y := 0; y < len(grid); y++ {
+        for x := 0; x < len(grid[y]); x++ {
+            char := grid[y][x]
+            if char != '.' { // ignores filler spaces
+                frequencies[char] = append(frequencies[char], Position{x, y})
+            }
+        }
+    }
+    return frequencies
+}
+```
+
+The core logic for finding antinodes involves checking if points are collinear and satisfy the
+distance ratio requirement. To avoid floating-point precision issues, I used squared distances:
+
+```go
+func isAntinode(p, a, b Position) bool {
+    if !isCollinear(p, a, b) {
+        return false
+    }
+
+    // Calculate squared distances
+    dap := distanceSquared(a, p)
+    dbp := distanceSquared(b, p)
+
+    // Check if either distance is twice the other
+    // Note: We compare squares, so it's 4 times instead of 2 times
+    return dap == 4*dbp || dbp == 4*dap
+}
+```
+
+Part 2 introduced "resonant harmonics" which simplified the rules - an antinode now occurs at any
+point that's collinear with two antennas of the same frequency, regardless of distance. This
+actually made the calculation simpler, but required checking every grid position:
+
+```go
+if harmonic {
+    // Part 2: Check every point in the grid for collinearity
+    for y := 0; y < len(grid); y++ {
+        for x := 0; x < len(grid[y]); x++ {
+            p := Position{x, y}
+            // Check if this point is collinear with any pair of antennas
+            for i := 0; i < len(pos); i++ {
+                for j := i + 1; j < len(pos); j++ {
+                    if isCollinear(p, pos[i], pos[j]) {
+                        antinodes[p] = true
+                        break
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+### Thoughts
+
+Today's puzzle was an interesting mix of geometry and efficient grid searching. The main challenges
+were:
+
+1. Getting the collinearity check right without running into floating-point precision issues
+2. Efficiently calculating distances and ratios for Part 1
+3. Managing the transition between the complex distance rules in Part 1 and the simpler but more
+   computationally intensive Part 2
+4. Keeping track of unique antinode positions when multiple antenna pairs might create antinodes at
+   the same point
+
+A key insight was using cross multiplication in the collinearity check to avoid division:
+
+```go
+func isCollinear(p, a, b Position) bool {
+    dx1 := a.x - p.x
+    dy1 := a.y - p.y
+    dx2 := b.x - p.x
+    dy2 := b.y - p.y
+    return dx1*dy2 == dx2*dy1
+}
+```
+
+I'd rate this a 6/10 difficulty - while the geometric concepts weren't too complex, implementing
+them correctly and efficiently required careful thinking and good problem-solving skills. Part 2's
+twist was clever, forcing us to rethink our approach even though it technically simplified the
+problem.
+
+_See you tomorrow!_
+
+---
+
 ## Day 7: Bridge Repair
 
 Today's puzzle was about evaluating arithmetic expressions with a twist. We needed to determine if
@@ -62,9 +170,9 @@ For Part 1, we had to work with addition (+) and multiplication (\*) operators. 
 input contained a target value followed by a sequence of numbers. For example:
 
 ```
-190: 10 19
-3267: 81 40 27
-292: 11 6 16 20
+
+190: 10 19 3267: 81 40 27 292: 11 6 16 20
+
 ```
 
 I approached this using backtracking to try all possible operator combinations. First, I created a
