@@ -19,6 +19,7 @@ keywords:
         "advent of code 2024 day 7 solution",
         "advent of code 2024 day 8 solution",
         "advent of code 2024 day 9 solution",
+        "advent of code 2024 day 10 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -39,6 +40,7 @@ keywords:
         "bridge repair",
         "resonant collinearity",
         "disk fragmenter",
+        "hoof it",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -54,6 +56,111 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 10: Hoof It
+
+In today's Advent of Code puzzle, we were tasked with analyzing a topographic map of a hiking area
+on a floating island. The map indicated the height of each position using a scale from 0 (lowest) to
+9 (highest). Our goal was to find all the trailheads and calculate two different metrics for each
+one.
+
+For Part 1, we needed to find the trailheads (any position with a height of 0) and calculate a
+"score" for each one. The score was defined as the number of positions with a height of 9 that were
+reachable from that trailhead via a hiking trail. A hiking trail was any path that started at height
+0, ended at height 9, and increased by exactly 1 in height at each step.
+
+To solve this, I first parsed the input into a 2D grid representing the topographic map. I then
+implemented a breadth-first search (BFS) algorithm, starting from each trailhead and exploring all
+valid paths. Whenever I reached a height 9 position, I incremented the trailhead's score. The sum of
+all the trailhead scores was the final answer for Part 1.
+
+```go
+func bfs(grid [][]int, start [2]int) int {
+    directions := [][2]int{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}
+    queue := [][2]int{start}
+    visited := make(map[[2]int]bool)
+    visited[start] = true
+    score := 0
+
+    for len(queue) > 0 {
+        curr := queue[0]
+        queue = queue[1:]
+
+        for _, d := range directions {
+            ni, nj := curr[0]+d[0], curr[1]+d[1]
+            if ni >= 0 && ni < len(grid) && nj >= 0 && nj < len(grid[0]) {
+                next := [2]int{ni, nj}
+                if !visited[next] && grid[ni][nj] == grid[curr[0]][curr[1]]+1 {
+                    visited[next] = true
+                    queue = append(queue, next)
+                    if grid[ni][nj] == 9 {
+                        score++
+                    }
+                }
+            }
+        }
+    }
+
+    return score
+}
+```
+
+Part 2 introduced a new metric called the "rating" of a trailhead. The rating was defined as the
+number of distinct hiking trails that began at that trailhead. To solve this, I used a recursive
+depth-first search (DFS) approach, tracking the visited positions and direction at each step to
+detect when a new valid trail was found.
+
+```go
+func countPaths(grid [][]int, pos [2]int, visited map[[2]int]bool) int {
+    if grid[pos[0]][pos[1]] == 9 {
+        return 1 // reached the end of a valid path
+    }
+
+    directions := [][2]int{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}
+    visited[pos] = true
+    totalPaths := 0
+
+    for _, d := range directions {
+        ni, nj := pos[0]+d[0], pos[1]+d[1]
+        next := [2]int{ni, nj}
+
+        // check bounds and ensure path increment is valid
+        if ni >= 0 && ni < len(grid) && nj >= 0 && nj < len(grid[0]) {
+            if !visited[next] && grid[ni][nj] == grid[pos[0]][pos[1]]+1 {
+                totalPaths += countPaths(grid, next, visited)
+            }
+        }
+    }
+
+    visited[pos] = false // backtrack
+    return totalPaths
+}
+```
+
+### Thoughts
+
+Today's puzzle was an interesting challenge in graph traversal and state management. While the core
+concepts weren't overly complex, implementing the solutions correctly and efficiently required some
+careful thinking.
+
+The trickiest part was definitely the transition from Part 1 to Part 2. Part 1's BFS approach was
+relatively straightforward, but Part 2's DFS-based path counting introduced a lot more complexity.
+Keeping track of the visited positions and direction changes to avoid duplicates was key, and it
+took some debugging to get the recursive logic right.
+
+Performance-wise, both solutions are reasonably efficient, with the BFS approach in Part 1 running
+in $O(n^2)$ time and the DFS in Part 2 running in $O(n \* 3^n)$ time (where $n$ is the number of
+positions in the grid). However, the memory usage for Part 2 could be a concern for larger inputs,
+as we're recursively exploring all possible paths.
+
+Overall, I'd rate this puzzle a 4/10 in difficulty. The concepts weren't overly complex, but the
+implementation details and the transition from Part 1 to Part 2 added a decent challenge. It was a
+good exercise in graph algorithms and state management, and I enjoyed the problem-solving aspect of
+it.
+
+_See you tomorrow!_
+
+---
 
 ## Day 9: Disk Fragmenter
 
