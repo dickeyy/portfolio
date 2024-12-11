@@ -1,7 +1,7 @@
 ---
 title: Advent of Code 2024
 description: A log of my experience with Advent of Code 2024, there are spoilers in here so beware.
-date: 2024-12-10
+date: 2024-12-11
 ogImage: /blog-og-images/aoc-2024.png
 published: true
 keywords:
@@ -20,6 +20,7 @@ keywords:
         "advent of code 2024 day 8 solution",
         "advent of code 2024 day 9 solution",
         "advent of code 2024 day 10 solution",
+        "advent of code 2024 day 11 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -41,6 +42,7 @@ keywords:
         "resonant collinearity",
         "disk fragmenter",
         "hoof it",
+        "plutonian pebbles",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -56,6 +58,117 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 11: Plutonian Pebbles
+
+Today's puzzle involved some physics-defying stones that transform based on simple rules whenever
+you blink. Each stone has a number, and depending on whether it's 0, has an even number of digits,
+or neither, it will either become 1, split into two stones, or multiply by 2024.
+
+For Part 1, we need to simulate 25 "blinks" and count how many stones we end up with. My first
+approach was pretty straightforward - just track each stone in a slice and apply the
+transformations:
+
+```go
+func blink(stones []int) []int {
+    newStones := make([]int, 0)
+    for _, stone := range stones {
+        if stone == 0 {
+            newStones = append(newStones, 1)
+        } else if countDigitsInNumber(stone)%2 == 0 {
+            left, right := splitNumberIntoHalves(stone)
+            newStones = append(newStones, left, right)
+        } else {
+            newStones = append(newStones, stone*2024)
+        }
+    }
+    return newStones
+}
+```
+
+This worked fine for Part 1, but when Part 2 asked for 75 iterations, the exponential growth of
+stones made this approach impractical. After some thinking, I realized I could optimize by tracking
+frequencies instead of individual stones. This led to recasting the problem in terms of stone
+counts:
+
+```go
+func day11(input string, part int) int {
+    s := utils.GetIntsInString(input)
+
+    // count freq of each stone val
+    scs := make(map[int]int)
+    for _, s := range s {
+        scs[s]++
+    }
+
+    iters := 25
+    if part == 2 {
+        iters = 75
+    }
+
+    // process stones
+    for i := 0; i < iters; i++ {
+        scs = blinkAllStones(scs)
+    }
+
+    return sumStones(scs)
+}
+```
+
+The core transformation logic became simpler too, just handling one stone value at a time:
+
+```go
+func blinkOnce(stone int) []int {
+    if stone == 0 {
+        return []int{1}
+    }
+
+    // convert to string to check digits
+    s := strconv.Itoa(stone)
+    if len(s)%2 == 0 {
+        // split into two halves
+        halfway := len(s) / 2
+        l := utils.AtoiNoErr(s[:halfway])
+        r := utils.AtoiNoErr(s[halfway:])
+        return []int{l, r}
+    }
+
+    return []int{stone * 2024}
+}
+```
+
+With the `blinkAllStones` function looking like this:
+
+```go
+func blinkAllStones(stoneCount map[int]int) map[int]int {
+    nc := make(map[int]int)
+
+    for s, c := range stoneCount {
+        // get new stones from transformation
+        ns := blinkOnce(s)
+        // add to counts, multiplied by how many of oritinal stones we had
+        for _, n := range ns {
+            nc[n] += c
+        }
+    }
+
+    return nc
+}
+```
+
+### Thoughts
+
+Today's puzzle was all about finding the right way to represent the data. While the initial
+slice-based approach worked, the frequency map solution was much more elegant and efficient. It's a
+good reminder that sometimes you need to step back and rethink your approach when scaling becomes an
+issue.
+
+I'd rate this a 3/10 difficulty - the concept itself isn't particularly challenging, but recognizing
+the need to optimize and implementing the frequency-based solution required some careful thinking.
+
+_See you tomorrow!_
+
+---
 
 ## Day 10: Hoof It
 
