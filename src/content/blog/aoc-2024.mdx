@@ -1,7 +1,7 @@
 ---
 title: Advent of Code 2024
 description: A log of my experience with Advent of Code 2024, there are spoilers in here so beware.
-date: 2024-12-11
+date: 2024-12-12
 ogImage: /blog-og-images/aoc-2024.png
 published: true
 keywords:
@@ -21,6 +21,7 @@ keywords:
         "advent of code 2024 day 9 solution",
         "advent of code 2024 day 10 solution",
         "advent of code 2024 day 11 solution",
+        "advent of code 2024 day 12 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -43,6 +44,7 @@ keywords:
         "disk fragmenter",
         "hoof it",
         "plutonian pebbles",
+        "garden groups",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -58,6 +60,90 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 12: Garden Groups
+
+Today's puzzle was all about analyzing connected regions in a grid - specifically, garden plots that
+form regions when they contain the same type of plant. The challenge involved calculating areas and
+boundaries of these regions, with some clever twists in how boundaries are counted between parts 1
+and 2.
+
+For Part 1, we needed to find connected regions of same-letter plants and calculate their area
+multiplied by their perimeter. I approached this using a flood-fill algorithm with some careful
+boundary tracking:
+
+```go
+type Garden struct {
+    symbol     rune
+    size       int
+    coords     map[Coord]bool
+    boundaries map[Direction][]boundary
+}
+```
+
+The core insight was that we needed to track not just the coordinates in each region, but also their
+boundaries in each cardinal direction. This made calculating perimeters much more straightforward:
+
+```go
+func checkBoundary(grid [][]rune, pos Coord, symbol rune, dir Direction, garden *Garden) {
+    var isEdge bool
+    switch dir {
+    case North:
+        isEdge = pos.row == 0 || grid[pos.row-1][pos.col] != symbol
+        // Similar cases for other directions...
+    }
+
+    if isEdge {
+        garden.boundaries[dir] = append(garden.boundaries[dir], boundary{pos.row, pos.col, true})
+    }
+}
+```
+
+Part 2 introduced a fascinating twist - instead of using the perimeter length, we needed to count
+distinct "sides" of each region. This meant that a complex shape like an 'E' would have many more
+sides than its perimeter length might suggest. The trick was to modify how we count boundaries:
+
+```go
+func pruneRedundantBoundaries(garden *Garden) {
+    for dir := range garden.boundaries {
+        if dir == North || dir == South {
+            pruneBoundariesAlongAxis(garden.boundaries[dir], true)
+        } else {
+            pruneBoundariesAlongAxis(garden.boundaries[dir], false)
+        }
+    }
+}
+```
+
+The most challenging aspect was handling regions that contained "holes" - other regions entirely
+enclosed within them. This required careful boundary counting to ensure we didn't double-count
+shared edges while still properly accounting for interior boundaries.
+
+Today's solution is quite lengthy, so I haven't included it here. You can find it on my
+[GitHub](https://github.com/dickeyy/adventofcode/blob/main/2024/day-12/main.go).
+
+### Thoughts
+
+Today's puzzle was a fascinating exercise in geometric reasoning and boundary detection. The main
+challenges were:
+
+1. Implementing a robust flood-fill algorithm that could properly identify connected regions
+2. Tracking boundaries efficiently without double-counting shared edges
+3. Making the mental shift from perimeter-based counting in Part 1 to side-based counting in Part 2
+4. Handling edge cases like regions with holes or regions that touch only at corners
+
+The key insight that really unlocked the solution was realizing that we needed to track boundaries
+per direction rather than just as a simple count. This made it much easier to handle both the
+perimeter calculation in Part 1 and the side counting in Part 2.
+
+I'd rate this an 8/10 difficulty - while the core concepts weren't overwhelmingly complex, getting
+all the boundary detection and counting logic correct was tough. The transition from Part 1 to Part
+2 was particularly clever, forcing us to completely rethink how we counted boundaries while still
+using much of the same underlying region detection code.
+
+_See you tomorrow!_
+
+---
 
 ## Day 11: Plutonian Pebbles
 
