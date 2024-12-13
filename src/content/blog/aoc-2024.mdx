@@ -22,6 +22,7 @@ keywords:
         "advent of code 2024 day 10 solution",
         "advent of code 2024 day 11 solution",
         "advent of code 2024 day 12 solution",
+        "advent of code 2024 day 13 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -45,6 +46,7 @@ keywords:
         "hoof it",
         "plutonian pebbles",
         "garden groups",
+        "claw contraption",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -60,6 +62,78 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 13: Claw Contraption
+
+Today's puzzle involved solving a system of linear equations to determine optimal button press
+sequences for arcade claw machines. We needed to calculate the minimum number of tokens required to
+win prizes by manipulating a claw along X and Y coordinates using two buttons with different costs
+and movement patterns.
+
+For Part 1, I initially implemented a brute force solution, checking all possible combinations of
+button presses up to 100:
+
+```go
+type ClawMachine struct {
+    btnA  Coordinate
+    btnB  Coordinate
+    prize Coordinate
+}
+
+func bruteCalculateTokens(machine *ClawMachine) int {
+    for a := 0; a <= 100; a++ {
+        for b := 0; b <= 100; b++ {
+            xPos := a*machine.btnA.x + b*machine.btnB.x
+            yPos := a*machine.btnA.y + b*machine.btnB.y
+
+            if xPos == machine.prize.x && yPos == machine.prize.y {
+                return (3 * a) + b  // 3 tokens per A press, 1 per B press
+            }
+        }
+    }
+    return 0
+}
+```
+
+Part 2 introduced a significant twist - all prize coordinates were offset by $10^{13}$ units, making
+the brute force approach impractical. This required a more mathematical solution using Cramer's Rule
+to solve the system of linear equations:
+
+```go
+func solveEquation(m *ClawMachine) (int, int) {
+    // Using Cramer's Rule to solve:
+    // ax*A + bx*B = px (x equation)
+    // ay*A + by*B = py (y equation)
+
+    d := m.btnA.x*m.btnB.y - m.btnA.y*m.btnB.x
+    d1 := m.prize.x*m.btnB.y - m.prize.y*m.btnB.x
+    d2 := m.prize.y*m.btnA.x - m.prize.x*m.btnA.y
+
+    // Check if we have integer solutions
+    if d1%d != 0 || d2%d != 0 {
+        return 0, 0
+    }
+
+    return d1/d, d2/d
+}
+```
+
+The key insight was recognizing this as a linear system that could be solved efficiently using
+linear algebra rather than exhaustive search. Having recently studied Cramer's Rule for a linear
+algebra final proved unexpectedly useful for this implementation.
+
+I'd rate this a 3/10 difficulty - the entire thing was fairly straight forward. The hardest part was
+figuring out how to calculate part 2. Once I remembered the linear algebra I was just studying, it
+was super easy.
+
+_See you tomorrow!_
+
+### Thoughts
+
+Today's puzzle demonstrated how mathematical concepts from linear algebra can elegantly solve what
+initially appears to be a brute force problem.
+
+---
 
 ## Day 12: Garden Groups
 
