@@ -23,6 +23,7 @@ keywords:
         "advent of code 2024 day 11 solution",
         "advent of code 2024 day 12 solution",
         "advent of code 2024 day 13 solution",
+        "advent of code 2024 day 14 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -47,6 +48,7 @@ keywords:
         "plutonian pebbles",
         "garden groups",
         "claw contraption",
+        "restroom redoubt",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -62,6 +64,104 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 14: Restroom Redoubt
+
+Today's puzzle was about predicting robot movement patterns in a bounded space. We needed to track
+multiple robots moving in straight lines that would wrap around the edges of the area, like a game
+of Snake meets Conway's Game of Life.
+
+For Part 1, we had to simulate the robots' movement for 100 seconds and calculate a "safety factor"
+based on their final positions in each quadrant. I started by creating basic structures to represent
+the robots and their movement:
+
+```go
+type Coordinate struct {
+    x, y int
+}
+
+type Robot struct {
+    pos Coordinate // position
+    vel Coordinate // velocity
+}
+```
+
+The core simulation logic involves moving each robot according to its velocity and handling the
+wrapping behavior when they hit the edges. The trick here was getting the modulo arithmetic right to
+handle negative positions correctly:
+
+```go
+func moveRobots(robots []Robot) {
+    for i := range robots {
+        // Update position
+        robots[i].pos.x += robots[i].vel.x
+        robots[i].pos.y += robots[i].vel.y
+
+        // Handle wrapping
+        robots[i].pos.x = ((robots[i].pos.x % 101) + 101) % 101
+        robots[i].pos.y = ((robots[i].pos.y % 103) + 103) % 103
+    }
+}
+```
+
+After simulating 100 seconds, we need to count robots in each quadrant, being careful to exclude
+robots on the middle lines.
+
+Part 2 introduced an interesting twist - we needed to find when the robots would form a pattern
+resembling a Christmas tree. The key insight was looking for long horizontal lines of robots, which
+would form part of the tree pattern:
+
+```go
+func hasLongHorizontalLine(robots []Robot) bool {
+    // Count robots in each row
+    rowCounts := make(map[int]map[int]bool)
+    for i := 0; i < 103; i++ {
+        rowCounts[i] = make(map[int]bool)
+    }
+
+    // Record robot positions by row
+    for _, robot := range robots {
+        rowCounts[robot.pos.y][robot.pos.x] = true
+    }
+
+    // Look for a row with many robots and long consecutive sequences
+    for y := 0; y < 103; y++ {
+        if len(rowCounts[y]) > 30 {
+            consecutive := 0
+            for x := 0; x < 100; x++ {
+                if rowCounts[y][x] && rowCounts[y][x+1] {
+                    consecutive++
+                    if consecutive > 25 {
+                        return true
+                    }
+                } else {
+                    consecutive = 0
+                }
+            }
+        }
+    }
+
+    return false
+}
+```
+
+### Thoughts
+
+Today's puzzle combined several interesting concepts - coordinate systems, modular arithmetic, and
+pattern recognition.
+
+The key insight for Part 2 was realizing that the Christmas tree pattern would necessarily involve
+long horizontal lines of robots. Instead of trying to detect the entire tree shape, we could just
+look for these characteristic lines.
+
+I'd rate this a 6/10 difficulty. While the core concepts weren't overwhelmingly complex, getting all
+the details right - especially the wrapping behavior and pattern detection - required careful
+implementation and debugging. The transition from Part 1 to Part 2 was particularly interesting,
+requiring us to think about the problem in a completely different way.
+
+_See you tomorrow!_
+
+---
 
 ## Day 13: Claw Contraption
 
