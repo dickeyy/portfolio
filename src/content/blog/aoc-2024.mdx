@@ -24,6 +24,7 @@ keywords:
         "advent of code 2024 day 12 solution",
         "advent of code 2024 day 13 solution",
         "advent of code 2024 day 14 solution",
+        "advent of code 2024 day 15 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -49,6 +50,7 @@ keywords:
         "garden groups",
         "claw contraption",
         "restroom redoubt",
+        "warehouse woes"
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -64,6 +66,73 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 15: Warehouse Woes
+
+Today's puzzle was about helping lanternfish with their warehouse robot problem. We had to predict
+the movements of a malfunctioning robot pushing boxes around in a warehouse. The robot follows a
+sequence of moves (^, v, <, >), and when it encounters boxes, it attempts to push them - unless
+doing so would cause the robot or a box to hit a wall.
+
+For Part 1, I started by creating structures to represent the warehouse and implementing recursive
+movement logic for pushing chains of boxes:
+
+```go
+type Warehouse struct {
+    moveSeq string
+    boxes   map[Pair]struct{}
+    robot   Pair
+    walls   map[Pair]struct{}
+    width   int
+    height  int
+}
+
+func moveBoxes(w *Warehouse, box Pair, dir byte) {
+    next := getNextPair(box, dir)
+    _, isBox := w.boxes[next]
+    if isBox {
+        moveBoxes(w, next, dir)
+    }
+    delete(w.boxes, box)
+    w.boxes[next] = struct{}{}
+}
+```
+
+Part 2 threw a fascinating twist at us - everything except the robot was now twice as wide! Each
+original box (`O`) became a wide box (`[]`), and walls (`#`) became double walls (`##`). Instead of
+modifying my Part 1 solution, I created new structures specifically for Part 2:
+
+```go
+type BigBox struct {
+    left  Pair
+    right Pair
+}
+
+type BigWarehouse struct {
+    boxes    map[BigBox]struct{}
+    boxParts map[Pair]BigBox
+    robot    Pair
+    // ... other fields
+}
+```
+
+### Thoughts
+
+Today's puzzle was a fascinating exercise in state management and spatial reasoning. The tricky part
+wasn't just tracking positions - it was managing the complex interactions between boxes, especially
+in Part 2 where boxes could push multiple other boxes at once due to their width. The key insight
+was realizing that Part 2 needed a completely different approach rather than trying to modify
+Part 1. Using separate data structures for wide boxes and handling horizontal/vertical movements
+differently made the solution much clearer. Getting all the edge cases right and ensuring proper box
+chain movements took quite a bit of debugging.
+
+I'd rate this an 8/10 difficulty. While the concept was straightforward, implementing all the
+movement rules correctly and handling the wide boxes in Part 2 required careful thought and
+significant refactoring.
+
+_See you tomorrow!_
+
+---
 
 ## Day 14: Restroom Redoubt
 
