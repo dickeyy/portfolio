@@ -99,13 +99,13 @@ The core of the solution uses a sort of janky priority queue to always process t
 scores first. This ensures we find the optimal path:
 
 ```go
-for len(queue) > 0 {
-    sort.Slice(queue, func(i, j int) bool {
-        return queue[i].score < queue[j].score
+for len(q) > 0 {
+    sort.Slice(q, func(i, j int) bool {
+        return q[i].score < q[j].score
     })
 
-    current := queue[0]
-    queue = queue[1:]
+    current := q[0]
+    q = q[1:]
 
     if current.pos == end {
         return current.score
@@ -133,8 +133,8 @@ minimum score, and again to collect all paths that achieve that score. Then we c
 positions across all those paths:
 
 ```go
-lowestScore := findLowestScore(maze)
-paths := findAllOptimalPaths(maze, lowestScore)
+ls := findLowestScore(maze)
+paths := findAllOptimalPaths(maze, ls)
 return countUniqueTiles(paths)
 ```
 
@@ -434,12 +434,12 @@ distinct "sides" of each region. This meant that a complex shape like an 'E' wou
 sides than its perimeter length might suggest. The trick was to modify how we count boundaries:
 
 ```go
-func pruneRedundantBoundaries(garden *Garden) {
+func prune(garden *Garden) {
     for dir := range garden.boundaries {
         if dir == North || dir == South {
-            pruneBoundariesAlongAxis(garden.boundaries[dir], true)
+            prune(garden.boundaries[dir], true)
         } else {
-            pruneBoundariesAlongAxis(garden.boundaries[dir], false)
+            prune(garden.boundaries[dir], false)
         }
     }
 }
