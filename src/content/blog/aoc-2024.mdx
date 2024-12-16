@@ -1,7 +1,7 @@
 ---
 title: Advent of Code 2024
 description: A log of my experience with Advent of Code 2024, there are spoilers in here so beware.
-date: 2024-12-15
+date: 2024-12-16
 ogImage: /blog-og-images/aoc-2024.png
 published: true
 keywords:
@@ -25,6 +25,7 @@ keywords:
         "advent of code 2024 day 13 solution",
         "advent of code 2024 day 14 solution",
         "advent of code 2024 day 15 solution",
+        "advent of code 2024 day 16 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -51,6 +52,7 @@ keywords:
         "claw contraption",
         "restroom redoubt",
         "warehouse woes",
+        "reindeer maze",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -66,6 +68,94 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 16: Reindeer Maze
+
+Today's puzzle involved helping reindeer navigate through a maze in the most efficient way possible.
+Each reindeer starts on a start tile (`S`) facing east and needs to reach an end tile (`E`). The
+twist is that movement costs vary dramatically - moving forward costs just 1 point, but rotating 90
+degrees costs a whopping 1000 points!
+
+For Part 1, I needed to find the path with the lowest possible score. I started by creating some
+basic types to represent the maze and movement:
+
+```go
+type Point struct {
+    x, y int
+}
+
+type Direction struct {
+    dx, dy int
+}
+
+type Maze struct {
+    grid  [][]string
+    start Point
+    end   Point
+}
+```
+
+The core of the solution uses a sort of janky priority queue to always process the paths with lowest
+scores first. This ensures we find the optimal path:
+
+```go
+for len(queue) > 0 {
+    sort.Slice(queue, func(i, j int) bool {
+        return queue[i].score < queue[j].score
+    })
+
+    current := queue[0]
+    queue = queue[1:]
+
+    if current.pos == end {
+        return current.score
+    }
+
+    // Try moving forward and turning...
+}
+```
+
+Part 2 threw an interesting twist at us - instead of just finding the lowest score path, we needed
+to find how many tiles appear in ANY path that achieves the lowest score. This required tracking
+complete paths and being careful about how we count unique positions:
+
+```go
+type QueueItem struct {
+    pos   Point
+    dir   int
+    score int
+    path  []Point  // Now we need to track the full path
+}
+```
+
+The key insight was that we needed to use the same pathfinding approach twice - once to find the
+minimum score, and again to collect all paths that achieve that score. Then we could count unique
+positions across all those paths:
+
+```go
+lowestScore := findLowestScore(maze)
+paths := findAllOptimalPaths(maze, lowestScore)
+return countUniqueTiles(paths)
+```
+
+### Thoughts
+
+Today's puzzle was an interesting exercise in pathfinding with some unique constraints. The huge
+cost difference between moving forward and turning made for some interesting path optimization, and
+Part 2's requirement to find ALL optimal paths added another layer of complexity.
+
+A key insight that saved some headaches was realizing that since turns cost 1000 while moves cost 1,
+any path with an extra turn would always be worse than a path with fewer turns, regardless of how
+many extra forward moves it saved.
+
+I'd rate this a 6/10 difficulty - while the core pathfinding concepts weren't too exotic, getting
+all the pieces working together correctly required careful implementation and debugging. The
+transition from Part 1 to Part 2 was particularly interesting, requiring us to adapt our solution to
+track and analyze multiple optimal paths.
+
+_See you tomorrow!_
+
+---
 
 ## Day 15: Warehouse Woes
 
