@@ -79,24 +79,7 @@ instructions and operands. I found this particularly interesting because it comb
 operations with careful state management.
 
 For Part 1, we needed to execute a program and collect its outputs. I started by creating structures
-to parse the initial state and program:
-
-```go
-func parseRegisters(input string) (regA, regB, regC int, program []int) {
-    for _, line := range strings.Split(input, "\n") {
-        if strings.HasPrefix(line, "Register A:") {
-            regA = utils.AtoiNoErr(strings.TrimSpace(line[12:]))
-        } else if strings.HasPrefix(line, "Register B:") {
-            regB = utils.AtoiNoErr(strings.TrimSpace(line[12:]))
-        } else if strings.HasPrefix(line, "Register C:") {
-            regC = utils.AtoiNoErr(strings.TrimSpace(line[12:]))
-        } else if strings.HasPrefix(line, "Program:") {
-            program = utils.GetIntsInString(strings.TrimSpace(line[9:]))
-        }
-    }
-    return
-}
-```
+to parse the initial state and program. This was pretty straight forward, just parsing the input.
 
 The core of the solution is the program execution logic. Each instruction consists of an `opcode`
 and an `operand`, which we process in pairs:
