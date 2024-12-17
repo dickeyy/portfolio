@@ -1,7 +1,7 @@
 ---
 title: Advent of Code 2024
 description: A log of my experience with Advent of Code 2024, there are spoilers in here so beware.
-date: 2024-12-16
+date: 2024-12-17
 ogImage: /blog-og-images/aoc-2024.png
 published: true
 keywords:
@@ -26,6 +26,7 @@ keywords:
         "advent of code 2024 day 14 solution",
         "advent of code 2024 day 15 solution",
         "advent of code 2024 day 16 solution",
+        "advent of code 2024 day 17 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -53,6 +54,7 @@ keywords:
         "restroom redoubt",
         "warehouse woes",
         "reindeer maze",
+        "chronospatial computer",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -68,6 +70,117 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 17: Chronospatial Computer
+
+Today's puzzle involved implementing a unique 3-bit computer emulator. The challenge was to simulate
+a computer with three registers (`A`, `B`, `C`) and eight different operations that use 3-bit
+instructions and operands. I found this particularly interesting because it combined bitwise
+operations with careful state management.
+
+For Part 1, we needed to execute a program and collect its outputs. I started by creating structures
+to parse the initial state and program:
+
+```go
+func parseRegisters(input string) (regA, regB, regC int, program []int) {
+    for _, line := range strings.Split(input, "\n") {
+        if strings.HasPrefix(line, "Register A:") {
+            regA = utils.AtoiNoErr(strings.TrimSpace(line[12:]))
+        } else if strings.HasPrefix(line, "Register B:") {
+            regB = utils.AtoiNoErr(strings.TrimSpace(line[12:]))
+        } else if strings.HasPrefix(line, "Register C:") {
+            regC = utils.AtoiNoErr(strings.TrimSpace(line[12:]))
+        } else if strings.HasPrefix(line, "Program:") {
+            program = utils.GetIntsInString(strings.TrimSpace(line[9:]))
+        }
+    }
+    return
+}
+```
+
+The core of the solution is the program execution logic. Each instruction consists of an `opcode`
+and an `operand`, which we process in pairs:
+
+```go
+func runProgram(a, b, c int, program []int) []int {
+    out := make([]int, 0)
+
+    for ip := 0; ip < len(program); ip += 2 {
+        opcode, operand := program[ip], program[ip+1]
+
+        // Process combo operand - this was tricky to understand at first
+        value := operand
+        switch operand {
+        case 4: value = a
+        case 5: value = b
+        case 6: value = c
+        }
+
+        // Execute the instruction
+        switch opcode {
+        case 0: // adv - divide A by 2^value (implemented as right shift)
+            a >>= value
+        case 1: // bxl - XOR B with literal operand
+            b ^= operand  // Note: uses operand, not value!
+        case 2: // bst - set B to value mod 8
+            b = value % 8
+        case 3: // jnz - jump if A is not zero
+            if a != 0 {
+                ip = operand - 2
+            }
+        case 4: // bxc - XOR B with C
+            b ^= c
+        case 5: // out - output value mod 8
+            out = append(out, value%8)
+        case 6: // bdv - divide A by 2^value, store in B
+            b = a >> value
+        case 7: // cdv - divide A by 2^value, store in C
+            c = a >> value
+        }
+    }
+    return out
+}
+```
+
+Part 2 threw an interesting twist - we needed to find the lowest value for register A that would
+make the program output itself. The approach involves building up the value bit by bit, using 3-bit
+chunks (since it's a 3-bit computer):
+
+```go
+// Part 2: Find lowest value of register A that makes program output itself
+a = 0 // the initial value doesn't matter here
+for pos := len(program) - 1; pos >= 0; pos-- {
+    a <<= 3  // shift left by 3 bits for each position
+    // Try values until we find one that outputs the correct sequence
+    for !slices.Equal(runProgram(a, b, c, program), program[pos:]) {
+        a++
+    }
+}
+```
+
+### Thoughts
+
+This puzzle was fascinating because it required understanding both low-level computer architecture
+concepts (instruction pointer, opcodes, operands) and bitwise operations. The trickiest parts were:
+
+1. Understanding the distinction between "combo" operands (which can reference register values) and
+   literal operands
+2. Implementing the division operations using bit shifts (`>>=`)
+3. Getting the jump instruction (`jnz`) to work correctly with the instruction pointer
+4. Figuring out how to approach Part 2's self-referential output requirement
+
+The key insight for Part 2 was realizing we could build the solution incrementally, working
+backwards through the program and using 3-bit chunks to construct the final value. This works
+because each instruction in the output must be a 3-bit number.
+
+I'd rate this a 7/10 difficulty - while the individual operations weren't too complex, understanding
+the problem specification and figuring out the approach for Part 2 required careful thinking. The
+fact that we're working with a 3-bit computer architecture also meant keeping track of several
+important details about how values should be processed and stored.
+
+_See you tomorrow!_
+
+---
 
 ## Day 16: Reindeer Maze
 
