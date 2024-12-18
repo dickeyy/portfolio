@@ -27,6 +27,7 @@ keywords:
         "advent of code 2024 day 15 solution",
         "advent of code 2024 day 16 solution",
         "advent of code 2024 day 17 solution",
+        "advent of code 2024 day 18 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -55,6 +56,7 @@ keywords:
         "warehouse woes",
         "reindeer maze",
         "chronospatial computer",
+        "ram run",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -70,6 +72,113 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 18: RAM Run
+
+Today's puzzle placed us inside a computer's memory space, trying to navigate through a grid while
+avoiding corrupted memory locations. The challenge involved pathfinding through a dynamically
+changing grid where bytes would "fall" and corrupt specific coordinates.
+
+For Part 1, we needed to find the shortest path from `(0,0)` to `(70,70)` while avoiding corrupted
+spaces after the first `1024` bytes had fallen. I implemented this using Dijkstra's algorithm with a
+priority queue for efficient path finding:
+
+```go
+func findShortestPath(grid map[Coord]bool, start, end Coord) int {
+    // init distances
+    dist := make(map[Coord]int)
+    dist[start] = 0
+
+    // create a priority queue
+    pq := make(PQueue, 0)
+    heap.Init(&pq)
+    heap.Push(&pq, &Item{coord: start, priority: 0})
+
+    for pq.Len() > 0 {
+        curr := heap.Pop(&pq).(*Item)
+
+        // if we've reached the end, return the distance
+        if curr.coord == end {
+            return curr.priority
+        }
+
+        // if we've found a longer path to this point, skip
+        if curr.priority > dist[curr.coord] {
+            continue
+        }
+
+        // check all possible moves
+        for _, dir := range dirs {
+            next := Coord{curr.coord.x + dir.x, curr.coord.y + dir.y}
+
+            if isValidMove(next, grid, end) {
+                newDist := curr.priority + 1
+                if d, exists := dist[next]; !exists || newDist < d {
+                    dist[next] = newDist
+                    heap.Push(&pq, &Item{coord: next, priority: newDist})
+                }
+            }
+        }
+    }
+
+    return -1
+}
+```
+
+Part 2 flipped the problem around - instead of finding a path through a fixed corruption pattern, we
+needed to find the first byte that would make the path to the exit impossible. This required a
+different approach using BFS to efficiently check for path existence after each byte falls:
+
+```go
+func pathExists(grid map[Coord]bool, start, end Coord) bool {
+    visited := make(map[Coord]bool)
+    queue := []Coord{start}
+    visited[start] = true
+
+    for len(queue) > 0 {
+        curr := queue[0]
+        queue = queue[1:]
+
+        if curr == end {
+            return true
+        }
+
+        for _, dir := range dirs {
+            next := Coord{curr.coord.x + dir.x, curr.y + dir.y}
+            if isValidMove(next, grid, end) && !visited[next] {
+                visited[next] = true
+                queue = append(queue, next)
+            }
+        }
+    }
+
+    return false
+}
+```
+
+### Thoughts
+
+Today's puzzle was an interesting mix of pathfinding algorithms. The key insight was recognizing
+that while Dijkstra's algorithm with a priority queue was ideal for finding the shortest path in
+Part 1, a simpler BFS would be more efficient for Part 2 where we only needed to check if any path
+existed.
+
+The transition from Part 1 to Part 2 was particularly elegant - instead of processing all bytes at
+once and finding a path, we needed to process bytes one at a time and check path existence after
+each one. This made the problem more dynamic and required thinking about efficiency in a different
+way.
+
+Performance-wise, using a map to track corrupted spaces and implementing both Dijkstra's and BFS
+properly were crucial. The priority queue implementation helped Part 1 run efficiently, while the
+simpler BFS approach in Part 2 avoided unnecessary complexity when we just needed to check path
+existence.
+
+I'd rate this a 5/10 difficulty - not overly complex conceptually, but requiring solid understanding
+of different pathfinding algorithms and careful implementation to handle both parts efficiently.
+
+_See you tomorrow!_
+
+---
 
 ## Day 17: Chronospatial Computer
 
