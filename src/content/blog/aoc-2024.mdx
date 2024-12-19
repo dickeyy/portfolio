@@ -1,7 +1,7 @@
 ---
 title: Advent of Code 2024
 description: A log of my experience with Advent of Code 2024, there are spoilers in here so beware.
-date: 2024-12-18
+date: 2024-12-19
 ogImage: /blog-og-images/aoc-2024.png
 published: true
 keywords:
@@ -28,6 +28,7 @@ keywords:
         "advent of code 2024 day 16 solution",
         "advent of code 2024 day 17 solution",
         "advent of code 2024 day 18 solution",
+        "advent of code 2024 day 19 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -57,6 +58,7 @@ keywords:
         "reindeer maze",
         "chronospatial computer",
         "ram run",
+        "linen layout",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -72,6 +74,88 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 19: Linen Layout
+
+Today's puzzle placed us at an onsen (Japanese hot spring) where we needed to help arrange towels
+with colored stripe patterns. Each towel has a pattern of stripes (white, blue, black, red, or
+green), and we needed to determine which designs could be created using combinations of available
+towel patterns.
+
+For Part 1, we needed to determine which designs were possible using any combination of the
+available patterns. I used a recursive approach with memoization to solve this efficiently:
+
+```go
+cache := make(map[string]int)
+
+var solve func(string) int
+solve = func(s string) int {
+    if _, ok := cache[s]; !ok {
+        if len(s) == 0 {
+            return 1
+        }
+        res := 0
+        for _, pattern := range patterns {
+            if strings.HasPrefix(s, string(pattern)) {
+                res += solve(s[len(pattern):])
+            }
+        }
+        cache[s] = res
+    }
+    return cache[s]
+}
+
+for _, design := range designs {
+    if solve(design) > 0 {
+        out++
+    }
+}
+```
+
+Part 2 added an interesting twist - instead of just checking if a design was possible, we needed to
+count all the different ways each design could be created using the available patterns. Fortunately,
+our recursive solution already handled this case! The key change was simply summing up the number of
+ways each design could be made rather than just checking if it was possible.
+
+```go
+for _, design := range designs {
+    if part == 1 {
+        if solve(design) > 0 {
+            out++
+        }
+    } else {
+        out += solve(design)
+    }
+}
+```
+
+The input parsing was straightforward, just splitting on newlines and commas:
+
+```go
+func parseInput(input string) ([]string, []string) {
+    s := strings.Split(input, "\n\n")
+    return strings.Split(strings.TrimSpace(s[0]), ", "), strings.Split(strings.TrimSpace(s[1]), "\n")
+}
+```
+
+### Thoughts
+
+Today's puzzle was relatively straightforward once you recognized it as a string matching problem
+that could be solved recursively. The key insight was that we could break down each design into
+smaller subproblems by trying each available pattern at the start of the remaining string. Using
+memoization prevented us from recomputing the same substrings multiple times, making the solution
+quite efficient.
+
+Part 2 was particularly elegant because it didn't require any algorithmic changes - our solution was
+already counting all possible ways to create each design, we just needed to sum those counts instead
+of checking if they were greater than zero.
+
+I'd rate this a 3/10 difficulty - while it required some careful thinking about recursion and
+memoization, the core concept was straightforward and the implementation was clean and concise.
+
+_See you tomorrow!_
+
+---
 
 ## Day 18: RAM Run
 
