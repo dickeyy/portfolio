@@ -1,7 +1,7 @@
 ---
 title: Advent of Code 2024
 description: A log of my experience with Advent of Code 2024, there are spoilers in here so beware.
-date: 2024-12-19
+date: 2024-12-20
 ogImage: /blog-og-images/aoc-2024.png
 published: true
 keywords:
@@ -29,6 +29,7 @@ keywords:
         "advent of code 2024 day 17 solution",
         "advent of code 2024 day 18 solution",
         "advent of code 2024 day 19 solution",
+        "advent of code 2024 day 20 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -59,6 +60,7 @@ keywords:
         "chronospatial computer",
         "ram run",
         "linen layout",
+        "race condition",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -74,6 +76,99 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 20: Race Condition
+
+Today's puzzle dropped us right outside a CPU for a race condition festival! We needed to help
+programs navigate through a twisting code path while utilizing a special cheating mechanic. The
+challenge involved pathfinding with an interesting twist - being able to pass through walls for a
+limited time.
+
+For Part 1, programs could cheat exactly once during a race, disabling collision for up to 2
+picoseconds. I started by creating some basic structures to represent the grid and tracking
+positions:
+
+```go
+type Pos struct {
+    row, col int
+}
+
+type Grid struct {
+    cells    [][]byte
+    start    Pos
+    end      Pos
+    rows     int
+    cols     int
+}
+```
+
+The core insight was that instead of trying to simulate the actual path with wall-passing, we could
+first find the base distances to every reachable point using BFS:
+
+```go
+func bfs(g Grid) map[Pos]int {
+    distances := make(map[Pos]int)
+    q := []Pos{g.start}
+    distances[g.start] = 0
+
+    for len(q) > 0 {
+        c := q[0]
+        q = q[1:]
+
+        for _, m := range moves {
+            n := Pos{c.row + m.row, c.col + m.col}
+            if !isInBounds(n, g) || g.cells[n.row][n.col] == '#' {
+                continue
+            }
+
+            if _, visited := distances[n]; !visited {
+                distances[n] = distances[c] + 1
+                q = append(q, n)
+            }
+        }
+    }
+
+    return distances
+}
+```
+
+Then, for each position we can reach, we look at all positions within the cheat distance (2 steps
+for Part 1) and calculate how much time we could save by jumping there. If we can reach that
+position normally through the maze, the difference between the normal path length and the cheat path
+length tells us how many picoseconds we save.
+
+Part 2 simply increased the maximum cheat distance from 2 to 20 steps. The beauty of the solution is
+that it required almost no changes - just updating the maximum skip distance value:
+
+```go
+maxSkipDist := 2 // default for part 1
+if part == 2 {
+    maxSkipDist = 20 // increased skip distance for part 2
+}
+```
+
+### Thoughts
+
+Today's puzzle was a fascinating exercise in thinking about pathfinding differently. Instead of
+trying to simulate the actual paths with wall-passing (which would be much more complex), we could
+solve it by finding normal path distances first and then calculating potential shortcuts.
+
+The key insight was realizing we didn't need to track the actual paths - we just needed to know if
+positions were reachable and how many steps it would take to reach them normally. Then, any position
+we could "jump" to that would save us steps represented a potential cheat opportunity.
+
+Performance-wise, while we're checking a lot of potential jump points, the solution remains
+efficient because we only need to run the BFS once to get all the base distances. This made scaling
+to Part 2's larger jump distance trivial.
+
+I'd rate this a 6/10 difficulty - while the core concept isn't overwhelmingly complex, figuring out
+the right approach took some careful thinking. The problem description initially leads you toward
+trying to simulate actual paths with wall-passing, but finding the more elegant solution based on
+calculating potential shortcuts made the problem much more manageable.
+
+_See you tomorrow!_
+
+---
 
 ## Day 19: Linen Layout
 
