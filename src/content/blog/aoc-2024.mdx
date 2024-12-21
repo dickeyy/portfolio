@@ -30,6 +30,7 @@ keywords:
         "advent of code 2024 day 18 solution",
         "advent of code 2024 day 19 solution",
         "advent of code 2024 day 20 solution",
+        "advent of code 2024 day 21 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -61,6 +62,7 @@ keywords:
         "ram run",
         "linen layout",
         "race condition",
+        "keypad conundrum",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -76,6 +78,114 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 21: Keypad Conundrum
+
+Today's puzzle dropped us into a fascinating chain of robot control systems, where we had to help
+guide robots through a sequence of keypads to type door codes. What made this particularly
+interesting was the layered nature of control - we're controlling a robot that controls another
+robot that controls another robot, and so on, all the way down to the final robot typing on a
+numeric keypad!
+
+The puzzle involved two types of keypads: a numeric keypad (like an ATM) and a directional keypad
+(with arrows and an activate button). Each robot arm starts pointing at the 'A' button on its
+keypad, and we had to find the shortest possible sequence of button presses that would ultimately
+type codes like "029A" on the door's numeric keypad.
+
+For Part 1, I started by representing each keypad as a set of coordinates to track possible
+movements:
+
+```go
+numMap := map[string]Coord{
+    "A": {2, 0},
+    "0": {1, 0},
+    "1": {0, 1},
+    "2": {1, 1},
+    "3": {2, 1},
+    // ... and so on
+}
+
+dirMap := map[string]Coord{
+    "A": {2, 1},
+    "^": {1, 1},
+    "<": {0, 0},
+    "v": {1, 0},
+    ">": {2, 0},
+}
+```
+
+The core challenge was handling the sequences of movements. Each step needed to translate into a
+series of directional presses to move the robot arm to the target button:
+
+```go
+func getNumPadSequence(input []string, start string, numMap map[string]Coord) []string {
+    curr := numMap[start]
+    seq := []string{}
+
+    for _, char := range input {
+        dest := numMap[char]
+        dx, dy := dest.x-curr.x, dest.y-curr.y
+
+        // Build movement sequences based on relative positions
+        if curr.y == 0 && dest.x == 0 {
+            // Handle special case for bottom row
+            seq = append(seq, buildVerticalMoves(dy)...)
+            seq = append(seq, buildHorizontalMoves(dx)...)
+        } else if dx < 0 {
+            // Prioritize left movements
+            seq = append(seq, buildHorizontalMoves(dx)...)
+            seq = append(seq, buildVerticalMoves(dy)...)
+        }
+        // ... other movement cases
+
+        curr = dest
+        seq = append(seq, "A") // Press the button
+    }
+    return seq
+}
+```
+
+Part 2 threw us for a loop by increasing the chain of robots from 2 to 25! This meant our sequence
+processing needed to handle many more layers of control. The key insight was using proper caching to
+avoid recalculating sequences we'd seen before:
+
+```go
+func countSequences(input []string, maxRobots, robot int, cache map[string][]int, dirMap map[string]Coord) int {
+    key := strings.Join(input, "")
+    if val, ok := cache[key]; ok && robot <= len(val) && val[robot-1] != 0 {
+        return val[robot-1]
+    }
+
+    if _, ok := cache[key]; !ok {
+        cache[key] = make([]int, maxRobots)
+    }
+    // ... process sequences and update cache
+}
+```
+
+### Thoughts
+
+Today's puzzle was particularly devious in its complexity. What started as a seemingly
+straightforward pathfinding problem quickly evolved into a multi-layered sequence optimization
+challenge. The real difficulty wasn't in finding a path through any single keypad - it was in
+managing the cascading effects of each button press through multiple layers of robot control.
+
+The most enlightening moment came when I realized we could treat each sequence as a series of
+coordinate movements rather than trying to simulate the actual robot arm movements. This simplified
+the logic considerably and made the caching strategy much more effective.
+
+Performance was a significant concern, especially in Part 2 with its 25 layers of control. The
+caching system was crucial here - without it, the combinatorial explosion of possible sequences
+would have made the problem intractable.
+
+I'd rate this a 9/10 difficulty. While the core concepts weren't particularly exotic, the layered
+nature of the problem and the need for efficient sequence handling made this one of the more
+challenging puzzles so far. Getting everything working correctly while maintaining good performance
+required careful thought and several iterations of the solution.
+
+_See you tomorrow!_
+
+---
 
 ## Day 20: Race Condition
 
