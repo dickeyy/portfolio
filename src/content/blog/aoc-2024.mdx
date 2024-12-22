@@ -1,7 +1,7 @@
 ---
 title: Advent of Code 2024
 description: A log of my experience with Advent of Code 2024, there are spoilers in here so beware.
-date: 2024-12-20
+date: 2024-12-22
 ogImage: /blog-og-images/aoc-2024.png
 published: true
 keywords:
@@ -31,6 +31,7 @@ keywords:
         "advent of code 2024 day 19 solution",
         "advent of code 2024 day 20 solution",
         "advent of code 2024 day 21 solution",
+        "advent of code 2024 day 22 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -63,6 +64,7 @@ keywords:
         "linen layout",
         "race condition",
         "keypad conundrum",
+        "monkey market",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -78,6 +80,73 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 22: Monkey Market
+
+Today's puzzle placed us in a jungle marketplace, trying to predict pseudorandom number sequences
+used by monkeys to set prices for hiding spots. The challenge involved implementing a specific
+sequence generator and then analyzing patterns in the resulting numbers.
+
+For Part 1, we needed to generate 2000 numbers for each starting value using a specific mixing and
+pruning process. The sequence generation was straightforward once you understood the steps:
+
+```go
+func getSecretNum(num int) int {
+    num = prune(mix(num*64, num))   // Step 1
+    num = prune(mix(num/32, num))   // Step 2
+    num = prune(mix(num*2048, num)) // Step 3
+    return num
+}
+
+func mix(a, b int) int { return a ^ b }
+func prune(a int) int  { return a % PRUNE_NUM }
+```
+
+Part 2 added an interesting twist - instead of looking at the full numbers, we only cared about
+their ones digits and needed to find sequences of changes that would maximize our banana collection.
+This required tracking a sliding window of differences between consecutive digits:
+
+```go
+last4 := [4]int{10, 10, 10, 10} // start with impossible changes
+for i := 0; i < 2000; i++ {
+    prev := num % 10
+    num = getSecretNum(num)
+    curr := num % 10
+
+    // shift the window and add new change
+    last4[0] = last4[1]
+    last4[1] = last4[2]
+    last4[2] = last4[3]
+    last4[3] = curr - prev
+    ...
+}
+```
+
+The key insight was using maps to efficiently track both the sequences we've seen (seen) and their
+cumulative values (sequences). This let us avoid counting the same sequence multiple times for a
+given starting number while still accumulating the total bananas we could collect.
+
+### Thoughts
+
+Today's puzzle was an interesting mix of number theory and pattern recognition. While implementing
+the sequence generator itself was straightforward, the real elegance came in Part 2's approach to
+finding optimal price change sequences.
+
+The solution ended up being much simpler than my first attempts, which tried to brute force all
+possible four-number sequences. Instead, by tracking the sequences we actually encounter and their
+resulting values, we let the problem's natural constraints guide us to the answer.
+
+I particularly enjoyed how the puzzle led us from thinking about full numbers in Part 1 to just
+their ones digits and changes in Part 2. It's a nice reminder that sometimes you don't need all the
+information - just the relevant bits.
+
+I'd rate this a 3/10 difficulty. Once you understand what the puzzle is asking for, both parts
+follow naturally from each other and don't require any particularly complex algorithms or data
+structures.
+
+_See you tomorrow!_
+
+---
 
 ## Day 21: Keypad Conundrum
 
