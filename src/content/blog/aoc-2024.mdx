@@ -32,6 +32,7 @@ keywords:
         "advent of code 2024 day 20 solution",
         "advent of code 2024 day 21 solution",
         "advent of code 2024 day 22 solution",
+        "advent of code 2024 day 23 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -65,6 +66,7 @@ keywords:
         "race condition",
         "keypad conundrum",
         "monkey market",
+        "lan party",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -80,6 +82,94 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 23: LAN Party
+
+Today's puzzle placed us in a network mapping scenario at Easter Bunny HQ, trying to analyze
+computer connections to locate a LAN party. We were given a list of computer connections in the
+format `kh-tc` (representing bidirectional connections between computers), and needed to analyze
+different types of connected groups.
+
+For Part 1, we needed to find sets of three interconnected computers where at least one computer
+name started with 't'. I started by creating an adjacency list representation of the network:
+
+```go
+func parseInput(input string) AdjList {
+    adj := make(AdjList)
+    lines := strings.Split(input, "\n")
+
+    for _, line := range lines {
+        nodes := strings.Split(line, "-")
+        a, b := nodes[0], nodes[1]
+
+        // Initialize maps if needed
+        if adj[a] == nil {
+            adj[a] = make(map[string]bool)
+        }
+        if adj[b] == nil {
+            adj[b] = make(map[string]bool)
+        }
+
+        // Add bidirectional edge
+        adj[a][b] = true
+        adj[b][a] = true
+    }
+    return adj
+}
+```
+
+The core of Part 1 involved finding triangles (sets of three interconnected nodes) in the graph. The
+trick was to avoid counting each triangle multiple times since we could find the same triangle
+starting from any of its three nodes:
+
+```go
+// Inside findTriangles function
+for node := range adj {
+    for neighbor := range adj[node] {
+        if seen[neighbor+node] {
+            continue
+        }
+        seen[node+neighbor] = true
+
+        // Check each neighbor of neighbor for triangles
+        for non := range adj[neighbor] {
+            if non == node {
+                continue
+            }
+            if adj[non][node] && hasTPrefixNode(node, neighbor, non) {
+                count++
+            }
+        }
+    }
+}
+return count / 3  // Each triangle is counted 3 times
+```
+
+Part 2 changed the game completely - we needed to find the largest set of computers where every
+computer was directly connected to every other computer (in graph theory, this is known as a maximum
+clique). This required implementing the Bron-Kerbosch algorithm, which efficiently finds maximal
+cliques in a graph.
+
+### Thoughts
+
+Today's puzzle was a fascinating exploration of graph theory concepts. The transition from finding
+triangles in Part 1 to finding the maximum clique in Part 2 was particularly elegant. While my first
+attempt at Part 2 tried to brute force the solution by checking all possible combinations, that
+quickly proved impractical. The key insight was recognizing this as a classic maximum clique problem
+and implementing the Bron-Kerbosch algorithm.
+
+The trickiest part was getting the triangle detection correct in Part 1 - it's easy to either miss
+triangles or count them multiple times if you're not careful with how you track seen combinations.
+The use of a `seen` map to prevent double-counting while still finding all valid triangles took some
+careful thinking to get right.
+
+I'd rate this a 5/10 difficulty - while the concepts aren't overly complex, implementing everything
+correctly, especially the Bron-Kerbosch algorithm for Part 2, required solid understanding of graph
+algorithms and careful attention to detail.
+
+_See you tomorrow!_
+
+---
 
 ## Day 22: Monkey Market
 
