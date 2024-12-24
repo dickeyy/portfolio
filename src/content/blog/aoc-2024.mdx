@@ -33,6 +33,7 @@ keywords:
         "advent of code 2024 day 21 solution",
         "advent of code 2024 day 22 solution",
         "advent of code 2024 day 23 solution",
+        "advent of code 2024 day 24 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -67,6 +68,7 @@ keywords:
         "keypad conundrum",
         "monkey market",
         "lan party",
+        "crossed wires",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -82,6 +84,80 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 24: Crossed Wires
+
+Today's puzzle placed us in a simulation of boolean logic gates and wires. We were given a network
+of AND, OR, and XOR gates, with initial wire values that propagate through the system. The twist was
+that some gates had their output wires accidentally swapped, and we needed to figure out which ones.
+
+For Part 1, we needed to calculate the final values on all z-wires after evaluating the circuit. I
+approached this using a map to track wire values and gates:
+
+```go
+type GateInfo struct {
+    operation int // 0=AND, 1=OR, 2=XOR
+    inputs    []string
+    output    string
+}
+```
+
+The core logic involved evaluating gates as soon as their input values became available:
+
+```go
+for len(gates) > 0 {
+    for wireName, gate := range gates {
+        if canEvalGate(gate, wires) {
+            wires[wireName] = evaluateGate(gate, wires)
+            delete(gates, wireName)
+        }
+    }
+}
+```
+
+Part 2 revealed that this circuit was actually meant to be a binary adder, adding numbers
+represented by x-wires and y-wires to produce a result on the z-wires. However, four pairs of gate
+outputs were swapped. The key insight was recognizing the structure of a binary adder - it's built
+from a series of half-adders and full-adders that process bits from least to most significant.
+
+To find the swapped wires, I looked for gates that didn't match the expected adder pattern:
+
+```go
+// Find half adder gates for each bit position
+m1 = find(fmt.Sprintf("x%s", n), fmt.Sprintf("y%s", n), "XOR", gateStrings)
+n1 = find(fmt.Sprintf("x%s", n), fmt.Sprintf("y%s", n), "AND", gateStrings)
+
+if carry != "" {
+    // Full adder logic when we have a carry bit
+    r1 = find(carry, m1, "AND", gateStrings)
+    if r1 == "" {
+        m1, n1 = n1, m1
+        swapped = append(swapped, m1, n1)
+        r1 = find(carry, m1, "AND", gateStrings)
+    }
+}
+```
+
+### Thoughts
+
+Today's puzzle was a fascinating combination of digital logic and pattern recognition. While Part 1
+was straightforward circuit simulation, Part 2's realization that we were working with a binary
+adder added an interesting layer of complexity. The key to solving Part 2 was understanding how
+binary adders are constructed - they follow a very specific pattern of XOR and AND gates to handle
+each bit position and carry values.
+
+The most elegant aspect was how the puzzle guided us from simple gate evaluation to discovering the
+underlying structure of a binary adder. Once you recognized the pattern of half-adders and
+full-adders, finding the swapped wires became much more manageable - they were the ones that broke
+this expected pattern.
+
+I'd rate this a 6/10 difficulty. The circuit simulation itself wasn't particularly complex, but
+recognizing and properly handling the binary adder structure in Part 2 required some careful
+thinking and debugging.
+
+_See you tomorrow!_
+
+---
 
 ## Day 23: LAN Party
 
