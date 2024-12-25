@@ -34,6 +34,7 @@ keywords:
         "advent of code 2024 day 22 solution",
         "advent of code 2024 day 23 solution",
         "advent of code 2024 day 24 solution",
+        "advent of code 2024 day 25 solution",
         "aoc 2024 golang solutions",
         "advent of code go",
         "advent of code 2024 explained",
@@ -69,6 +70,7 @@ keywords:
         "monkey market",
         "lan party",
         "crossed wires",
+        "code chronicle",
         "go optimization",
         "algorithm complexity",
         "advent of code 2024 tips",
@@ -84,6 +86,77 @@ import Callout from "../../components/Callout.astro";
     All of my Advent of Code solutions are available on
     [GitHub](https://github.com/dickeyy/adventofcode/tree/main/2024).
 </Callout>
+
+## Day 25: Code Chronicle
+
+Merry Christmas!! Today is the final day of Advent of Code 2024!
+
+Today's puzzle, appropriately being Christmas Day, was about analyzing lock and key combinations in
+a fancy virtual five-pin tumbler system. We were given schematics for various locks and keys, and
+needed to determine which ones could work together based on their pin heights.
+
+The schematics used a simple ASCII format where '#' represented filled space and '.' represented
+empty space. The key insight was that locks had their top row filled and bottom row empty, while
+keys had the opposite pattern. Each schematic could be converted into a sequence of heights by
+counting the number of filled spaces in each column.
+
+I started by creating a function to parse the heights from the schematic format:
+
+```go
+func parsePattern(lines []string) []int {
+    heights := make([]int, 5)
+    for row := range lines {
+        for col := range lines[row] {
+            if lines[row][col] == '#' {
+                heights[col]++
+            }
+        }
+    }
+    // Adjust for the fixed top/bottom row
+    for i := range heights {
+        heights[i]--
+    }
+    return heights
+}
+```
+
+The core logic involved checking if a lock and key could fit together. This meant ensuring that for
+each column, the combined height of the lock's pin and the key's pin didn't exceed the available
+space:
+
+```go
+func canFit(lock, key []int) bool {
+    for i := range lock {
+        if lock[i] + key[i] > 5 {
+            return false
+        }
+    }
+    return true
+}
+```
+
+Part 1 simply required counting all valid lock/key combinations. Since this was the final day of
+Advent of Code 2024, there was no Part 2 - just a heartwarming conclusion to the story about helping
+the Chief Historian complete Santa's chronicle in time for the sleigh launch.
+
+### Thoughts
+
+Today's puzzle was a nice Christmas present - interesting enough to be engaging but not so complex
+that it would take away from holiday celebrations. The visualization of the pins and keys using
+ASCII art made it particularly fun to work with, and the physical analogy to tumbler locks helped
+make the problem intuitive.
+
+The most elegant aspect was how the puzzle took something as complex as a real pin tumbler lock and
+abstracted it into a simple height-matching problem. The fact that we only needed to track column
+heights rather than the full lock/key geometry made the solution clean and straightforward.
+
+I'd rate this a 4/10 difficulty - while it required careful attention to detail in parsing the
+schematics and checking compatibility, the core logic was relatively straightforward. The lack of a
+Part 2 was a nice touch, letting us wrap up the Advent of Code journey on a satisfying note.
+
+_Merry Christmas, and see you next year!_
+
+---
 
 ## Day 24: Crossed Wires
 
