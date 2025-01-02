@@ -2,7 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 import "../styles/global.css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import config from "../../config";
 
 interface Props {
@@ -79,7 +79,7 @@ const { title, description, date, ogImage, keywords } = Astro.props as Props;
 
         <title>{title}</title>
 
-        <ViewTransitions />
+        <ClientRouter />
     </head>
     <body
         class="m-0
