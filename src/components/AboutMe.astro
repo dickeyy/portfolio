@@ -35,8 +35,20 @@ function numberToWords(num: number) {
 }
 
 let age = 0;
-const bday = new Date(2004, 5, 2);
-age = new Date().getFullYear() - bday.getFullYear();
+const bday = new Date("2004-05-02");
+const today = new Date();
+
+// Calculate age considering the full date
+age = today.getFullYear() - bday.getFullYear();
+
+// Adjust age if birthday hasn't occurred this year
+if (
+    today.getMonth() < bday.getMonth() ||
+    (today.getMonth() === bday.getMonth() && today.getDate() < bday.getDate())
+) {
+    age--;
+}
+
 let ageInWords = numberToWords(age);
 ---
 
