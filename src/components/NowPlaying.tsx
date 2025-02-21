@@ -47,7 +47,7 @@ export default function NowPlaying() {
         };
 
         fetchNowPlaying();
-        const intervalId = setInterval(fetchNowPlaying, 20000); // Fetch every 20 seconds
+        const intervalId = setInterval(fetchNowPlaying, 10000); // Fetch every 10 seconds
 
         return () => clearInterval(intervalId); // Clean up interval on unmount
     }, []);
