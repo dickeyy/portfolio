@@ -59,7 +59,7 @@ export default function NowPlaying() {
     return (
         <div>
             {nowPlaying.isPlaying && (
-                <div className="flex items-center justify-start gap-1 mt-6 -mb-4 border rounded-[10px] p-1 border-dashed">
+                <div className="flex items-center justify-start gap-1 mt-6 -mb-4 border rounded-[10px] p-1 border-dashed border-foreground/20">
                     <img
                         src={nowPlaying.imageUrl}
                         alt={nowPlaying.title}
