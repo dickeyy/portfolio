@@ -59,7 +59,12 @@ export default function NowPlaying() {
     return (
         <div>
             {nowPlaying.isPlaying && (
-                <div className="flex items-center justify-start gap-1 mb-2">
+                <div className="flex items-center justify-start gap-1 mt-6 -mb-4 border rounded-[10px] p-1 border-dashed">
+                    <img
+                        src={nowPlaying.imageUrl}
+                        alt={nowPlaying.title}
+                        className="size-8 rounded-[5px] mr-2"
+                    />
                     <p className="font-serif text-foreground/60 font-light italic">
                         Currently listening to{" "}
                         <span>
