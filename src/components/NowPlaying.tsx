@@ -13,41 +13,22 @@ export default function NowPlaying() {
 
     useEffect(() => {
         const fetchNowPlaying = async () => {
-            // API Key is public, this is fine, Last.fm intends this to be client side.
-            const apiUrl = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=mrdickeyy&api_key=8f3b65a08dc19fd2fd52daee66e27a1f&format=json&limit=1`;
-
             try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-                const recentTracks = data?.recenttracks?.track;
+                const res = await fetch("https://api.kyle.so/spotify/current-track?user=mrdickeyy");
+                const data = await res.json();
 
-                if (recentTracks && recentTracks.length > 0) {
-                    const track = recentTracks[0];
-                    const imageUrl = track.image.reduce((largest: any, image: any) => {
-                        return image.size === "extralarge" ? image["#text"] : largest;
-                    }, track.image[0]["#text"]);
-                    if (track["@attr"]?.nowplaying === "true") {
-                        setNowPlaying({
-                            artist: track.artist["#text"],
-                            title: track.name,
-                            url: track.url,
-                            isPlaying: true,
-                            imageUrl: imageUrl
-                        } as any);
-                    } else {
-                        setNowPlaying(null); // Only set if actively playing
-                    }
-                } else {
-                    setNowPlaying(null);
+                console.log(data);
+
+                if (data.success) {
+                    setNowPlaying(data);
                 }
             } catch (error) {
-                console.error("Error fetching Last.fm data:", error);
-                setNowPlaying(null);
+                console.error("Error fetching Spotify data:", error);
             }
         };
 
         fetchNowPlaying();
-        const intervalId = setInterval(fetchNowPlaying, 10000); // Fetch every 10 seconds
+        const intervalId = setInterval(fetchNowPlaying, 5000); // Fetch every 5 seconds
 
         return () => clearInterval(intervalId); // Clean up interval on unmount
     }, []);
