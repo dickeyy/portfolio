@@ -17,7 +17,7 @@ export default function NowPlaying() {
                 const res = await fetch("https://api.kyle.so/spotify/current-track?user=mrdickeyy");
                 const data = await res.json();
 
-                if (data.success) {
+                if (!data.error) {
                     setNowPlaying(data);
                 }
             } catch (error) {
