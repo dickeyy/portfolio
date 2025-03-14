@@ -19,6 +19,8 @@ export default function NowPlaying() {
 
                 if (!data.error) {
                     setNowPlaying(data);
+                } else {
+                    setNowPlaying(null);
                 }
             } catch (error) {
                 console.error("Error fetching Spotify data:", error);
