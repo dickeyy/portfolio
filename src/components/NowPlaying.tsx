@@ -12,25 +12,42 @@ export default function NowPlaying() {
     const [nowPlaying, setNowPlaying] = useState<NowPlaying | null>(null);
 
     useEffect(() => {
-        const fetchNowPlaying = async () => {
-            try {
-                const res = await fetch("https://api.kyle.so/spotify/current-track?user=mrdickeyy");
-                const data = await res.json();
+        const websocketUrl = "wss://api.kyle.so/spotify/current-track/ws?user=mrdickeyy";
+        const socket = new WebSocket(websocketUrl);
 
-                if (!data.error) {
+        socket.onopen = () => {
+            console.log("WebSocket connection established");
+        };
+
+        socket.onmessage = (event) => {
+            try {
+                const data = JSON.parse(event.data);
+
+                if (data.isPlaying === false) {
+                    // Nothing is playing
+                    setNowPlaying(null);
+                } else if (!data.error) {
                     setNowPlaying(data);
                 } else {
                     setNowPlaying(null);
                 }
             } catch (error) {
-                console.error("Error fetching Spotify data:", error);
+                console.error("Error parsing WebSocket data:", error);
             }
         };
 
-        fetchNowPlaying();
-        const intervalId = setInterval(fetchNowPlaying, 5000); // Fetch every 5 seconds
+        socket.onerror = (error) => {
+            console.error("WebSocket error:", error);
+        };
 
-        return () => clearInterval(intervalId); // Clean up interval on unmount
+        socket.onclose = () => {
+            console.log("WebSocket connection closed");
+        };
+
+        // Clean up WebSocket connection on unmount
+        return () => {
+            socket.close();
+        };
     }, []);
 
     if (!nowPlaying) {
