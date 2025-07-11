@@ -22,6 +22,10 @@ export default {
         bsky: {
             handle: "kyle.so",
             url: "https://bsky.app/profile/kyle.so"
+        },
+        leetcode: {
+            handle: "dickey",
+            url: "https://leetcode.com/dickey/"
         }
     },
     meta: {

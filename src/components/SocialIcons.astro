@@ -5,6 +5,7 @@ import InstagramIcon from "../icons/InstagramIcon";
 import LinkedInIcon from "../icons/LinkedInIcon";
 import BlueskyIcon from "../icons/BlueskyIcon";
 import config from "../../config";
+import LeetcodeIcon from "../icons/Leetcode";
 
 interface Props {
     size?: string;
@@ -36,6 +37,11 @@ const { size = "size-4" } = Astro.props;
     </a>
     <a href={config.socials.instagram.url} target="_blank">
         <InstagramIcon
+            className={`${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
+        />
+    </a>
+    <a href={config.socials.leetcode.url} target="_blank">
+        <LeetcodeIcon
             className={`${size} fill-foreground/40 hover:fill-foreground/80 transition-colors ease-in-out`}
         />
     </a>
