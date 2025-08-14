@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import type { VinylType } from "../types/vinyl";
+import VinylItem from "../components/VinylItem.astro";
+
+async function getCollection(): Promise<VinylType[]> {
+    const response = await fetch(
+        `https://api.discogs.com/users/kdickey/collection/folders/0/releases`,
+        {
+            headers: {
+                Authorization: `Discogs token=${import.meta.env.DISCOGS_TOKEN}`
+            }
+        }
+    );
+    const data = await response.json();
+    return data.releases.map((release: any) => release);
+}
+
+const collection = await getCollection();
+---
+
+<Layout title="Kyle's Vinyl">
+    <Nav label="Index" path="/" />
+    <div class="flex-1 flex justify-center min-h-screen">
+        <div class="w-full sm:w-[100%] md:w-[75%] lg:w-[55%] px-4 sm:px-8 py-8">
+            <div class="flex items-start justify-between w-full mt-8">
+                <div class="flex flex-col item-start justify-center">
+                    <h1 class="font-serif italic text-2xl">Vinyl</h1>
+                    <p class="text-foreground/60 font-light">
+                        My vinyl collection ({collection.length} albums).
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mt-16 text-foreground/80 font-light text-md"
+            >
+                {collection.map((vinyl) => <VinylItem vinyl={vinyl} />)}
+            </div>
+            <div class="h-24"></div>
+        </div>
+    </div>
+</Layout>
