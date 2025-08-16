@@ -4,8 +4,8 @@ export default {
     },
     socials: {
         twitter: {
-            handle: "kyledickeyy",
-            url: "https://twitter.com/kyledickeyy"
+            handle: "kyleisaway",
+            url: "https://twitter.com/kyleisaway"
         },
         github: {
             handle: "dickeyy",
@@ -16,8 +16,8 @@ export default {
             url: "https://www.linkedin.com/in/kyletdickey/"
         },
         instagram: {
-            handle: "kyle.dickeyy",
-            url: "https://instagram.com/kyle.dickeyy"
+            handle: "kyleisaway",
+            url: "https://instagram.com/kyleisaway"
         },
         bsky: {
             handle: "kyle.so",
