@@ -3,15 +3,13 @@ import tailwind from "@astrojs/tailwind";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import react from "@astrojs/react";
-import node from "@astrojs/node";
 import mdx from "@astrojs/mdx";
+import vercelServerless from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
     output: "server",
-    adapter: node({
-        mode: "standalone"
-    }),
+    adapter: vercelServerless(),
     integrations: [
         tailwind({
             applyBaseStyles: true
