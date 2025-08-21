@@ -74,8 +74,9 @@ const { title, description, ogImage, showFooter = true, keywords } = Astro.props
             items-center
             justify-center"
     >
-    </body><main class="flex flex-grow items-center justify-center w-full">
-        <slot />
-    </main>
-    {showFooter && <Footer />}
+        <main class="flex flex-grow items-center justify-center w-full">
+            <slot />
+        </main>
+        {showFooter && <Footer />}
+    </body>
 </html>
