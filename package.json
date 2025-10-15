@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "astro dev",
         "start": "node ./dist/server/entry.mjs",
-        "build": "astro check && astro build",
+        "build": "astro check && astro build && cp .assetsignore dist/.assetsignore",
         "deploy": "bunx wrangler@latest deploy",
         "preview": "astro preview",
         "astro": "astro",
