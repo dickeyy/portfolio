@@ -10,8 +10,5 @@
     },
     "observability": {
         "enabled": true
-    },
-    "vars": {
-        "DISCOGS_TOKEN": ""
     }
 }
