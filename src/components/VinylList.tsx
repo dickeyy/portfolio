@@ -8,7 +8,7 @@ export default function VinylList() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch("/api/vinyl")
+        fetch("https://api.kyle.so/vinyl/collection")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error("Failed to fetch vinyl collection");
