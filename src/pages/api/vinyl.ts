@@ -1,12 +1,14 @@
 import type { APIRoute } from "astro";
+import { getSecret } from "astro:env/server";
 
 export const GET: APIRoute = async ({ request }) => {
     try {
+        const token = getSecret("DISCOGS_TOKEN");
         const response = await fetch(
             "https://api.discogs.com/users/kdickey/collection/folders/0/releases?per_page=100",
             {
                 headers: {
-                    Authorization: `Discogs token=${import.meta.env.DISCOGS_TOKEN}`
+                    Authorization: `Discogs token=${token}`
                 }
             }
         );
