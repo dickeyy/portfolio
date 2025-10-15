@@ -9,8 +9,14 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
+    experimental: {
+        session: true
+    },
     output: "server",
     adapter: cloudflare(),
+    session: {
+        driver: "memory"
+    },
     integrations: [
         tailwind({
             applyBaseStyles: true
