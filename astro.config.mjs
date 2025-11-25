@@ -4,15 +4,12 @@ import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
-
-import cloudflare from "@astrojs/cloudflare";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
     output: "server",
-    adapter: cloudflare({
-        mode: "directory"
-    }),
+    adapter: vercel(),
     integrations: [
         tailwind({
             applyBaseStyles: true
