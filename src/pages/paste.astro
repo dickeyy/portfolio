@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import PasteComponent from "../components/Paste.tsx";
+---
+
+<Layout title="Paste" showFooter={false}>
+    <Nav label="Index" path="/" />
+    <div class="flex-1 flex justify-center min-h-screen">
+        <div class="w-full sm:w-[100%] md:w-[75%] lg:w-[55%] px-4 sm:px-8 py-8">
+            <div class="flex items-start justify-between w-full mt-8">
+                <div class="flex flex-col item-start justify-center">
+                    <h1 class="font-serif italic text-2xl">Paste</h1>
+                    <p class="text-foreground/60 font-light">A self-hosted pastebin.</p>
+                </div>
+            </div>
+            <PasteComponent client:load />
+        </div>
+    </div>
+</Layout>
