@@ -1,9 +1,7 @@
-# Portfolio v9
+# Portfolio v10
 
 _and counting_
 
 [Visit it here (kyle.so)](https://kyle.so)
 
-Built with [Astro](https://astro.build/) & [TailwindCSS](https://tailwindcss.com/).
-
-_Other tools I used include FontAwesome, Google Fonts, and Lucide Icons_
+Built with [NextJS](https://nextjs.org/) & [TailwindCSS](https://tailwindcss.com/).
