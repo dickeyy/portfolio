@@ -146,7 +146,7 @@ function RouteComponent() {
                 {/* Projects */}
                 <section className="mb-8">
                     <SectionHeader n="01" title="Projects" />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20 border border-border">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border border border-border">
                         {PROJECTS.map((project) => {
                             const inner = (
                                 <>
