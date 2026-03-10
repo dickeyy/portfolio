@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "tw-animate-css";
+
+@import '@fontsource/gaegu';
+
+@font-face {
+    font-family: "Commit Mono";
+    src: url("/fonts/commit-mono-vf.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --background: #00311a;
+    --foreground: #eee8d5;
+    --card: #002c16;
+    --card-foreground: #eee8d5;
+    --popover: #003d20;
+    --popover-foreground: #eee8d5;
+    --primary: #4db870;
+    --primary-foreground: #001a0d;
+    --secondary: #00321a;
+    --secondary-foreground: #b8d4b0;
+    --muted: #002d17;
+    --muted-foreground: #6b9e7a;
+    --accent: #005030;
+    --accent-foreground: #eee8d5;
+    --destructive: #c0392b;
+    --destructive-foreground: #ffffff;
+    --border: #1a5c38;
+    --input: #1a5c38;
+    --ring: #4db870;
+    --radius: 0.75rem;
+
+    --accent-yellow: #d4af37;
+    --accent-green: #4db870;
+    --accent-orange: #c4622d;
+    --accent-red: #a63d2f;
+    --accent-purple: #7c5cbf;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-accent-yellow: var(--accent-yellow);
+    --color-accent-green: var(--accent-green);
+    --color-accent-orange: var(--accent-orange);
+    --color-accent-red: var(--accent-red);
+    --color-accent-purple: var(--accent-purple);
+    --radius: var(--radius);
+    --font-sans: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+    --font-mono: "Commit Mono", "SFMono-Regular", Consolas, monospace;
+    --font-serif: "Gaegu", serif;
+}
+
+/* Webkit scrollbar */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    html,
+    body,
+    #app {
+        min-height: 100%;
+    }
+
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-family: var(--font-sans);
+    }
+}
