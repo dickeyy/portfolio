@@ -1,4 +1,4 @@
-export const SITE_TITLE = "TanStack Start";
+export const SITE_TITLE = "Kyle Dickey";
 export const SITE_DESCRIPTION =
-    "A tropical, breathable app starter with full-document SSR, server functions, streaming, and type-safe routing.";
-export const SITE_URL = "https://example.com";
+    "Text-first portfolio for Kyle Dickey, a software engineer building calm, durable products.";
+export const SITE_URL = "https://kyle.so";

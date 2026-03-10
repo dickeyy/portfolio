@@ -1,7 +1,6 @@
-import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../lib/site";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -15,7 +14,23 @@ export const Route = createRootRoute({
                 content: "width=device-width, initial-scale=1",
             },
             {
-                title: "TanStack Start Starter",
+                title: SITE_TITLE,
+            },
+            {
+                name: "description",
+                content: SITE_DESCRIPTION,
+            },
+            {
+                property: "og:title",
+                content: SITE_TITLE,
+            },
+            {
+                property: "og:description",
+                content: SITE_DESCRIPTION,
+            },
+            {
+                property: "og:url",
+                content: SITE_URL,
             },
         ],
         links: [
@@ -33,20 +48,27 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <html lang="en" suppressHydrationWarning>
             <head>
                 <HeadContent />
-            </head>
-            <body className="font-sans antialiased">
-                {children}
-                <TanStackDevtools
-                    config={{
-                        position: "bottom-right",
-                    }}
-                    plugins={[
-                        {
-                            name: "Tanstack Router",
-                            render: <TanStackRouterDevtoolsPanel />,
-                        },
-                    ]}
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="/apple-touch-icon.png"
                 />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="32x32"
+                    href="/favicon-32x32.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="16x16"
+                    href="/favicon-16x16.png"
+                />
+                <link rel="manifest" href="/site.webmanifest" />
+            </head>
+            <body className="antialiased">
+                {children}
                 <Scripts />
             </body>
         </html>

@@ -1,7 +1,218 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Footer } from "#/components/layout/footer";
+import { Navbar } from "#/components/layout/navbar";
+import { NowPlaying } from "#/components/now-playing";
+import { PixelGridShader } from "#/components/pixelgrid-shader";
 
-export const Route = createFileRoute("/")({ component: App });
+export const Route = createFileRoute("/")({
+    component: RouteComponent,
+});
 
-function App() {
-    return <></>;
+const PROJECTS = [
+    {
+        name: "No System",
+        description:
+            "A debloated, privacy-focused LLM interface for power users.",
+        link: "https://nosystem.chat",
+    },
+    {
+        name: "Are they up?",
+        description:
+            "A fast and open source real-time service disruption monitoring tool.",
+        github: "https://github.com/novembersoftware/aretheyup",
+        link: "https://aretheyup.com",
+    },
+    {
+        name: "Diary",
+        description:
+            "A zero-knowledge journaling platform with E2E encryption and real-time synchronization across devices.",
+        github: "https://github.com/dickeyy/diary",
+        link: "https://diary.kyle.so",
+    },
+    {
+        name: "go-distances",
+        description:
+            "A simple CLI tool to calculate great-circle distances between various points on the Earth.",
+        github: "https://github.com/dickeyy/go-distances",
+    },
+    {
+        name: "Quack",
+        description:
+            "A Discord bot aimed at making servers of all sizes safer for everyone, with the best moderation tools.",
+        github: "https://github.com/quackdiscord/bot",
+        link: "https://quack.bot",
+    },
+    {
+        name: "ai-vs-rng",
+        description:
+            "A study on the efficacy of AI in the stock market, using a random number generator as a baseline.",
+        github: "https://github.com/dickeyy/ai-vs-rng",
+    },
+    {
+        name: "Alias",
+        description:
+            "A digitized version of a game played by my family on holidays.",
+        github: "https://github.com/dickeyy/alias",
+        link: "https://alias.kyle.so",
+    },
+    {
+        name: "vimhint",
+        description: "A discrete Vim cheatsheet for macOS",
+        github: "https://github.com/dickeyy/vimhint",
+    },
+];
+
+function SectionHeader({ n, title }: { n: string; title: string }) {
+    return (
+        <div className="flex items-center gap-3 mb-8">
+            <span className="font-serif text-xl shrink-0">{title}</span>
+            <div className="h-px flex-1 bg-border" />
+            <span className="font-mono text-xs text-muted-foreground shrink-0">
+                {n}
+            </span>
+        </div>
+    );
+}
+
+function RouteComponent() {
+    return (
+        <div className="relative flex min-h-screen flex-col">
+            <PixelGridShader
+                shape="noise"
+                colorFg="#0d4a2a"
+                className="z-[-1]"
+                fixed
+            />
+
+            <Navbar />
+
+            <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-6 py-12">
+                {/* Hero */}
+                <section className="mb-12">
+                    <NowPlaying />
+                </section>
+
+                <section className="mb-4">
+                    <h1 className="font-serif text-6xl leading-none mb-5 tracking-tight">
+                        Kyle Dickey
+                    </h1>
+                </section>
+
+                {/* Bio */}
+                <section className="mb-24">
+                    <p className="text-base leading-loose text-foreground/75">
+                        I'm a fourth-year Computer Science and Software
+                        Engineering student at Colorado State University. I like
+                        building cool things and I spend a lot of my free time
+                        doing it.
+                    </p>
+                </section>
+
+                {/* Work */}
+                <section className="mb-24">
+                    <SectionHeader n="00" title="Work" />
+                    <div className="flex flex-col gap-3">
+                        <div className="flex items-baseline justify-between gap-4">
+                            <div className="flex flex-col gap-1">
+                                <h3 className="font-serif text-2xl">
+                                    <a
+                                        href="https://november.software"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-foreground/70 transition-colors"
+                                    >
+                                        November Software
+                                    </a>
+                                </h3>
+                                <p className="font-mono text-xs text-muted-foreground">
+                                    Founder
+                                </p>
+                            </div>
+                            <p className="font-mono text-xs text-muted-foreground shrink-0">
+                                March '23 &mdash; Present
+                            </p>
+                        </div>
+                        <ul className="mt-1 flex flex-col gap-2">
+                            <li className="text-sm text-foreground/65 leading-relaxed pl-4 border-l border-border">
+                                Independent software studio.
+                            </li>
+                            <li className="text-sm text-foreground/65 leading-relaxed pl-4 border-l border-border">
+                                Custom merchandise platforms for content
+                                creators with 1M+ reach.
+                            </li>
+                            <li className="text-sm text-foreground/65 leading-relaxed pl-4 border-l border-border">
+                                5+ products across Go, TypeScript, Postgres, and
+                                Redis with automated CI/CD.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                {/* Projects */}
+                <section className="mb-8">
+                    <SectionHeader n="01" title="Projects" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border border border-border">
+                        {PROJECTS.map((project) => {
+                            const inner = (
+                                <>
+                                    <div className="flex items-center justify-between gap-2">
+                                        <h3 className="font-mono text-sm">
+                                            {project.name}
+                                        </h3>
+                                        {"github" in project && (
+                                            <a
+                                                href={project.github}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                onClick={(e) =>
+                                                    e.stopPropagation()
+                                                }
+                                                className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors shrink-0"
+                                            >
+                                                GitHub &rarr;
+                                            </a>
+                                        )}
+                                    </div>
+                                    <p className="text-xs text-foreground/55 leading-relaxed">
+                                        {project.description}
+                                    </p>
+                                </>
+                            );
+
+                            return "link" in project ? (
+                                <a
+                                    key={project.name}
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex flex-col gap-2.5 p-5 bg-background hover:bg-accent/30 transition-colors"
+                                >
+                                    {inner}
+                                </a>
+                            ) : (
+                                <div
+                                    key={project.name}
+                                    className="flex flex-col gap-2.5 p-5 bg-background"
+                                >
+                                    {inner}
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className="mt-5">
+                        <a
+                            href="https://github.com/dickeyy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                            View all projects on GitHub &rarr;
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <Footer />
+        </div>
+    );
 }
