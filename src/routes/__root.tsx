@@ -1,6 +1,12 @@
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../lib/site";
+import {
+    KEYWORDS,
+    OG_IMAGE,
+    SITE_DESCRIPTION,
+    SITE_TITLE,
+    SITE_URL,
+} from "../lib/site";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -12,6 +18,10 @@ export const Route = createRootRoute({
             {
                 name: "viewport",
                 content: "width=device-width, initial-scale=1",
+            },
+            {
+                name: "keywords",
+                content: KEYWORDS.join(", "),
             },
             {
                 title: SITE_TITLE,
@@ -32,6 +42,10 @@ export const Route = createRootRoute({
                 property: "og:url",
                 content: SITE_URL,
             },
+            {
+                property: "og:image",
+                content: OG_IMAGE,
+            },
         ],
         links: [
             {
@@ -48,6 +62,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <html lang="en" suppressHydrationWarning>
             <head>
                 <HeadContent />
+                <script
+                    src="https://cdn.visitors.now/v.js"
+                    data-token="20bf3839-46d9-4bf3-a206-ba1e8110b95c"
+                ></script>
                 <link
                     rel="apple-touch-icon"
                     sizes="180x180"
