@@ -67,7 +67,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 />
                 <link rel="manifest" href="/site.webmanifest" />
             </head>
-            <body className="antialiased">
+            <body className="antialiased selection:bg-primary selection:text-primary-foreground">
                 {children}
                 <Scripts />
             </body>
