@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Footer } from "#/components/layout/footer";
 import { Navbar } from "#/components/layout/navbar";
-import { NowPlaying } from "#/components/now-playing";
 import { NoiseBackground } from "#/components/noise-background";
+import { NowPlaying } from "#/components/now-playing";
 
 export const Route = createFileRoute("/")({
     component: RouteComponent,
@@ -77,11 +77,7 @@ function SectionHeader({ n, title }: { n: string; title: string }) {
 function RouteComponent() {
     return (
         <div className="relative flex min-h-screen flex-col">
-            <NoiseBackground
-                colorFg="#0d4a2a"
-                className="z-[-1]"
-                fixed
-            />
+            <NoiseBackground colorFg="#0d4a2a" className="z-[-1]" fixed />
 
             <Navbar />
 
