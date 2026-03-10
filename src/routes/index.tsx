@@ -30,10 +30,10 @@ const PROJECTS = [
         link: "https://diary.kyle.so",
     },
     {
-        name: "go-distances",
-        description:
-            "A simple CLI tool to calculate great-circle distances between various points on the Earth.",
-        github: "https://github.com/dickeyy/go-distances",
+        name: "Poof",
+        description: "A self-destructing text sharing service.",
+        github: "https://github.com/dickeyy/poof",
+        link: "https://poof.sh",
     },
     {
         name: "Quack",
@@ -146,7 +146,7 @@ function RouteComponent() {
                 {/* Projects */}
                 <section className="mb-8">
                     <SectionHeader n="01" title="Projects" />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border border border-border">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20 border border-border">
                         {PROJECTS.map((project) => {
                             const inner = (
                                 <>
