@@ -78,19 +78,19 @@ export function NowPlaying() {
                 />
 
                 <p className="truncate text-sm text-foreground/65">
-                    <span className="text-foreground/55">
+                    <span className="text-foreground/55 font-serif">
                         Currently listening to
                     </span>{" "}
                     <a
                         href={track.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline decoration-foreground/30 underline-offset-4 transition-colors hover:text-foreground/90 font-serif"
+                        className="underline decoration-foreground/30 underline-offset-4 transition-colors hover:text-foreground/90"
                     >
                         {track.title}
                     </a>{" "}
-                    <span className="text-foreground/55">by</span>{" "}
-                    <span className="font-serif italic text-foreground/70">
+                    <span className="text-foreground/55 font-serif">by</span>{" "}
+                    <span className="italic text-foreground/70">
                         {track.artist}
                     </span>
                 </p>
