@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Footer } from "#/components/layout/footer";
 import { Navbar } from "#/components/layout/navbar";
 import { NowPlaying } from "#/components/now-playing";
-import { PixelGridShader } from "#/components/pixelgrid-shader";
+import { NoiseBackground } from "#/components/noise-background";
 
 export const Route = createFileRoute("/")({
     component: RouteComponent,
@@ -77,8 +77,7 @@ function SectionHeader({ n, title }: { n: string; title: string }) {
 function RouteComponent() {
     return (
         <div className="relative flex min-h-screen flex-col">
-            <PixelGridShader
-                shape="noise"
+            <NoiseBackground
                 colorFg="#0d4a2a"
                 className="z-[-1]"
                 fixed
