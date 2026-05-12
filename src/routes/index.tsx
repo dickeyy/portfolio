@@ -43,10 +43,10 @@ const PROJECTS = [
         link: "https://quack.bot",
     },
     {
-        name: "ai-vs-rng",
+        name: "stock.toys",
         description:
-            "A study on the efficacy of AI in the stock market, using a random number generator as a baseline.",
-        github: "https://github.com/dickeyy/ai-vs-rng",
+            "A simple way to research stocks without getting buried in noise",
+        link: "https://stock.toys",
     },
     {
         name: "Alias",
