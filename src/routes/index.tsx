@@ -201,7 +201,7 @@ function RouteComponent() {
                             rel="noopener noreferrer"
                             className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
                         >
-                            View all projects on GitHub &rarr;
+                            See more projects on GitHub &rarr;
                         </a>
                     </div>
                 </section>
